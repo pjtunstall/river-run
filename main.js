@@ -9,10 +9,9 @@ let tiles = [
 ];
 
 let yPositions = [-viewHeight, 0, viewHeight];
-let tileIndices = [0, 1, 2];
 
 tiles.forEach((tile, i) => {
-  tile.style.backgroundImage = `url(${images[tileIndices[i]]})`;
+  tile.style.backgroundImage = `url(${images[i]})`;
   tile.style.transform = `translateY(${yPositions[i]}px)`;
 });
 
@@ -60,16 +59,12 @@ function update(timestamp) {
 
     if (yPositions[i] >= viewHeight) {
       yPositions[i] -= viewHeight * tiles.length;
-      tileIndices[i] = (tileIndices[i] - 1 + images.length) % images.length;
-      tiles[i].style.backgroundImage = `url(${images[tileIndices[i]]})`;
     }
 
     if (yPositions[i] <= -viewHeight) {
       yPositions[i] += viewHeight * tiles.length;
-      tileIndices[i] = (tileIndices[i] + 1) % images.length;
-      tiles[i].style.backgroundImage = `url(${images[tileIndices[i]]})`;
     }
 
-    tiles[i].style.transform = `translateY(${Math.round(yPositions[i])}px)`;
+    tiles[i].style.transform = `translateY(${yPositions[i]}px)`;
   }
 }
