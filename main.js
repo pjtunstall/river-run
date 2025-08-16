@@ -1,7 +1,7 @@
 let viewHeight = window.innerHeight;
 let scrollDirection = 0;
 let lastTimestamp = 0;
-let speed = 20;
+let speed = 16;
 let indexTop = 0;
 let yPositions = [-viewHeight, 0, viewHeight];
 
