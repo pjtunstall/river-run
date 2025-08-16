@@ -1,9 +1,9 @@
 export class Game {
-  constructor(tiles, physics, milestone) {
+  constructor(tiles, physics, milestones) {
     this.tiles = tiles;
     this.physics = physics;
     this.lastTimestamp = 0;
-    this.milestone = milestone;
+    this.milestones = milestones;
   }
 
   update = (timestamp) => {
@@ -14,6 +14,8 @@ export class Game {
 
     const velocity = this.physics.updateVelocity();
     this.tiles.updatePosition(velocity);
-    this.milestone.updatePosition(this.tiles);
+    this.milestones.forEach((milestone) => {
+      milestone.updatePosition(this.tiles);
+    });
   };
 }

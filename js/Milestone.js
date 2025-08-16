@@ -3,17 +3,18 @@ export class Milestone {
   viewHeight;
   totalHeight;
   element;
-  offsetX; // Distance from tile center.
-  offsetY; // Distance from tile center.
+  offsetX; // Distances from tile center.
+  offsetY;
   tileIndex; // Which tile to follow.
 
   constructor(
     viewHeight,
     totalHeight,
     tileIndex,
-    offsetX,
-    offsetY,
-    label = ""
+    offsetXPercent,
+    offsetYPercent,
+    label = "",
+    color = "red"
   ) {
     const gameContainer = document.getElementById("game");
     const milestone = document.createElement("div");
@@ -26,12 +27,16 @@ export class Milestone {
       milestone.appendChild(labelElement);
     }
 
+    if (color !== "red") {
+      milestone.style.background = color;
+    }
+
     gameContainer.appendChild(milestone);
 
     this.element = milestone;
     this.tileIndex = tileIndex;
-    this.offsetX = offsetX;
-    this.offsetY = offsetY;
+    this.offsetXPercent = offsetXPercent;
+    this.offsetYPercent = offsetYPercent;
     this.viewHeight = viewHeight;
     this.totalHeight = totalHeight;
   }
@@ -41,9 +46,13 @@ export class Milestone {
     const tileRect = tile.getBoundingClientRect();
     const gameRect = document.getElementById("game").getBoundingClientRect();
 
-    // Position relative to tile center, offset by our desired distance.
-    const x = tileRect.left - gameRect.left + tileRect.width / 2 + this.offsetX;
-    const y = tileRect.top - gameRect.top + tileRect.height / 2 + this.offsetY;
+    // Calculate offsets as percentages of tile dimensions.
+    const offsetX = (tileRect.width * this.offsetXPercent) / 100;
+    const offsetY = (tileRect.height * this.offsetYPercent) / 100;
+
+    // Position relative to tile center, offset by calculated amounts.
+    const x = tileRect.left - gameRect.left + tileRect.width / 2 + offsetX;
+    const y = tileRect.top - gameRect.top + tileRect.height / 2 + offsetY;
 
     this.element.style.left = `${x}px`;
     this.element.style.top = `${y}px`;
