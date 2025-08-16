@@ -1,8 +1,15 @@
-import { handleKeyDown, handleKeyUp, handleResize } from "./eventHandlers.js";
-import { gameLoop } from "./gameLoop.js";
+import { Game } from "./Game.js";
+import { Physics } from "./Physics.js";
+import { Tiles } from "./Tiles.js";
+import { createEventHandlers } from "./eventHandlers.js";
 
-document.addEventListener("keydown", handleKeyDown);
-document.addEventListener("keyup", handleKeyUp);
-window.addEventListener("resize", handleResize);
+const tiles = new Tiles(3);
+const physics = new Physics();
+const game = new Game(tiles, physics);
+const handlers = createEventHandlers(physics);
 
-requestAnimationFrame(gameLoop);
+document.addEventListener("keydown", handlers.handleKeyDown);
+document.addEventListener("keyup", handlers.handleKeyUp);
+window.addEventListener("resize", handlers.handleResize);
+
+requestAnimationFrame(game.update);
