@@ -1,20 +1,19 @@
 let viewHeight = window.innerHeight;
 let lastTimestamp = 0;
-let indexTop = 0;
-let yPositions = [-viewHeight, 0, viewHeight];
 
-let images = [];
-for (let i = 0; i < 3; i++) {
-  images.push(`river${i}.jpg`);
-}
+let images = ["river0.jpg", "river1.jpg", "river2.jpg"];
 let tiles = [
   document.getElementById("bg1"),
   document.getElementById("bg2"),
   document.getElementById("bg3"),
 ];
+
+let yPositions = [-viewHeight, 0, viewHeight];
+let tileIndices = [0, 1, 2];
+
 tiles.forEach((tile, i) => {
-  tile.style.backgroundImage = `url(${images[i % images.length]})`;
-  tile.style.top = yPositions[i] + "px";
+  tile.style.backgroundImage = `url(${images[tileIndices[i]]})`;
+  tile.style.transform = `translateY(${yPositions[i]}px)`;
 });
 
 let velocity = 0;
@@ -26,8 +25,6 @@ document.addEventListener("keydown", (e) => {
     acceleration = 1;
   } else if (e.key === "ArrowDown") {
     acceleration = -1;
-  } else {
-    acceleration = 0;
   }
 });
 
@@ -37,10 +34,19 @@ document.addEventListener("keyup", (e) => {
   }
 });
 
+let resizeTimeout;
+window.addEventListener("resize", () => {
+  clearTimeout(resizeTimeout);
+  resizeTimeout = setTimeout(() => {
+    location.reload();
+  }, 200);
+});
+
 requestAnimationFrame(update);
 
 function update(timestamp) {
   requestAnimationFrame(update);
+
   if (timestamp - lastTimestamp < 16) return;
   lastTimestamp = timestamp;
 
@@ -49,19 +55,21 @@ function update(timestamp) {
   if (velocity < -maxSpeed) velocity = -maxSpeed;
   if (acceleration === 0) velocity *= 0.95;
 
-  for (let i = 0; i < 3; i++) {
+  for (let i = 0; i < tiles.length; i++) {
     yPositions[i] += velocity;
 
     if (yPositions[i] >= viewHeight) {
-      yPositions[i] -= viewHeight * 3;
-      indexTop = (indexTop - 1 + images.length) % images.length;
-      tiles[i].style.backgroundImage = `url(${images[indexTop]})`;
+      yPositions[i] -= viewHeight * tiles.length;
+      tileIndices[i] = (tileIndices[i] - 1 + images.length) % images.length;
+      tiles[i].style.backgroundImage = `url(${images[tileIndices[i]]})`;
     }
+
     if (yPositions[i] <= -viewHeight) {
-      yPositions[i] += viewHeight * 3;
-      indexTop = (indexTop + 1) % images.length;
-      tiles[i].style.backgroundImage = `url(${images[indexTop]})`;
+      yPositions[i] += viewHeight * tiles.length;
+      tileIndices[i] = (tileIndices[i] + 1) % images.length;
+      tiles[i].style.backgroundImage = `url(${images[tileIndices[i]]})`;
     }
-    tiles[i].style.top = yPositions[i] + "px";
+
+    tiles[i].style.transform = `translateY(${Math.round(yPositions[i])}px)`;
   }
 }

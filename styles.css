@@ -16,9 +16,10 @@ body {
 .bg {
   position: absolute;
   width: 100%;
-  height: 100%;
+  height: 101%; /* 101% to eliminate the small seam between tiles that would appear at certain values of window.innerHeight. */
+  background-size: auto 101%;
   background-repeat: no-repeat;
-  background-position: center top;
-  background-size: auto 100%;
+  background-position: top center;
   background-color: #000;
+  will-change: transform;
 }
