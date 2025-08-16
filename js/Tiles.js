@@ -1,10 +1,10 @@
 export class Tiles {
   #elements = [];
   #yPositions = [];
-  #viewHeight = window.innerHeight;
+  #viewHeight;
   #totalHeight;
 
-  constructor(n) {
+  constructor(n, viewHeight) {
     // Create tile elements and add them to the DOM.
     const gameContainer = document.getElementById("game");
     let tiles = Array.from({ length: n }, (_, i) => {
@@ -18,13 +18,14 @@ export class Tiles {
 
     // Set initial vertical positions of tiles.
     let yPositions = tiles.map(
-      (_, i) => (i - Math.floor(tiles.length / 2)) * this.#viewHeight
+      (_, i) => (i - Math.floor(tiles.length / 2)) * viewHeight
     );
     tiles.forEach((tile, i) => {
       tile.style.transform = `translateY(${yPositions[i]}px)`;
     });
 
-    this.#totalHeight = this.#viewHeight * tiles.length;
+    this.#viewHeight = viewHeight;
+    this.#totalHeight = viewHeight * tiles.length;
     this.#elements = tiles;
     this.#yPositions = yPositions;
   }
