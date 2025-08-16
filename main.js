@@ -1,15 +1,22 @@
 let viewHeight = window.innerHeight;
 let lastTimestamp = 0;
 
-let images = ["river0.jpg", "river1.jpg", "river2.jpg"];
-let tiles = images.map((_, i) => document.getElementById(`tile-${i}`));
+const numTiles = 3;
+const gameContainer = document.getElementById("game");
+let tiles = Array.from({ length: numTiles }, (_, i) => {
+  const tile = document.createElement("div");
+  tile.className = "tile";
+  tile.id = `tile-${i}`;
+  tile.style.backgroundImage = `url(river-${i}.jpg)`;
+  gameContainer.appendChild(tile);
+  return tile;
+});
 
 let yPositions = tiles.map(
   (_, i) => (i - Math.floor(tiles.length / 2)) * viewHeight
 );
 
 tiles.forEach((tile, i) => {
-  tile.style.backgroundImage = `url(${images[i]})`;
   tile.style.transform = `translateY(${yPositions[i]}px)`;
 });
 
