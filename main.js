@@ -2,13 +2,11 @@ let viewHeight = window.innerHeight;
 let lastTimestamp = 0;
 
 let images = ["river0.jpg", "river1.jpg", "river2.jpg"];
-let tiles = [
-  document.getElementById("tile-0"),
-  document.getElementById("tile-1"),
-  document.getElementById("tile-2"),
-];
+let tiles = images.map((_, i) => document.getElementById(`tile-${i}`));
 
-let yPositions = [-viewHeight, 0, viewHeight];
+let yPositions = tiles.map(
+  (_, i) => (i - Math.floor(tiles.length / 2)) * viewHeight
+);
 
 tiles.forEach((tile, i) => {
   tile.style.backgroundImage = `url(${images[i]})`;
@@ -18,27 +16,21 @@ tiles.forEach((tile, i) => {
 let velocity = 0;
 let acceleration = 0;
 const maxSpeed = 32;
+const totalHeight = viewHeight * tiles.length;
 
 document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowUp") {
-    acceleration = 1;
-  } else if (e.key === "ArrowDown") {
-    acceleration = -1;
-  }
+  if (e.key === "ArrowUp") acceleration = 1;
+  else if (e.key === "ArrowDown") acceleration = -1;
 });
 
 document.addEventListener("keyup", (e) => {
-  if (e.key === "ArrowUp" || e.key === "ArrowDown") {
-    acceleration = 0;
-  }
+  if (e.key === "ArrowUp" || e.key === "ArrowDown") acceleration = 0;
 });
 
 let resizeTimeout;
 window.addEventListener("resize", () => {
   clearTimeout(resizeTimeout);
-  resizeTimeout = setTimeout(() => {
-    location.reload();
-  }, 200);
+  resizeTimeout = setTimeout(() => location.reload(), 200);
 });
 
 requestAnimationFrame(update);
@@ -50,21 +42,15 @@ function update(timestamp) {
   lastTimestamp = timestamp;
 
   velocity += acceleration;
-  if (velocity > maxSpeed) velocity = maxSpeed;
-  if (velocity < -maxSpeed) velocity = -maxSpeed;
+  velocity = Math.max(-maxSpeed, Math.min(maxSpeed, velocity));
   if (acceleration === 0) velocity *= 0.95;
 
-  for (let i = 0; i < tiles.length; i++) {
+  yPositions.forEach((pos, i) => {
     yPositions[i] += velocity;
 
-    if (yPositions[i] >= viewHeight) {
-      yPositions[i] -= viewHeight * tiles.length;
-    }
+    if (yPositions[i] >= viewHeight) yPositions[i] -= totalHeight;
+    if (yPositions[i] <= -viewHeight) yPositions[i] += totalHeight;
 
-    if (yPositions[i] <= -viewHeight) {
-      yPositions[i] += viewHeight * tiles.length;
-    }
-
-    tiles[i].style.transform = `translateY(${yPositions[i]}px)`;
-  }
+    tiles[i].style.transform = `translateY(${Math.round(yPositions[i])}px)`;
+  });
 }
