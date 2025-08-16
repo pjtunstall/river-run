@@ -29,7 +29,7 @@ export class Tiles {
     this.#yPositions = yPositions;
   }
 
-  reposition(velocity) {
+  updatePosition(velocity) {
     this.#yPositions.forEach((pos, i) => {
       this.#yPositions[i] += velocity;
 

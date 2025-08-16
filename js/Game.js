@@ -12,6 +12,6 @@ export class Game {
     this.lastTimestamp = timestamp;
 
     const velocity = this.physics.updateVelocity();
-    this.tiles.reposition(velocity);
+    this.tiles.updatePosition(velocity);
   };
 }
