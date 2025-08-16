@@ -13,7 +13,7 @@ body {
   background: black;
 }
 
-.bg {
+.tile {
   position: absolute;
   width: 100%;
   height: 101%; /* 101% to eliminate the small seam between tiles that would appear at certain values of window.innerHeight. */

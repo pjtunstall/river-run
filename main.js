@@ -3,9 +3,9 @@ let lastTimestamp = 0;
 
 let images = ["river0.jpg", "river1.jpg", "river2.jpg"];
 let tiles = [
-  document.getElementById("bg1"),
-  document.getElementById("bg2"),
-  document.getElementById("bg3"),
+  document.getElementById("tile-0"),
+  document.getElementById("tile-1"),
+  document.getElementById("tile-2"),
 ];
 
 let yPositions = [-viewHeight, 0, viewHeight];
