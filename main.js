@@ -58,6 +58,6 @@ function update(timestamp) {
     if (yPositions[i] >= viewHeight) yPositions[i] -= totalHeight;
     if (yPositions[i] <= -viewHeight) yPositions[i] += totalHeight;
 
-    tiles[i].style.transform = `translateY(${Math.round(yPositions[i])}px)`;
+    tiles[i].style.transform = `translateY(${yPositions[i]}px)`;
   });
 }
