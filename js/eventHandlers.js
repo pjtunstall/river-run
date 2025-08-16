@@ -11,9 +11,7 @@ export function createEventHandlers(physics) {
     },
 
     handleResize() {
-      let resizeTimeout;
-      clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => location.reload(), 200);
+      window.location.reload();
     },
   };
 }

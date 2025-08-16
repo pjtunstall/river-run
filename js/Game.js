@@ -3,7 +3,7 @@ export class Game {
     this.tiles = tiles;
     this.physics = physics;
     this.lastTimestamp = 0;
-    // this.milestone = milestone;
+    this.milestone = milestone;
   }
 
   update = (timestamp) => {
@@ -14,6 +14,6 @@ export class Game {
 
     const velocity = this.physics.updateVelocity();
     this.tiles.updatePosition(velocity);
-    // this.milestone.update(this.tiles.elements[0], velocity);
+    this.milestone.updatePosition(this.tiles);
   };
 }

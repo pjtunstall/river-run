@@ -1,26 +1,56 @@
 export class Milestone {
-  constructor(imageFractionX, initialY) {
-    this.imageFractionX = imageFractionX;
-    this.y = initialY;
-    this.element = document.createElement("div");
-    this.element.className = "milestone";
-    document.getElementById("game").appendChild(this.element);
+  yPosition;
+  viewHeight;
+  totalHeight;
+  element;
+  offsetX; // Distance from tile center.
+  offsetY; // Distance from tile center.
+  tileIndex; // Which tile to follow.
+
+  constructor(
+    viewHeight,
+    totalHeight,
+    tileIndex,
+    offsetX,
+    offsetY,
+    label = ""
+  ) {
+    const gameContainer = document.getElementById("game");
+    const milestone = document.createElement("div");
+    milestone.className = "milestone";
+
+    if (label) {
+      const labelElement = document.createElement("div");
+      labelElement.className = "label";
+      labelElement.textContent = label;
+      milestone.appendChild(labelElement);
+    }
+
+    gameContainer.appendChild(milestone);
+
+    this.element = milestone;
+    this.tileIndex = tileIndex;
+    this.offsetX = offsetX;
+    this.offsetY = offsetY;
+    this.viewHeight = viewHeight;
+    this.totalHeight = totalHeight;
   }
 
-  updateX(tileElement) {
-    const tileWidth = tileElement.offsetWidth;
-    this.element.style.left = `${tileWidth * this.imageFractionX}px`;
+  updatePosition(tiles) {
+    const tile = tiles.elements[this.tileIndex];
+    const tileRect = tile.getBoundingClientRect();
+    const gameRect = document.getElementById("game").getBoundingClientRect();
+
+    // Position relative to tile center, offset by our desired distance.
+    const x = tileRect.left - gameRect.left + tileRect.width / 2 + this.offsetX;
+    const y = tileRect.top - gameRect.top + tileRect.height / 2 + this.offsetY;
+
+    this.element.style.left = `${x}px`;
+    this.element.style.top = `${y}px`;
   }
 
-  updateY() {
-    this.element.style.transform = `translateY(${this.y}px)`;
-  }
-
-  update(tileElement, velocity) {
-    this.y += velocity;
-    if (this.y >= tileElement.offsetHeight) this.y -= tileElement.offsetHeight;
-    if (this.y <= -tileElement.offsetHeight) this.y += tileElement.offsetHeight;
-    this.updateY();
-    this.updateX(tileElement);
+  updateViewHeight(newViewHeight) {
+    this.viewHeight = newViewHeight;
+    this.totalHeight = newViewHeight * 3;
   }
 }

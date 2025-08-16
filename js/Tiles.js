@@ -1,8 +1,8 @@
 export class Tiles {
-  #elements = [];
-  #yPositions = [];
-  #viewHeight;
-  #totalHeight;
+  elements = [];
+  yPositions = [];
+  viewHeight;
+  totalHeight;
 
   constructor(n, viewHeight) {
     // Create tile elements and add them to the DOM.
@@ -24,24 +24,22 @@ export class Tiles {
       tile.style.transform = `translateY(${yPositions[i]}px)`;
     });
 
-    this.#viewHeight = viewHeight;
-    this.#totalHeight = viewHeight * tiles.length;
-    this.#elements = tiles;
-    this.#yPositions = yPositions;
+    this.viewHeight = viewHeight;
+    this.totalHeight = viewHeight * tiles.length;
+    this.elements = tiles;
+    this.yPositions = yPositions;
   }
 
   updatePosition(velocity) {
-    this.#yPositions.forEach((pos, i) => {
-      this.#yPositions[i] += velocity;
+    this.yPositions.forEach((pos, i) => {
+      this.yPositions[i] += velocity;
 
-      if (this.#yPositions[i] >= this.#viewHeight)
-        this.#yPositions[i] -= this.#totalHeight;
-      if (this.#yPositions[i] <= -this.#viewHeight)
-        this.#yPositions[i] += this.#totalHeight;
+      if (this.yPositions[i] >= this.viewHeight)
+        this.yPositions[i] -= this.totalHeight;
+      if (this.yPositions[i] <= -this.viewHeight)
+        this.yPositions[i] += this.totalHeight;
 
-      this.#elements[i].style.transform = `translateY(${
-        this.#yPositions[i]
-      }px)`;
+      this.elements[i].style.transform = `translateY(${this.yPositions[i]}px)`;
     });
   }
 }
