@@ -12,6 +12,7 @@ let tiles = [
   document.getElementById("bg3"),
 ];
 tiles.forEach((tile, i) => {
+  tile.style.backgroundImage = `url(${images[i % images.length]})`;
   tile.style.top = yPositions[i] + "px";
 });
 
