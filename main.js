@@ -3,7 +3,10 @@ let lastTimestamp = 0;
 let indexTop = 0;
 let yPositions = [-viewHeight, 0, viewHeight];
 
-let images = Array(3).fill("river.jpg");
+let images = [];
+for (let i = 0; i < 3; i++) {
+  images.push(`river${i}.jpg`);
+}
 let tiles = [
   document.getElementById("bg1"),
   document.getElementById("bg2"),
