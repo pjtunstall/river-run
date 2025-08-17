@@ -2,14 +2,13 @@ const viewPortHeight = window.innerHeight;
 
 export class Milestones {
   constructor(numberOfTiles) {
-    this.viewPortHeight = viewPortHeight;
     this.numberOfTiles = numberOfTiles;
     this.milestones = [];
     this.#createAll();
   }
 
   get totalHeight() {
-    return this.viewPortHeight * this.numberOfTiles;
+    return viewPortHeight * this.numberOfTiles;
   }
 
   create(tileIndex, offsetXPercent, offsetYPercent, label = "", color = "red") {
@@ -98,7 +97,7 @@ class Milestone {
 
     // Scale the X offset based on tile aspect ratio to keep milestones more centered.
     const aspectRatio = tileRect.width / tileRect.height;
-    const baseAspectRatio = 16 / 9; // ?
+    const baseAspectRatio = 4 / 3;
     const scaleFactor = Math.min(1, baseAspectRatio / aspectRatio);
 
     const offsetX = (tileRect.width * this.offsetXPercent * scaleFactor) / 100;
