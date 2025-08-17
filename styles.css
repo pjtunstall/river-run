@@ -52,3 +52,26 @@ body {
 .milestone:hover .label {
   display: block;
 }
+
+.compass {
+  position: absolute;
+  z-index: 10;
+  left: 50%;
+  transform: translateX(200px);
+  top: 1rem;
+  width: 6rem;
+  height: 6rem;
+}
+
+.compass-text {
+  font-size: 24px;
+  font-weight: bold;
+  fill: #3c2915;
+  text-anchor: middle;
+}
+
+@media (max-width: 639px) {
+  .compass {
+    transform: translateX(100px);
+  }
+}
