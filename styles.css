@@ -130,11 +130,20 @@ body {
   font-size: 1.5rem;
   margin: 0;
   font-weight: bold;
+  text-align: center;
 }
 
 .modal-body {
   color: #333;
   line-height: 1.6;
+}
+
+hr {
+  border: none;
+  height: 2px;
+  width: 60%;
+  margin: 1.5rem auto;
+  background: linear-gradient(to right, transparent, #3c2915, transparent);
 }
 
 .close-button {
