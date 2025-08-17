@@ -61,6 +61,7 @@ body {
   top: 1rem;
   width: 6rem;
   height: 6rem;
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
 }
 
 .compass-text {
@@ -74,4 +75,91 @@ body {
   .compass {
     transform: translateX(100px);
   }
+}
+
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
+}
+
+.modal.show {
+  display: flex;
+}
+
+.modal-content {
+  background: #d6c2a1;
+  padding: 2rem;
+  border-radius: 8px;
+  max-width: 500px;
+  width: 90%;
+  max-height: 80vh;
+  overflow-y: auto;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+  position: relative;
+  animation: modalSlideIn 0.3s ease-out;
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+.modal-header {
+  margin-bottom: 1rem;
+  border-bottom: 2px solid #d6c2a1;
+  padding-bottom: 0.5rem;
+}
+
+.modal-title {
+  color: #3c2915;
+  font-size: 1.5rem;
+  margin: 0;
+  font-weight: bold;
+}
+
+.modal-body {
+  color: #333;
+  line-height: 1.6;
+}
+
+.close-button {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #666;
+  padding: 0.5rem;
+  border-radius: 50%;
+  transition: background-color 0.2s;
+}
+
+.close-button:hover {
+  background-color: #f0f0f0;
+  color: #333;
+}
+
+.instruction {
+  position: absolute;
+  bottom: 2rem;
+  left: 2rem;
+  color: #666;
+  font-size: 0.9rem;
 }

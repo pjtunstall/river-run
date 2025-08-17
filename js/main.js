@@ -141,3 +141,28 @@ document.addEventListener("keyup", handlers.handleKeyUp);
 window.addEventListener("resize", handlers.handleResize);
 
 requestAnimationFrame(game.update);
+
+const modal = document.getElementById("modal");
+const closeButton = document.getElementById("closeModal");
+
+// Show modal on right arrow key.
+document.addEventListener("keydown", function (event) {
+  if (event.key === "ArrowRight") {
+    event.preventDefault();
+    modal.classList.add("show");
+  } else {
+    modal.classList.remove("show");
+  }
+});
+
+// Close modal on close button click.
+closeButton.addEventListener("click", function () {
+  modal.classList.remove("show");
+});
+
+// Close modal on background click.
+modal.addEventListener("click", function (event) {
+  if (event.target === modal) {
+    modal.classList.remove("show");
+  }
+});
