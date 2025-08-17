@@ -4,14 +4,19 @@ export function createEventHandlers(physics, modal) {
   const openModal = () => {
     modal.classList.add("show");
     isModalOpen = true;
+    physics.setAcceleration(0);
   };
 
   const closeModal = () => {
     modal.classList.remove("show");
     isModalOpen = false;
+    physics.setAcceleration(0);
   };
 
   return {
+    openModal,
+    closeModal,
+
     handleKeyDown(e) {
       if (e.key === "ArrowRight") openModal();
       else if (isModalOpen) closeModal();

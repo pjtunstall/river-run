@@ -1,10 +1,14 @@
+const viewPortHeight = window.innerHeight;
+
 export class Tiles {
   elements = [];
   yPositions = [];
   viewHeight;
   totalHeight;
 
-  constructor(n, viewHeight) {
+  constructor(n) {
+    const viewHeight = viewPortHeight;
+
     // Create tile elements and add them to the DOM.
     const gameContainer = document.getElementById("game");
     let tiles = Array.from({ length: n }, (_, i) => {

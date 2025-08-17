@@ -1,8 +1,11 @@
 export class Game {
-  constructor(tiles, physics, milestones) {
+  constructor(tiles, physics) {
     this.tiles = tiles;
     this.physics = physics;
     this.lastTimestamp = 0;
+  }
+
+  setMilestones(milestones) {
     this.milestones = milestones;
   }
 
