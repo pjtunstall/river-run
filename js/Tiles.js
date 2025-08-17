@@ -6,10 +6,10 @@ export class Tiles {
   #viewPortHeight;
   #totalHeight;
 
-  constructor(n) {
+  constructor(numberOfTiles) {
     // Create tile elements and add them to the DOM.
     const gameContainer = document.getElementById("game");
-    let tiles = Array.from({ length: n }, (_, i) => {
+    let tiles = Array.from({ length: numberOfTiles }, (_, i) => {
       const tile = document.createElement("div");
       tile.className = "tile";
       tile.id = `tile-${i}`;

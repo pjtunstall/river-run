@@ -1,6 +1,7 @@
 export function createEventHandlers(physics, helpModal, infoModal) {
   let isHelpModalOpen = false;
   let isInfoModalOpen = false;
+  let resizeTimeout;
 
   const openHelpModal = () => {
     helpModal.classList.add("show");
@@ -45,7 +46,10 @@ export function createEventHandlers(physics, helpModal, infoModal) {
     },
 
     handleResize() {
-      window.location.reload();
+      clearTimeout(resizeTimeout);
+      resizeTimout = setTimeout(() => {
+        window.location.reload();
+      }, 200);
     },
   };
 }
