@@ -11,14 +11,14 @@ const milestones = createMilestones();
 const game = new Game(tiles, physics);
 game.setMilestones(milestones);
 
-const modal = document.getElementById("modal");
-const handlers = createEventHandlers(physics, modal);
+const helpModal = document.getElementById("help-modal");
+const handlers = createEventHandlers(physics, helpModal);
 
 document.addEventListener("keydown", handlers.handleKeyDown);
 document.addEventListener("keyup", handlers.handleKeyUp);
 window.addEventListener("resize", handlers.handleResize);
-window.addEventListener("touchstart", handlers.openModal, { passive: true });
-window.addEventListener("wheel", handlers.openModal, { passive: true });
-window.addEventListener("click", handlers.closeModal, { passive: true });
+window.addEventListener("touchstart", handlers.closeModals, { passive: true });
+window.addEventListener("wheel", handlers.closeModals, { passive: true });
+window.addEventListener("click", handlers.closeModals, { passive: true });
 
 requestAnimationFrame(game.update);

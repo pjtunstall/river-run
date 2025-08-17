@@ -1,25 +1,27 @@
-export function createEventHandlers(physics, modal) {
-  let isModalOpen = false;
+export function createEventHandlers(physics, helpModal) {
+  let isHelpModalOpen;
 
-  const openModal = () => {
-    modal.classList.add("show");
-    isModalOpen = true;
+  const openHelpModal = () => {
+    helpModal.classList.add("show");
+    isHelpModalOpen = true;
     physics.setAcceleration(0);
   };
 
-  const closeModal = () => {
-    modal.classList.remove("show");
-    isModalOpen = false;
+  const closeModals = () => {
+    helpModal.classList.remove("show");
+    isHelpModalOpen = false;
     physics.setAcceleration(0);
   };
+
+  openHelpModal();
 
   return {
-    openModal,
-    closeModal,
+    openHelpModal,
+    closeModals,
 
     handleKeyDown(e) {
-      if (e.key === "ArrowRight") openModal();
-      else if (isModalOpen) closeModal();
+      if (e.key === "ArrowRight") openHelpModal();
+      else if (isHelpModalOpen) closeModals();
 
       if (e.key === "ArrowUp") physics.setAcceleration(1);
       else if (e.key === "ArrowDown") physics.setAcceleration(-1);
