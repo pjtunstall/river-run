@@ -77,9 +77,9 @@ const milestone_6 = new Milestone(
 const milestone_7 = new Milestone(
   viewPortHeight,
   totalHeight,
-  2,
-  25,
-  42,
+  0,
+  27,
+  -36,
   "ResizeObserver Callbacks",
   "gold"
 );
