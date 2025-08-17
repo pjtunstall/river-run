@@ -1,6 +1,9 @@
 const viewPortHeight = window.innerHeight;
 
 export class Milestones {
+  numberOfTiles;
+  milestones;
+
   constructor(numberOfTiles) {
     this.numberOfTiles = numberOfTiles;
     this.milestones = [];
