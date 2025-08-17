@@ -2,13 +2,11 @@ const viewPortHeight = window.innerHeight;
 
 export class Tiles {
   elements = [];
-  yPositions = [];
-  viewHeight;
-  totalHeight;
+  #yPositions = [];
+  #viewPortHeight;
+  #totalHeight;
 
   constructor(n) {
-    const viewHeight = viewPortHeight;
-
     // Create tile elements and add them to the DOM.
     const gameContainer = document.getElementById("game");
     let tiles = Array.from({ length: n }, (_, i) => {
@@ -22,28 +20,28 @@ export class Tiles {
 
     // Set initial vertical positions of tiles.
     let yPositions = tiles.map(
-      (_, i) => (i - Math.floor(tiles.length / 2)) * viewHeight
+      (_, i) => (i - Math.floor(tiles.length / 2)) * viewPortHeight
     );
     tiles.forEach((tile, i) => {
       tile.style.transform = `translateY(${yPositions[i]}px)`;
     });
 
-    this.viewHeight = viewHeight;
-    this.totalHeight = viewHeight * tiles.length;
+    this.#viewPortHeight = viewPortHeight;
+    this.#totalHeight = viewPortHeight * tiles.length;
     this.elements = tiles;
-    this.yPositions = yPositions;
+    this.#yPositions = yPositions;
   }
 
   updatePosition(velocity) {
-    this.yPositions.forEach((pos, i) => {
-      this.yPositions[i] += velocity;
+    this.#yPositions.forEach((pos, i) => {
+      this.#yPositions[i] += velocity;
 
-      if (this.yPositions[i] >= this.viewHeight)
-        this.yPositions[i] -= this.totalHeight;
-      if (this.yPositions[i] <= -this.viewHeight)
-        this.yPositions[i] += this.totalHeight;
+      if (this.#yPositions[i] >= this.#viewPortHeight)
+        this.#yPositions[i] -= this.#totalHeight;
+      if (this.#yPositions[i] <= -this.#viewPortHeight)
+        this.#yPositions[i] += this.#totalHeight;
 
-      this.elements[i].style.transform = `translateY(${this.yPositions[i]}px)`;
+      this.elements[i].style.transform = `translateY(${this.#yPositions[i]}px)`;
     });
   }
 }
