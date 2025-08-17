@@ -2,9 +2,8 @@ const viewPortHeight = window.innerHeight;
 
 export class Tiles {
   elements = [];
-  #yPositions = [];
-  #viewPortHeight;
   #totalHeight;
+  #yPositions = [];
 
   constructor(numberOfTiles) {
     // Create tile elements and add them to the DOM.
@@ -26,7 +25,6 @@ export class Tiles {
       tile.style.transform = `translateY(${yPositions[i]}px)`;
     });
 
-    this.#viewPortHeight = viewPortHeight;
     this.#totalHeight = viewPortHeight * tiles.length;
     this.elements = tiles;
     this.#yPositions = yPositions;
@@ -36,9 +34,9 @@ export class Tiles {
     this.#yPositions.forEach((pos, i) => {
       this.#yPositions[i] += velocity;
 
-      if (this.#yPositions[i] >= this.#viewPortHeight)
+      if (this.#yPositions[i] >= viewPortHeight)
         this.#yPositions[i] -= this.#totalHeight;
-      if (this.#yPositions[i] <= -this.#viewPortHeight)
+      if (this.#yPositions[i] <= -viewPortHeight)
         this.#yPositions[i] += this.#totalHeight;
 
       this.elements[i].style.transform = `translateY(${this.#yPositions[i]}px)`;

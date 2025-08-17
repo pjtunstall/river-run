@@ -47,7 +47,7 @@ export function createEventHandlers(physics, helpModal, infoModal) {
 
     handleResize() {
       clearTimeout(resizeTimeout);
-      resizeTimout = setTimeout(() => {
+      resizeTimeout = setTimeout(() => {
         window.location.reload();
       }, 200);
     },

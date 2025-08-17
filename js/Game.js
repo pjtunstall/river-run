@@ -1,4 +1,9 @@
 export class Game {
+  lastTimestamp;
+  milestones;
+  physics;
+  tiles;
+
   constructor(tiles, physics, milestones) {
     this.tiles = tiles;
     this.physics = physics;

@@ -2,7 +2,7 @@ import { Game } from "./Game.js";
 import { Physics } from "./Physics.js";
 import { Tiles } from "./Tiles.js";
 import { createEventHandlers } from "./eventHandlers.js";
-import { Milestones } from "./milestones.js";
+import { Milestones } from "./Milestones.js";
 
 const numberOfTiles = 3;
 const tiles = new Tiles(numberOfTiles);
