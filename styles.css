@@ -164,11 +164,3 @@ hr {
   background-color: #f0f0f0;
   color: #333;
 }
-
-.instruction {
-  position: absolute;
-  bottom: 2rem;
-  left: 2rem;
-  color: #666;
-  font-size: 0.9rem;
-}
