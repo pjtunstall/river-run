@@ -65,7 +65,7 @@ class Milestone {
     label = "",
     color = "red"
   ) {
-    const gameContainer = document.getElementById("game");
+    const worldContainer = document.getElementById("world");
     const milestone = document.createElement("div");
     milestone.className = "milestone";
 
@@ -80,7 +80,7 @@ class Milestone {
       milestone.style.background = color;
     }
 
-    gameContainer.appendChild(milestone);
+    worldContainer.appendChild(milestone);
 
     this.element = milestone;
     this.tileIndex = tileIndex;
@@ -96,27 +96,33 @@ class Milestone {
   setXPosition(tiles) {
     const tile = tiles.elements[this.tileIndex];
     const tileRect = tile.getBoundingClientRect();
-    const gameRect = document.getElementById("game").getBoundingClientRect();
+    const worldRect = document.getElementById("world").getBoundingClientRect();
 
-    // Scale the X offset based on tile aspect ratio to keep milestones more centered.
+    // Scale the X offset based on tile aspect ratio to keep milestones from wandering too much with horizontally relative to the river when the window is resized.
     const aspectRatio = tileRect.width / tileRect.height;
     const baseAspectRatio = 4 / 3;
     const scaleFactor = Math.min(1, baseAspectRatio / aspectRatio);
 
     const offsetX = (tileRect.width * this.offsetXPercent * scaleFactor) / 100;
-    const x = tileRect.left - gameRect.left + tileRect.width / 2 + offsetX;
+    const x = tileRect.left - worldRect.left + tileRect.width / 2 + offsetX;
 
-    this.element.style.left = `${x}px`;
+    this.xPos = x;
+    this.element.style.transform = `translate(${this.xPos}px, ${
+      this.yPos || 0
+    }px)`;
   }
 
   updatePosition(tiles) {
     const tile = tiles.elements[this.tileIndex];
     const tileRect = tile.getBoundingClientRect();
-    const gameRect = document.getElementById("game").getBoundingClientRect();
+    const worldRect = document.getElementById("world").getBoundingClientRect();
 
     const offsetY = (tileRect.height * this.offsetYPercent) / 100;
-    const y = tileRect.top - gameRect.top + tileRect.height / 2 + offsetY;
+    const y = tileRect.top - worldRect.top + tileRect.height / 2 + offsetY;
 
-    this.element.style.top = `${y}px`;
+    this.yPos = y;
+    this.element.style.transform = `translate(${this.xPos || 0}px, ${
+      this.yPos
+    }px)`;
   }
 }

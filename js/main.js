@@ -1,4 +1,4 @@
-import { Game } from "./Game.js";
+import { World } from "./World.js";
 import { Physics } from "./Physics.js";
 import { Tiles } from "./Tiles.js";
 import { createEventHandlers } from "./eventHandlers.js";
@@ -9,17 +9,17 @@ const tiles = new Tiles(numberOfTiles);
 const physics = new Physics();
 const milestones = new Milestones(numberOfTiles);
 milestones.initializeXPositions(tiles);
-const game = new Game(tiles, physics, milestones);
+const world = new World(tiles, physics, milestones);
 
 const helpModal = document.getElementById("help-modal");
 const infoModal = document.getElementById("info-modal");
-const handlers = createEventHandlers(physics, helpModal, infoModal, game);
+const handlers = createEventHandlers(physics, helpModal, infoModal, world);
 
 document.addEventListener("keydown", handlers.handleKeyDown);
 document.addEventListener("keyup", handlers.handleKeyUp);
 window.addEventListener("resize", handlers.handleResize);
-window.addEventListener("touchstart", handlers.closeModals, { passive: true });
-window.addEventListener("wheel", handlers.closeModals, { passive: true });
 window.addEventListener("click", handlers.closeModals, { passive: true });
+window.addEventListener("touchstart", handlers.handleScroll, { passive: true });
+window.addEventListener("wheel", handlers.handleScroll, { passive: true });
 
-requestAnimationFrame(game.update);
+requestAnimationFrame(world.update);

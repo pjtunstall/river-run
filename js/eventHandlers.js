@@ -59,6 +59,12 @@ export function createEventHandlers(physics, helpModal, infoModal) {
       }
     },
 
+    handleScroll() {
+      if (!isHelpModalOpen && !isInfoModalOpen) {
+        openHelpModal();
+      }
+    },
+
     handleResize() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => {

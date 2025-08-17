@@ -7,13 +7,13 @@ export class Tiles {
 
   constructor(numberOfTiles) {
     // Create tile elements and add them to the DOM.
-    const gameContainer = document.getElementById("game");
+    const worldContainer = document.getElementById("world");
     let tiles = Array.from({ length: numberOfTiles }, (_, i) => {
       const tile = document.createElement("div");
       tile.className = "tile";
       tile.id = `tile-${i}`;
       tile.style.backgroundImage = `url(images/tiles/river-${i}.jpg)`;
-      gameContainer.appendChild(tile);
+      worldContainer.appendChild(tile);
       return tile;
     });
 
