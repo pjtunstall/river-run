@@ -25,7 +25,11 @@ export class Milestones {
     return milestone;
   }
 
-  updateAllPositions(tiles) {
+  initializeXPositions(tiles) {
+    this.milestones.forEach((milestone) => milestone.setXPosition(tiles));
+  }
+
+  updatePosition(tiles) {
     this.milestones.forEach((milestone) => milestone.updatePosition(tiles));
   }
 
@@ -35,14 +39,14 @@ export class Milestones {
   }
 
   #createAll() {
-    this.create(1, -12, 0, "Task", "red");
+    this.create(1, -12, 0, "Task", "red"); // tileIndex, offsetXPercent, offsetYPercent
     this.create(1, 0, -20, "Microtask Checkpoint #1", "yellow");
     this.create(1, 13, -33, "MutationObserver Callbacks", "green");
     this.create(1, 5, -45, "Microtask Checkpoint #2", "yellow");
     this.create(0, -24, 0, "requestAnimationFrame Callbacks", "cyan");
     this.create(0, -22, -12, "Style", "orange");
     this.create(0, 34, -24, "Layout", "purple");
-    this.create(0, 27, -36, "ResizeObserver Callbacks", "gold");
+    this.create(0, 27, -46, "ResizeObserver Callbacks", "gold");
     this.create(2, 18, 33, "Paint", "blue");
     this.create(2, -18, -18, "Composite", "silver");
     this.create(2, -25, -27, "IntersectionObserver Callbacks", "white");
@@ -87,18 +91,30 @@ class Milestone {
     return this.milestones.totalHeight;
   }
 
+  setXPosition(tiles) {
+    const tile = tiles.elements[this.tileIndex];
+    const tileRect = tile.getBoundingClientRect();
+    const gameRect = document.getElementById("game").getBoundingClientRect();
+
+    // Scale the X offset based on tile aspect ratio to keep milestones more centered.
+    const aspectRatio = tileRect.width / tileRect.height;
+    const baseAspectRatio = 16 / 9; // ?
+    const scaleFactor = Math.min(1, baseAspectRatio / aspectRatio);
+
+    const offsetX = (tileRect.width * this.offsetXPercent * scaleFactor) / 100;
+    const x = tileRect.left - gameRect.left + tileRect.width / 2 + offsetX;
+
+    this.element.style.left = `${x}px`;
+  }
+
   updatePosition(tiles) {
     const tile = tiles.elements[this.tileIndex];
     const tileRect = tile.getBoundingClientRect();
     const gameRect = document.getElementById("game").getBoundingClientRect();
 
-    const offsetX = (tileRect.width * this.offsetXPercent) / 100;
     const offsetY = (tileRect.height * this.offsetYPercent) / 100;
-
-    const x = tileRect.left - gameRect.left + tileRect.width / 2 + offsetX;
     const y = tileRect.top - gameRect.top + tileRect.height / 2 + offsetY;
 
-    this.element.style.left = `${x}px`;
     this.element.style.top = `${y}px`;
   }
 }

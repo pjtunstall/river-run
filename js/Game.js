@@ -19,6 +19,6 @@ export class Game {
 
     const velocity = this.physics.updateVelocity();
     this.tiles.updatePosition(velocity);
-    this.milestones.updateAllPositions(this.tiles);
+    this.milestones.updatePosition(this.tiles);
   };
 }

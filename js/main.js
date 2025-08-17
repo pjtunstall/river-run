@@ -8,6 +8,7 @@ const numberOfTiles = 3;
 const tiles = new Tiles(numberOfTiles);
 const physics = new Physics();
 const milestones = new Milestones(numberOfTiles);
+milestones.initializeXPositions(tiles);
 const game = new Game(tiles, physics, milestones);
 
 const helpModal = document.getElementById("help-modal");
