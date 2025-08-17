@@ -12,7 +12,8 @@ const game = new Game(tiles, physics);
 game.setMilestones(milestones);
 
 const helpModal = document.getElementById("help-modal");
-const handlers = createEventHandlers(physics, helpModal);
+const infoModal = document.getElementById("info-modal");
+const handlers = createEventHandlers(physics, helpModal, infoModal);
 
 document.addEventListener("keydown", handlers.handleKeyDown);
 document.addEventListener("keyup", handlers.handleKeyUp);
