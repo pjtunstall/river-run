@@ -164,3 +164,28 @@ hr {
   background-color: #f0f0f0;
   color: #333;
 }
+
+.modal-content::-webkit-scrollbar {
+  width: 12px;
+}
+
+.modal-content::-webkit-scrollbar-track {
+  background: #c9b896;
+  border-radius: 6px;
+}
+
+.modal-content::-webkit-scrollbar-thumb {
+  background: #8b7355;
+  border-radius: 6px;
+  border: 2px solid #d6c2a1;
+}
+
+.modal-content::-webkit-scrollbar-thumb:hover {
+  background: #3c2915;
+}
+
+/* Firefox */
+.modal-content {
+  scrollbar-width: thin;
+  scrollbar-color: #8b7355 #c9b896;
+}
