@@ -2,6 +2,8 @@ export function createEventHandlers(physics, helpModal, infoModal) {
   let isHelpModalOpen = false;
   let isInfoModalOpen = false;
   let resizeTimeout;
+  let rightArrowHeld = false;
+  let leftArrowHeld = false;
 
   const openHelpModal = () => {
     helpModal.classList.add("show");
@@ -31,10 +33,16 @@ export function createEventHandlers(physics, helpModal, infoModal) {
     handleKeyDown(e) {
       if (isHelpModalOpen || isInfoModalOpen) {
         closeModals();
+        return;
       }
 
-      if (e.key === "ArrowRight" && !isHelpModalOpen) openHelpModal();
-      else if (e.key === "ArrowLeft" && !isInfoModalOpen) openInfoModal();
+      if (e.key === "ArrowRight" && !isHelpModalOpen && !rightArrowHeld) {
+        openHelpModal();
+        rightArrowHeld = true;
+      } else if (e.key === "ArrowLeft" && !isInfoModalOpen && !leftArrowHeld) {
+        openInfoModal();
+        leftArrowHeld = true;
+      }
 
       if (e.key === "ArrowUp") physics.setAcceleration(1);
       else if (e.key === "ArrowDown") physics.setAcceleration(-1);
@@ -43,6 +51,12 @@ export function createEventHandlers(physics, helpModal, infoModal) {
     handleKeyUp(e) {
       if (e.key === "ArrowUp" || e.key === "ArrowDown")
         physics.setAcceleration(0);
+
+      if (e.key === "ArrowRight") {
+        rightArrowHeld = false;
+      } else if (e.key === "ArrowLeft") {
+        leftArrowHeld = false;
+      }
     },
 
     handleResize() {
