@@ -134,35 +134,14 @@ milestones.push(milestone_11);
 
 const physics = new Physics();
 const game = new Game(tiles, physics, milestones);
-const handlers = createEventHandlers(physics);
+const modal = document.getElementById("modal");
+const handlers = createEventHandlers(physics, modal);
 
 document.addEventListener("keydown", handlers.handleKeyDown);
 document.addEventListener("keyup", handlers.handleKeyUp);
 window.addEventListener("resize", handlers.handleResize);
+window.addEventListener("touchstart", handlers.openModal, { passive: true });
+window.addEventListener("wheel", handlers.openModal, { passive: true });
+window.addEventListener("click", handlers.closeModal);
 
 requestAnimationFrame(game.update);
-
-const modal = document.getElementById("modal");
-const closeButton = document.getElementById("closeModal");
-
-// Show modal on right arrow key.
-document.addEventListener("keydown", function (event) {
-  if (event.key === "ArrowRight") {
-    event.preventDefault();
-    modal.classList.add("show");
-  } else {
-    modal.classList.remove("show");
-  }
-});
-
-// Close modal on close button click.
-closeButton.addEventListener("click", function () {
-  modal.classList.remove("show");
-});
-
-// Close modal on background click.
-modal.addEventListener("click", function (event) {
-  if (event.target === modal) {
-    modal.classList.remove("show");
-  }
-});
