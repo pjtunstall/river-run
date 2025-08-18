@@ -4,7 +4,7 @@ export function createEventHandlers({
   leftModal,
   rightModal,
 }) {
-  let isHelpModalOpen = false;
+  let isHelpModalOpen = true;
   let isLeftModalOpen = false;
   let isRightModalOpen = false;
   let resizeTimeout;
@@ -20,12 +20,14 @@ export function createEventHandlers({
   const openLeftModal = () => {
     leftModal.classList.add("show");
     isLeftModalOpen = true;
+    leftArrowHeld = true;
     physics.setAcceleration(0);
   };
 
   const openRightModal = () => {
     rightModal.classList.add("show");
     isRightModalOpen = true;
+    rightArrowHeld = true;
     physics.setAcceleration(0);
   };
 
@@ -46,16 +48,25 @@ export function createEventHandlers({
 
     handleKeyDown(e) {
       if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
-        closeModals();
+        // Allow user to go straight from help modal to one of the others.
+        if (isHelpModalOpen) {
+          closeModals();
+          if (e.key === "ArrowRight") {
+            openRightModal();
+          } else if (e.key === "ArrowLeft") {
+            openLeftModal();
+          }
+        } else {
+          // Otherwise, only open a modal if no other modal is open.
+          closeModals();
+        }
         return;
       }
 
       if (e.key === "ArrowRight" && !isRightModalOpen && !rightArrowHeld) {
         openRightModal();
-        rightArrowHeld = true;
       } else if (e.key === "ArrowLeft" && !isLeftModalOpen && !leftArrowHeld) {
         openLeftModal();
-        leftArrowHeld = true;
       } else {
         closeModals();
       }
