@@ -1,6 +1,12 @@
-export function createEventHandlers(physics, helpModal, infoModal) {
+export function createEventHandlers({
+  physics,
+  helpModal,
+  leftModal,
+  rightModal,
+}) {
   let isHelpModalOpen = false;
-  let isInfoModalOpen = false;
+  let isLeftModalOpen = false;
+  let isRightModalOpen = false;
   let resizeTimeout;
   let rightArrowHeld = false;
   let leftArrowHeld = false;
@@ -11,17 +17,25 @@ export function createEventHandlers(physics, helpModal, infoModal) {
     physics.setAcceleration(0);
   };
 
-  const openInfoModal = () => {
-    infoModal.classList.add("show");
-    isInfoModalOpen = true;
+  const openLeftModal = () => {
+    leftModal.classList.add("show");
+    isLeftModalOpen = true;
+    physics.setAcceleration(0);
+  };
+
+  const openRightModal = () => {
+    rightModal.classList.add("show");
+    isRightModalOpen = true;
     physics.setAcceleration(0);
   };
 
   const closeModals = () => {
     helpModal.classList.remove("show");
-    infoModal.classList.remove("show");
+    leftModal.classList.remove("show");
+    rightModal.classList.remove("show");
     isHelpModalOpen = false;
-    isInfoModalOpen = false;
+    isLeftModalOpen = false;
+    isRightModalOpen = false;
   };
 
   openHelpModal();
@@ -31,17 +45,19 @@ export function createEventHandlers(physics, helpModal, infoModal) {
     closeModals,
 
     handleKeyDown(e) {
-      if (isHelpModalOpen || isInfoModalOpen) {
+      if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
         closeModals();
         return;
       }
 
-      if (e.key === "ArrowRight" && !isHelpModalOpen && !rightArrowHeld) {
-        openHelpModal();
+      if (e.key === "ArrowRight" && !isRightModalOpen && !rightArrowHeld) {
+        openRightModal();
         rightArrowHeld = true;
-      } else if (e.key === "ArrowLeft" && !isInfoModalOpen && !leftArrowHeld) {
-        openInfoModal();
+      } else if (e.key === "ArrowLeft" && !isLeftModalOpen && !leftArrowHeld) {
+        openLeftModal();
         leftArrowHeld = true;
+      } else {
+        closeModals();
       }
 
       if (e.key === "ArrowUp") physics.setAcceleration(1);
@@ -59,8 +75,16 @@ export function createEventHandlers(physics, helpModal, infoModal) {
       }
     },
 
+    handleClick() {
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
+        closeModals();
+      } else {
+        openHelpModal();
+      }
+    },
+
     handleScroll() {
-      if (!isHelpModalOpen && !isInfoModalOpen) {
+      if (!isHelpModalOpen && !isRightModalOpen && !isLeftModalOpen) {
         openHelpModal();
       }
     },

@@ -12,13 +12,20 @@ milestones.initializeXPositions(tiles);
 const world = new World(tiles, physics, milestones);
 
 const helpModal = document.getElementById("help-modal");
-const infoModal = document.getElementById("info-modal");
-const handlers = createEventHandlers(physics, helpModal, infoModal, world);
+const leftModal = document.getElementById("projects-modal");
+const rightModal = document.getElementById("profile-modal");
+const handlers = createEventHandlers({
+  physics,
+  helpModal,
+  leftModal,
+  rightModal,
+  world,
+});
 
 document.addEventListener("keydown", handlers.handleKeyDown);
 document.addEventListener("keyup", handlers.handleKeyUp);
 window.addEventListener("resize", handlers.handleResize);
-window.addEventListener("click", handlers.closeModals, { passive: true });
+window.addEventListener("click", handlers.handleClick);
 window.addEventListener("touchstart", handlers.handleScroll, { passive: true });
 window.addEventListener("wheel", handlers.handleScroll, { passive: true });
 
