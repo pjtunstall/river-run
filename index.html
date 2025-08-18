@@ -11,13 +11,11 @@
   </head>
   <body>
     <div id="world"></div>
-    <!-- Compass Rose -->
     <svg
       viewBox="0 0 180 180"
       xmlns="http://www.w3.org/2000/svg"
       class="compass"
     >
-      <!-- Outer circle -->
       <circle
         cx="90"
         cy="90"
@@ -26,8 +24,6 @@
         stroke="#6b5537"
         stroke-width="3"
       />
-
-      <!-- Main compass star with 8 points -->
       <g fill="#8b7047">
         <polygon points="90,10 99,81 90,90 81,81" />
         <polygon points="142,38 99,81 90,90 81,81" />
@@ -38,29 +34,19 @@
         <polygon points="10,90 81,81 90,90 81,99" />
         <polygon points="38,38 81,81 90,90 99,81" />
       </g>
-
-      <!-- Primary directions - larger lozenges -->
       <g fill="#3c2915">
         <polygon points="90,14 96,85 90,154 84,85" />
         <polygon points="166,90 96,96 14,90 84,84" />
       </g>
-
-      <!-- Center circle -->
       <circle cx="90" cy="90" r="7" fill="#3c2915" />
       <circle cx="90" cy="90" r="4" fill="#d6c2a1" />
-
-      <!-- Direction labels -->
       <g class="compass-text">
-        <!-- North -->
         <text x="68" y="35">Fut</text>
         <text x="112" y="35">ure</text>
-        <!-- South -->
         <text x="72" y="160">Pa</text>
         <text x="104" y="160">st</text>
-        <!-- East -->
         <text x="145" y="80">Se</text>
         <text x="145" y="112">lf</text>
-        <!-- West -->
         <text x="35" y="80">Wo</text>
         <text x="35" y="112">rk</text>
       </g>
@@ -119,138 +105,127 @@
     <div class="modal" id="projects-modal">
       <div class="modal-content">
         <button class="close-button" id="closeModal">&times;</button>
-
         <div class="modal-header">
           <h2 class="modal-title">Take Me Down to the River</h2>
         </div>
-
         <div class="modal-body">
           <div class="projects-grid">
-            <div class="project-card">
-              <div class="project-thumbnail">
+            <a href="https://almondala.netlify.app/" class="project-card-link">
+              <div class="project-card">
                 <div class="project-thumbnail">
                   <img
                     src="images/thumbnails/thumb_mandelbrot.jpg"
                     alt="The Mandelbrot set."
                   />
                 </div>
-              </div>
-              <div class="project-content">
-                <a href="https://almondala.netlify.app/" class="project-title"
-                  >Almondala</a
-                >
-                <p class="project-description">
-                  A fractal explorer that lets you dive deep into mathematical
-                  beauty and infinite complexity.
-                </p>
-                <div class="project-tech">
-                  <span class="tech-tag primary">Rust</span>
-                  <span class="tech-tag">TypeScript</span>
+                <div class="project-content">
+                  <h3 class="project-title">Almondala</h3>
+                  <p class="project-description">
+                    A fractal explorer that lets you dive deep into mathematical
+                    beauty and infinite complexity.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag primary">Rust</span>
+                    <span class="tech-tag">TypeScript</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
 
-            <div class="project-card">
-              <div class="project-thumbnail">
+            <a
+              href="https://thanatarchia.netlify.app/"
+              class="project-card-link"
+            >
+              <div class="project-card">
                 <div class="project-thumbnail">
                   <img
                     src="images/thumbnails/thumb_thanatarchia.jpg"
                     alt="Screenshot of strategy game: map of Europe and whimsical chronicle entries."
                   />
                 </div>
-              </div>
-              <div class="project-content">
-                <a
-                  href="https://thanatarchia.netlify.app/"
-                  class="project-title"
-                  >Thanatarchia</a
-                >
-                <p class="project-description">
-                  A strategic game that challenges your tactical thinking and
-                  planning skills.
-                </p>
-                <div class="project-tech">
-                  <span class="tech-tag primary">TypeScript</span>
-                  <span class="tech-tag">React</span>
+                <div class="project-content">
+                  <h3 class="project-title">Thanatarchia</h3>
+                  <p class="project-description">
+                    A strategic game that challenges your tactical thinking and
+                    planning skills.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag primary">TypeScript</span>
+                    <span class="tech-tag">React</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
 
-            <div class="project-card">
-              <div class="project-thumbnail">
+            <a href="https://ziggurats.netlify.app/" class="project-card-link">
+              <div class="project-card">
                 <div class="project-thumbnail">
-                  <img
-                    src="images/thumbnails/thumb_ziggurate.jpg"
-                    alt="An abstract melange of intersecting, grayscale rectangles."
-                  />
+                  <img src="images/thumbnails/thumb_ziggurats.jpg" alt="…" />
+                </div>
+                <div class="project-content">
+                  <h3 class="project-title">Ziggurats</h3>
+                  <p class="project-description">
+                    An interactive animation bringing ancient architectural
+                    wonders to life.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag primary">JavaScript</span>
+                  </div>
                 </div>
               </div>
-              <div class="project-content">
-                <a href="https://ziggurats.netlify.app/" class="project-title"
-                  >Ziggurats</a
-                >
-                <p class="project-description">
-                  An interactive animation bringing ancient architectural
-                  wonders to life.
-                </p>
-                <div class="project-tech">
-                  <span class="tech-tag primary">JavaScript</span>
-                </div>
-              </div>
-            </div>
+            </a>
 
-            <div class="project-card">
-              <div class="project-thumbnail">
+            <a
+              href="https://react-tarot.netlify.app/"
+              class="project-card-link"
+            >
+              <div class="project-card">
                 <div class="project-thumbnail">
                   <img
                     src="images/thumbnails/thumb_fool.jpg"
                     alt="The Tarot fool, as a little boy in a mid 20th-century children's book illustration, as a peeling poster on a brick wall, steps out boldly on his way, accompanied by his pet black lamb. All around, swarms a menagerie of sinister clowns and parots."
                   />
                 </div>
-              </div>
-              <div class="project-content">
-                <a href="https://react-tarot.netlify.app/" class="project-title"
-                  >React Tarot</a
-                >
-                <p class="project-description">
-                  A carousel of AI-generated tarot cards blending mysticism with
-                  modern technology.
-                </p>
-                <div class="project-tech">
-                  <span class="tech-tag primary">JavaScript</span>
-                  <span class="tech-tag">React</span>
+                <div class="project-content">
+                  <h3 class="project-title">React Tarot</h3>
+                  <p class="project-description">
+                    A carousel of AI-generated tarot cards blending mysticism
+                    with modern technology.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag primary">JavaScript</span>
+                    <span class="tech-tag">React</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
 
-            <div class="project-card">
-              <div class="project-thumbnail">
+            <a
+              href="https://retro-raiders.netlify.app/"
+              class="project-card-link"
+            >
+              <div class="project-card">
                 <div class="project-thumbnail">
                   <img
                     src="images/thumbnails/thumb_retro.jpg"
                     alt="A baby alien is made emperor of the space invaders in an arcane ceremony.."
                   />
                 </div>
-              </div>
-              <div class="project-content">
-                <a
-                  href="https://retro-raiders.netlify.app/"
-                  class="project-title"
-                  >Retro Raiders</a
-                >
-                <p class="project-description">
-                  My first JavaScript project: a classic space invaders game
-                  with retro charm.
-                </p>
-                <div class="project-tech">
-                  <span class="tech-tag primary">JavaScript</span>
+                <div class="project-content">
+                  <h3 class="project-title">Retro Raiders</h3>
+                  <p class="project-description">
+                    My first JavaScript project: a classic space invaders game
+                    with retro charm.
+                  </p>
+                  <div class="project-tech">
+                    <span class="tech-tag primary">JavaScript</span>
+                  </div>
                 </div>
               </div>
-            </div>
+            </a>
           </div>
 
           <hr />
-
           <div class="modal-footer">
             <a href="https://github.com/pjtunstall" class="github-link"
               >GitHub</a
@@ -259,6 +234,7 @@
         </div>
       </div>
     </div>
+
     <script src="js/main.js" type="module"></script>
   </body>
 </html>

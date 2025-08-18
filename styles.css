@@ -16,7 +16,7 @@ body {
 .tile {
   position: absolute;
   width: 100%;
-  height: 101%; /* 101% to eliminate the small seam between tiles that would appear at certain values of window.innerHeight. */
+  height: 101%;
   background-size: auto 101%;
   background-repeat: no-repeat;
   background-position: top center;
@@ -140,7 +140,7 @@ body {
 
 .modal-body a {
   color: #3c2915;
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: bold;
 }
 
@@ -195,7 +195,6 @@ hr {
   background: #3c2915;
 }
 
-/* Firefox */
 .modal-content {
   scrollbar-width: thin;
   scrollbar-color: #8b7355 #c9b896;
@@ -211,9 +210,24 @@ hr {
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
   gap: 1.5rem;
   margin-bottom: 2rem;
+  align-items: stretch;
+}
+
+.project-card-link {
+  display: block;
+  height: 100%;
+  text-decoration: none;
+  color: inherit;
+}
+
+.project-card-link:hover {
+  text-decoration: none;
 }
 
 .project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
   background: #c9b896;
   border-radius: 8px;
   overflow: hidden;
@@ -223,14 +237,14 @@ hr {
 }
 
 .project-card:hover {
-  transform: translateY(-2px);
+  transform: scale(1.02);
   box-shadow: 0 6px 20px rgba(60, 41, 21, 0.3);
   border-color: #3c2915;
 }
 
 .project-thumbnail {
   width: 100%;
-  height: 140px;
+  height: 240px;
   background: #8b7355;
   position: relative;
   overflow: hidden;
@@ -241,20 +255,14 @@ hr {
   width: 100%;
   height: 100%;
   object-fit: cover;
-}
-
-.thumbnail-placeholder {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  color: #d6c2a1;
-  font-size: 3rem;
-  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+  background: #8b7355;
 }
 
 .project-content {
   padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
 }
 
 .project-title {
@@ -262,14 +270,9 @@ hr {
   font-weight: bold;
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
-  text-decoration: underline;
-  display: block;
-  transition: color 0.2s;
-}
-
-.project-title:hover {
-  color: #5a3e23;
   text-decoration: none;
+  display: block;
+  cursor: default;
 }
 
 .project-description {
@@ -277,6 +280,7 @@ hr {
   font-size: 0.9rem;
   line-height: 1.5;
   margin-bottom: 1rem;
+  flex-grow: 1;
 }
 
 .project-tech {
@@ -307,7 +311,7 @@ hr {
 
 .github-link {
   color: #3c2915;
-  text-decoration: underline;
+  text-decoration: none;
   font-weight: bold;
   font-size: 1.1rem;
   transition: color 0.2s;
