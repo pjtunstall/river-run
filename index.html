@@ -96,7 +96,12 @@
           </p>
           <hr />
           <p style="text-align: center">
-            <a href="https://www.linkedin.com/in/peter-tunstall/">LinkedIn</a>.
+            <a
+              href="https://www.linkedin.com/in/peter-tunstall/"
+              target="_blank"
+              rel="noopener noreferrer"
+              >LinkedIn</a
+            >.
           </p>
         </div>
       </div>
@@ -110,7 +115,12 @@
         </div>
         <div class="modal-body">
           <div class="projects-grid">
-            <a href="https://almondala.netlify.app/" class="project-card-link">
+            <a
+              href="https://almondala.netlify.app/"
+              class="project-card-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div class="project-card">
                 <div class="project-thumbnail">
                   <img
@@ -119,7 +129,15 @@
                   />
                 </div>
                 <div class="project-content">
-                  <h3 class="project-title">Almondala</h3>
+                  <h3 class="project-title">
+                    Almondala
+                    <span
+                      class="repo-link"
+                      title="View code on GitHub"
+                      data-repo="https://github.com/pjtunstall/almondala"
+                      >&lt;/&gt;</span
+                    >
+                  </h3>
                   <p class="project-description">
                     Dive into the infinite complexity of the Mandelbrot set.
                   </p>
@@ -135,6 +153,8 @@
             <a
               href="https://thanatarchia.netlify.app/"
               class="project-card-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div class="project-card">
                 <div class="project-thumbnail">
@@ -144,7 +164,15 @@
                   />
                 </div>
                 <div class="project-content">
-                  <h3 class="project-title">Thanatarchia</h3>
+                  <h3 class="project-title">
+                    Thanatarchia
+                    <span
+                      class="repo-link"
+                      title="View code on GitHub"
+                      data-repo="https://github.com/pjtunstall/thanatarchia"
+                      >&lt;/&gt;</span
+                    >
+                  </h3>
                   <p class="project-description">
                     A strategy game set in the demise of the Roman empire.
                   </p>
@@ -157,13 +185,26 @@
               </div>
             </a>
 
-            <a href="https://ziggurats.netlify.app/" class="project-card-link">
+            <a
+              href="https://ziggurats.netlify.app/"
+              class="project-card-link"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
               <div class="project-card">
                 <div class="project-thumbnail">
                   <img src="images/thumbnails/thumb_ziggurats.jpg" alt="…" />
                 </div>
                 <div class="project-content">
-                  <h3 class="project-title">Ziggurats</h3>
+                  <h3 class="project-title">
+                    Ziggurats
+                    <span
+                      class="repo-link"
+                      title="View code on GitHub"
+                      data-repo="https://github.com/pjtunstall/ziggurats"
+                      >&lt;/&gt;</span
+                    >
+                  </h3>
                   <p class="project-description">An interactive animation.</p>
                   <div class="project-tech">
                     <span class="tech-tag primary">JavaScript</span>
@@ -176,6 +217,8 @@
             <a
               href="https://react-tarot.netlify.app/"
               class="project-card-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div class="project-card">
                 <div class="project-thumbnail">
@@ -185,7 +228,15 @@
                   />
                 </div>
                 <div class="project-content">
-                  <h3 class="project-title">React Tarot</h3>
+                  <h3 class="project-title">
+                    React Tarot
+                    <span
+                      class="repo-link"
+                      title="View code on GitHub"
+                      data-repo="https://github.com/pjtunstall/react-tarot"
+                      >&lt;/&gt;</span
+                    >
+                  </h3>
                   <p class="project-description">
                     A carousel of AI-generated tarot cards.
                   </p>
@@ -201,6 +252,8 @@
             <a
               href="https://retro-raiders.netlify.app/"
               class="project-card-link"
+              target="_blank"
+              rel="noopener noreferrer"
             >
               <div class="project-card">
                 <div class="project-thumbnail">
@@ -210,7 +263,15 @@
                   />
                 </div>
                 <div class="project-content">
-                  <h3 class="project-title">Retro Raiders</h3>
+                  <h3 class="project-title">
+                    Retro Raiders
+                    <span
+                      class="repo-link"
+                      title="View code on GitHub"
+                      data-repo="https://github.com/pjtunstall/retro-raiders"
+                      >&lt;/&gt;</span
+                    >
+                  </h3>
                   <p class="project-description">
                     My first JavaScript project: a space invaders with a story.
                   </p>
@@ -225,7 +286,11 @@
 
           <hr />
           <div class="modal-footer">
-            <a href="https://github.com/pjtunstall" class="github-link"
+            <a
+              href="https://github.com/pjtunstall"
+              class="github-link"
+              target="_blank"
+              rel="noopener noreferrer"
               >GitHub</a
             >
           </div>
@@ -234,5 +299,23 @@
     </div>
 
     <script src="js/main.js" type="module"></script>
+
+    <!-- Handle the repo-link clicks -->
+    <script type="module">
+      // Delegate so it works for any future cards too.
+      document.addEventListener("click", (e) => {
+        const repoEl = e.target.closest(".repo-link");
+        if (!repoEl) return;
+
+        // Stop the card link from navigating.
+        e.preventDefault();
+        e.stopPropagation();
+
+        const url = repoEl.dataset.repo;
+        if (url) {
+          window.open(url, "_blank", "noopener,noreferrer");
+        }
+      });
+    </script>
   </body>
 </html>

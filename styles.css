@@ -217,15 +217,19 @@ hr {
   align-items: stretch;
 }
 
-.project-card-link {
-  display: block;
-  height: 100%;
-  text-decoration: none;
+/* This rule removes underlines inside the card link,
+   but it will be overridden for .repo-link below. */
+.project-card-link,
+.project-card-link * {
+  text-decoration: none !important;
   color: inherit;
+  cursor: pointer;
 }
 
 .project-card-link:hover {
-  text-decoration: none;
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(60, 41, 21, 0.3);
+  border-color: #3c2915;
 }
 
 .project-card {
@@ -263,6 +267,7 @@ hr {
 }
 
 .project-content {
+  position: relative;
   padding: 1.2rem;
   display: flex;
   flex-direction: column;
@@ -275,7 +280,9 @@ hr {
   font-size: 1.1rem;
   margin-bottom: 0.5rem;
   text-decoration: none;
-  display: block;
+  display: flex; /* Make room for the inline repo icon. */
+  align-items: baseline;
+  gap: 0.35rem;
   cursor: default;
 }
 
@@ -336,14 +343,6 @@ hr {
   }
 }
 
-.project-content {
-  position: relative;
-  padding: 1.2rem;
-  display: flex;
-  flex-direction: column;
-  flex-grow: 1;
-}
-
 .project-year {
   position: absolute;
   bottom: 0.8rem;
@@ -352,4 +351,18 @@ hr {
   color: #3c2915;
   font-weight: bold;
   opacity: 0.7;
+}
+
+.repo-link {
+  font-size: 0.9em;
+  margin-left: 4px;
+  cursor: pointer;
+  color: #6b5537;
+  text-decoration: none;
+  user-select: none;
+}
+
+.repo-link:hover {
+  color: #3c2915;
+  text-decoration: underline !important;
 }

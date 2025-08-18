@@ -29,4 +29,12 @@ window.addEventListener("click", handlers.handleClick);
 window.addEventListener("touchstart", handlers.handleScroll, { passive: true });
 window.addEventListener("wheel", handlers.handleScroll, { passive: true });
 
+document.querySelectorAll(".repo-link").forEach((el) => {
+  el.addEventListener("click", (e) => {
+    e.stopPropagation();
+    const url = el.dataset.repo;
+    window.open(url, "_blank", "noopener");
+  });
+});
+
 requestAnimationFrame(world.update);
