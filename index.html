@@ -119,44 +119,143 @@
     <div class="modal" id="projects-modal">
       <div class="modal-content">
         <button class="close-button" id="closeModal">&times;</button>
+
         <div class="modal-header">
           <h2 class="modal-title">Take Me Down to the River</h2>
         </div>
+
         <div class="modal-body">
-          <p>
-            <a href="https://almondala.netlify.app/"
-              ><strong>Almondala</strong></a
-            >
-            A fractal explorer. (Rust, TypeScript.) Code.
-          </p>
-          <p>
-            <a href="https://thanatarchia.netlify.app/"
-              ><strong>Thanatarchia</strong></a
-            >
-            A strategy game. (TypeScript, React.) Code.
-          </p>
-          <p>
-            <a href="https://ziggurats.netlify.app/"
-              ><strong>Ziggurats</strong></a
-            >
-            An interactive animation. (JavaScript.) Code.
-          </p>
-          <p>
-            <a href="https://react-tarot.netlify.app/"
-              ><strong>React Tarot</strong></a
-            >
-            A carousel of AI-generated tarot cards. (JavaScript, React.) Code.
-          </p>
-          <p>
-            <a href="https://retro-raiders.netlify.app/"
-              ><strong>Retro Raiders</strong></a
-            >
-            My first JavaScript project: a space invaders. (JavaScript.) Code.
-          </p>
+          <div class="projects-grid">
+            <div class="project-card">
+              <div class="project-thumbnail">
+                <div class="project-thumbnail">
+                  <img
+                    src="images/thumbnails/thumb_mandelbrot.jpg"
+                    alt="The Mandelbrot set."
+                  />
+                </div>
+              </div>
+              <div class="project-content">
+                <a href="https://almondala.netlify.app/" class="project-title"
+                  >Almondala</a
+                >
+                <p class="project-description">
+                  A fractal explorer that lets you dive deep into mathematical
+                  beauty and infinite complexity.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag primary">Rust</span>
+                  <span class="tech-tag">TypeScript</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-thumbnail">
+                <div class="project-thumbnail">
+                  <img
+                    src="images/thumbnails/thumb_thanatarchia.jpg"
+                    alt="Screenshot of strategy game: map of Europe and whimsical chronicle entries."
+                  />
+                </div>
+              </div>
+              <div class="project-content">
+                <a
+                  href="https://thanatarchia.netlify.app/"
+                  class="project-title"
+                  >Thanatarchia</a
+                >
+                <p class="project-description">
+                  A strategic game that challenges your tactical thinking and
+                  planning skills.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag primary">TypeScript</span>
+                  <span class="tech-tag">React</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-thumbnail">
+                <div class="project-thumbnail">
+                  <img
+                    src="images/thumbnails/thumb_ziggurate.jpg"
+                    alt="An abstract melange of intersecting, grayscale rectangles."
+                  />
+                </div>
+              </div>
+              <div class="project-content">
+                <a href="https://ziggurats.netlify.app/" class="project-title"
+                  >Ziggurats</a
+                >
+                <p class="project-description">
+                  An interactive animation bringing ancient architectural
+                  wonders to life.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag primary">JavaScript</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-thumbnail">
+                <div class="project-thumbnail">
+                  <img
+                    src="images/thumbnails/thumb_fool.jpg"
+                    alt="The Tarot fool, as a little boy in a mid 20th-century children's book illustration, as a peeling poster on a brick wall, steps out boldly on his way, accompanied by his pet black lamb. All around, swarms a menagerie of sinister clowns and parots."
+                  />
+                </div>
+              </div>
+              <div class="project-content">
+                <a href="https://react-tarot.netlify.app/" class="project-title"
+                  >React Tarot</a
+                >
+                <p class="project-description">
+                  A carousel of AI-generated tarot cards blending mysticism with
+                  modern technology.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag primary">JavaScript</span>
+                  <span class="tech-tag">React</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="project-card">
+              <div class="project-thumbnail">
+                <div class="project-thumbnail">
+                  <img
+                    src="images/thumbnails/thumb_retro.jpg"
+                    alt="A baby alien is made emperor of the space invaders in an arcane ceremony.."
+                  />
+                </div>
+              </div>
+              <div class="project-content">
+                <a
+                  href="https://retro-raiders.netlify.app/"
+                  class="project-title"
+                  >Retro Raiders</a
+                >
+                <p class="project-description">
+                  My first JavaScript project: a classic space invaders game
+                  with retro charm.
+                </p>
+                <div class="project-tech">
+                  <span class="tech-tag primary">JavaScript</span>
+                </div>
+              </div>
+            </div>
+          </div>
+
           <hr />
-          <p style="text-align: center">
-            <a href="https://github.com/pjtunstall">GitHub</a>.
-          </p>
+
+          <div class="modal-footer">
+            <a href="https://github.com/pjtunstall" class="github-link"
+              >GitHub</a
+            >
+          </div>
         </div>
       </div>
     </div>
