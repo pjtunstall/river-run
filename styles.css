@@ -231,7 +231,7 @@ hr {
   background: #c9b896;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 4px 15px rgba(60, 41, 21, 0.2);
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
   transition: all 0.3s ease;
   border: 2px solid #8b7355;
 }
