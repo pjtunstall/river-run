@@ -51,28 +51,26 @@ export function createEventHandlers({
         // Allow user to go straight from help modal to one of the others.
         if (isHelpModalOpen) {
           closeModals();
-          if (e.key === "ArrowRight") {
-            openRightModal();
-          } else if (e.key === "ArrowLeft") {
-            openLeftModal();
-          }
         } else {
           // Otherwise, only open a modal if no other modal is open.
           closeModals();
+          return;
         }
-        return;
       }
 
       if (e.key === "ArrowRight" && !isRightModalOpen && !rightArrowHeld) {
         openRightModal();
+        return;
       } else if (e.key === "ArrowLeft" && !isLeftModalOpen && !leftArrowHeld) {
         openLeftModal();
+        return;
       } else {
         closeModals();
       }
 
       if (e.key === "ArrowUp") physics.setAcceleration(1);
       else if (e.key === "ArrowDown") physics.setAcceleration(-1);
+      else openHelpModal();
     },
 
     handleKeyUp(e) {
