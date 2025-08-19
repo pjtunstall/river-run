@@ -48,7 +48,7 @@ export class Milestones {
     this.create(0, -24, 0, "requestAnimationFrame Callbacks", "cyan");
     this.create(0, -22, -12, "Style", "orange");
     this.create(0, 34, -24, "Layout", "purple");
-    this.create(0, 27, -46, "ResizeObserver Callbacks", "gold");
+    this.create(0, 23, -49, "ResizeObserver Callbacks", "gold");
     this.create(2, 18, 33, "Paint", "blue");
     this.create(2, -18, -18, "Composite", "silver");
     this.create(2, -25, -27, "IntersectionObserver Callbacks", "white");
