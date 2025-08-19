@@ -371,6 +371,12 @@ hr {
   padding-top: 1rem;
 }
 
+@media (max-width: 640px) {
+  .modal-footer {
+    padding-bottom: 1.5rem;
+  }
+}
+
 .footer-link {
   color: #3c2915;
   text-decoration: none;
