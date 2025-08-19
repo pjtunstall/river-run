@@ -50,7 +50,6 @@ body {
   display: none;
 }
 
-/* Desktop: hover works normally. */
 @media (hover: hover) and (pointer: fine) {
   .milestone .label {
     display: none;
@@ -63,7 +62,6 @@ body {
   }
 }
 
-/* Mobile: hover ignored, only click/tap controls visibility. */
 @media (hover: none) {
   .milestone .label {
     display: none;
