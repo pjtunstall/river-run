@@ -144,6 +144,16 @@ body {
   transition: background-color 0.2s;
 }
 
+@media (max-width: 640px) {
+  .modal-content {
+    margin-top: 1rem; /* Adds space above on mobile. */
+  }
+
+  .close-button {
+    top: 1.5rem; /* Move the close button slightly lower. */
+  }
+}
+
 @keyframes modalSlideIn {
   from {
     opacity: 0;
