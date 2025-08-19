@@ -131,7 +131,7 @@ export function createEventHandlers({
         physics.setAcceleration(direction);
         setTimeout(() => {
           physics.setAcceleration(0);
-        }, 800);
+        }, 500);
       }
 
       touchStartY = null;

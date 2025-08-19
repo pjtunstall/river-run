@@ -374,21 +374,20 @@ hr {
   text-decoration: underline !important;
 }
 
-@media (max-width: 640px) and (orientation: portrait) {
+@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
   .compass {
     width: 20vw;
     height: 20vw;
-    transform: translateX(50px);
   }
 
   .milestone {
-    width: 6vw;
-    height: 6vw;
-    border-width: 0.6vw;
+    width: min(8vw, 48px);
+    height: min(8vw, 48px);
+    border-width: 2px;
   }
 
   .milestone .label {
-    font-size: 3.5vw;
-    padding: 1vw 1.5vw;
+    font-size: min(4vw, 16px);
+    padding: 0.5rem 0.7rem;
   }
 }
