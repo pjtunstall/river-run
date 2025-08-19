@@ -41,46 +41,8 @@ export function createEventHandlers({
     isRightModalOpen = false;
   };
 
-  // Initialize mobile navigation arrows
-  const initMobileNavigation = () => {
-    const leftArrow = document.getElementById("mobileNavLeft");
-    const rightArrow = document.getElementById("mobileNavRight");
-
-    if (leftArrow && rightArrow) {
-      leftArrow.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
-          closeModals();
-          return;
-        }
-
-        openLeftModal();
-      });
-
-      rightArrow.addEventListener("click", (e) => {
-        e.preventDefault();
-        e.stopPropagation();
-
-        if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
-          closeModals();
-          return;
-        }
-
-        openRightModal();
-      });
-    }
-  };
-
   if (isMobileDevice()) {
     closeModals();
-    // Initialize mobile arrows after DOM is ready
-    if (document.readyState === "loading") {
-      document.addEventListener("DOMContentLoaded", initMobileNavigation);
-    } else {
-      initMobileNavigation();
-    }
   } else {
     openHelpModal();
   }
@@ -200,6 +162,30 @@ export function createEventHandlers({
       const label = e.currentTarget.querySelector(".label");
       if (!label) return;
       label.classList.toggle("visible");
+    },
+
+    handleMobileNavLeft(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
+        closeModals();
+        return;
+      }
+
+      openLeftModal();
+    },
+
+    handleMobileNavRight(e) {
+      e.preventDefault();
+      e.stopPropagation();
+
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
+        closeModals();
+        return;
+      }
+
+      openRightModal();
     },
   };
 }

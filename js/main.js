@@ -14,8 +14,7 @@ const world = new World(tiles, physics, milestones);
 const helpModal = document.getElementById("help-modal");
 const leftModal = document.getElementById("projects-modal");
 const rightModal = document.getElementById("profile-modal");
-const leftArrow = document.getElementById("mobileNavLeft");
-const rightArrow = document.getElementById("mobileNavRight");
+
 const handlers = createEventHandlers({
   physics,
   helpModal,
@@ -39,5 +38,15 @@ document.querySelectorAll(".repo-link").forEach((link) => {
 milestones.forEach((milestone) => {
   milestone.element.addEventListener("click", handlers.handleMilestoneClick);
 });
+
+const leftArrow = document.getElementById("mobileNavLeft");
+const rightArrow = document.getElementById("mobileNavRight");
+
+if (leftArrow) {
+  leftArrow.addEventListener("click", handlers.handleMobileNavLeft);
+}
+if (rightArrow) {
+  rightArrow.addEventListener("click", handlers.handleMobileNavRight);
+}
 
 requestAnimationFrame(world.update);
