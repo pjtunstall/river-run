@@ -127,12 +127,10 @@ export function createEventHandlers({
         direction = deltaY < 0 ? -1 : 1;
       }
 
-      if (direction !== 0) {
-        physics.setAcceleration(direction);
-        setTimeout(() => {
-          physics.setAcceleration(0);
-        }, 500);
-      }
+      physics.setAcceleration(direction);
+      setTimeout(() => {
+        physics.setAcceleration(0);
+      }, 500);
 
       touchStartY = null;
     },
