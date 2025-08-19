@@ -41,7 +41,9 @@ export function createEventHandlers({
     isRightModalOpen = false;
   };
 
-  openHelpModal();
+  if (!isMobileDevice()) {
+    openHelpModal();
+  }
 
   return {
     openHelpModal,
