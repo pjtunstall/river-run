@@ -4,7 +4,7 @@ export function createEventHandlers({
   leftModal,
   rightModal,
 }) {
-  let isHelpModalOpen = true;
+  let isHelpModalOpen = isMobileDevice() ? false : true;
   let isLeftModalOpen = false;
   let isRightModalOpen = false;
   let resizeTimeout = null;
