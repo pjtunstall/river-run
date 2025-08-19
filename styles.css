@@ -141,6 +141,8 @@ body {
   margin-bottom: 1rem;
   border-bottom: 2px solid #d6c2a1;
   padding-bottom: 0.5rem;
+  display: flex;
+  justify-content: space-between;
 }
 
 .modal-title {
@@ -230,9 +232,6 @@ hr {
 #projects-modal .modal-header {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
-  /* display: flex;
-  justify-content: space-between; */
-  align-items: center;
 }
 
 .projects-grid {
