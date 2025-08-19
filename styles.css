@@ -251,7 +251,7 @@ hr {
   width: 95%;
 }
 
-#projects-modal .modal-header {
+.modal .modal-header {
   margin-top: 1.5rem;
   margin-bottom: 2.5rem;
 }
