@@ -50,29 +50,26 @@ body {
   display: none;
 }
 
-/* Desktop: show labels on hover. */
+/* Desktop: hover works normally. */
 @media (hover: hover) and (pointer: fine) {
   .milestone .label {
     display: none;
   }
-
   .milestone:hover .label {
     display: block;
   }
-
   .milestone .label.visible {
-    display: block !important; /* Persistent click on desktop. */
+    display: block !important;
   }
 }
 
-/* Mobile: no hover, only toggle labels. */
+/* Mobile: hover ignored, only click/tap controls visibility. */
 @media (hover: none) {
   .milestone .label {
     display: none;
   }
-
   .milestone .label.visible {
-    display: block; /* Tap to toggle. */
+    display: block;
   }
 }
 
