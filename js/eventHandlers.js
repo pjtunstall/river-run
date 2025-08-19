@@ -41,14 +41,54 @@ export function createEventHandlers({
     isRightModalOpen = false;
   };
 
+  // Initialize mobile navigation arrows
+  const initMobileNavigation = () => {
+    const leftArrow = document.getElementById("mobileNavLeft");
+    const rightArrow = document.getElementById("mobileNavRight");
+
+    if (leftArrow && rightArrow) {
+      leftArrow.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
+          closeModals();
+          return;
+        }
+
+        openLeftModal();
+      });
+
+      rightArrow.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
+
+        if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
+          closeModals();
+          return;
+        }
+
+        openRightModal();
+      });
+    }
+  };
+
   if (isMobileDevice()) {
     closeModals();
+    // Initialize mobile arrows after DOM is ready
+    if (document.readyState === "loading") {
+      document.addEventListener("DOMContentLoaded", initMobileNavigation);
+    } else {
+      initMobileNavigation();
+    }
   } else {
     openHelpModal();
   }
 
   return {
     openHelpModal,
+    openLeftModal,
+    openRightModal,
     closeModals,
 
     handleKeyDown(e) {
@@ -130,7 +170,7 @@ export function createEventHandlers({
 
       let direction = 0;
       if (Math.abs(deltaY) > 30) {
-        // Small threshold so a tap isn’t treated as a flick.
+        // Small threshold so a tap isn't treated as a flick.
         direction = deltaY < 0 ? -1 : 1;
       }
 

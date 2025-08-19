@@ -14,6 +14,8 @@ const world = new World(tiles, physics, milestones);
 const helpModal = document.getElementById("help-modal");
 const leftModal = document.getElementById("projects-modal");
 const rightModal = document.getElementById("profile-modal");
+const leftArrow = document.getElementById("mobileNavLeft");
+const rightArrow = document.getElementById("mobileNavRight");
 const handlers = createEventHandlers({
   physics,
   helpModal,
