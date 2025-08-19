@@ -181,6 +181,14 @@ hr {
   background: linear-gradient(to right, transparent, #3c2915, transparent);
 }
 
+#help-modal .modal-body p + hr {
+  margin-top: 2.5rem;
+}
+
+#profile-modal .modal-body p + hr {
+  margin-top: 2.5rem;
+}
+
 .close-button {
   position: absolute;
   top: 1rem;
