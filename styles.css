@@ -204,7 +204,7 @@ hr {
 }
 
 @media (max-width: 640px) {
-  .modal .close-button {
+  .profile-modal .close-button {
     top: 2rem;
   }
 }
