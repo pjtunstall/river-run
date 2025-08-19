@@ -4,6 +4,8 @@ import { Tiles } from "./Tiles.js";
 import { createEventHandlers } from "./eventHandlers.js";
 import { Milestones } from "./Milestones.js";
 
+console.log("1");
+
 const numberOfTiles = 3;
 const tiles = new Tiles(numberOfTiles);
 const physics = new Physics();
