@@ -54,6 +54,12 @@ export function createEventHandlers({
       closeModals();
     },
 
+    handleRiverRunLinkClick(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeModals();
+    },
+
     handleKeyDown(e) {
       if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
         // Allow user to go straight from help modal to one of the others.

@@ -14,6 +14,7 @@ const world = new World(tiles, physics, milestones);
 const helpModal = document.getElementById("help-modal");
 const leftModal = document.getElementById("projects-modal");
 const rightModal = document.getElementById("profile-modal");
+const riverRunLink = document.getElementById("river-run-link");
 
 const handlers = createEventHandlers({
   physics,
@@ -41,6 +42,7 @@ document.querySelectorAll(".close-button").forEach((button) => {
 milestones.forEach((milestone) => {
   milestone.element.addEventListener("click", handlers.handleMilestoneClick);
 });
+riverRunLink.addEventListener("click", handlers.handleRiverRunLinkClick);
 
 const leftArrow = document.getElementById("mobileNavLeft");
 const rightArrow = document.getElementById("mobileNavRight");
