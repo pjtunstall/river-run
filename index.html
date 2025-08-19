@@ -359,23 +359,5 @@
     </div>
 
     <script src="js/main.js" type="module"></script>
-
-    <!-- Handle the repo-link clicks -->
-    <script type="module">
-      // Delegate so it works for any future cards too.
-      document.addEventListener("click", (e) => {
-        const repoEl = e.target.closest(".repo-link");
-        if (!repoEl) return;
-
-        // Stop the card link from navigating.
-        e.preventDefault();
-        e.stopPropagation();
-
-        const url = repoEl.dataset.repo;
-        if (url) {
-          window.open(url, "_blank", "noopener,noreferrer");
-        }
-      });
-    </script>
   </body>
 </html>

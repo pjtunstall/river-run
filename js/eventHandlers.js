@@ -153,6 +153,7 @@ export function createEventHandlers({
     },
 
     handleRepoClick(e) {
+      e.preventDefault();
       e.stopPropagation();
       const url = e.currentTarget.dataset.repo;
       window.open(url, "_blank", "noopener");
