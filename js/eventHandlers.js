@@ -87,12 +87,9 @@ export function createEventHandlers({
     },
 
     handleClick() {
-      const isMobile =
-        window.innerWidth <= 768 &&
-        window.innerHeight <= 1024 &&
-        "ontouchstart" in window;
-      if (isMobile) return;
-
+      if (isMobileDevice()) {
+        return;
+      }
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
         closeModals();
       } else {
@@ -161,4 +158,10 @@ export function createEventHandlers({
       label.classList.toggle("visible");
     },
   };
+}
+
+function isMobileDevice() {
+  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
+    navigator.userAgent
+  );
 }
