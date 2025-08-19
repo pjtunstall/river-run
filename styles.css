@@ -374,22 +374,21 @@ hr {
   text-decoration: underline !important;
 }
 
-/* Target mobile devices in portrait mode. */
 @media (max-width: 640px) and (orientation: portrait) {
   .compass {
-    width: 9rem;
-    height: 9rem;
+    width: 20vw;
+    height: 20vw;
     transform: translateX(50px);
   }
 
   .milestone {
-    width: 28px;
-    height: 28px;
-    border-width: 3px;
+    width: 6vw;
+    height: 6vw;
+    border-width: 0.6vw;
   }
 
   .milestone .label {
-    font-size: 14px;
-    padding: 6px 8px;
+    font-size: 3.5vw;
+    padding: 1vw 1.5vw;
   }
 }
