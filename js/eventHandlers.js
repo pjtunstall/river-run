@@ -4,7 +4,7 @@ export function createEventHandlers({
   leftModal,
   rightModal,
 }) {
-  console.log("new commit 1");
+  console.log("new commit 2");
   let isHelpModalOpen = isMobileDevice() ? false : true;
   let isLeftModalOpen = false;
   let isRightModalOpen = false;
@@ -42,7 +42,9 @@ export function createEventHandlers({
     isRightModalOpen = false;
   };
 
-  if (!isMobileDevice()) {
+  if (isMobileDevice()) {
+    closeModals();
+  } else {
     openHelpModal();
   }
 
