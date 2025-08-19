@@ -227,6 +227,14 @@ hr {
   width: 95%;
 }
 
+#projects-modal .modal-header {
+  margin-top: 1.5rem;
+  margin-bottom: 2.5rem;
+  /* display: flex;
+  justify-content: space-between; */
+  align-items: center;
+}
+
 .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));

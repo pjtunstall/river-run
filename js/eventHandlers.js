@@ -4,7 +4,6 @@ export function createEventHandlers({
   leftModal,
   rightModal,
 }) {
-  console.log("new deploy 1");
   let isHelpModalOpen = isMobileDevice() ? false : true;
   let isLeftModalOpen = false;
   let isRightModalOpen = false;
