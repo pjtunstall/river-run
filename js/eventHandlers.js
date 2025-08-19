@@ -104,5 +104,11 @@ export function createEventHandlers({
         window.location.reload();
       }, 200);
     },
+
+    handleRepoClick(e) {
+      e.stopPropagation();
+      const url = e.currentTarget.dataset.repo;
+      window.open(url, "_blank", "noopener");
+    },
   };
 }

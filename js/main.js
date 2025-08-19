@@ -22,19 +22,14 @@ const handlers = createEventHandlers({
   world,
 });
 
-document.addEventListener("keydown", handlers.handleKeyDown);
-document.addEventListener("keyup", handlers.handleKeyUp);
 window.addEventListener("resize", handlers.handleResize);
 window.addEventListener("click", handlers.handleClick);
 window.addEventListener("touchstart", handlers.handleScroll, { passive: true });
 window.addEventListener("wheel", handlers.handleScroll, { passive: true });
-
+document.addEventListener("keydown", handlers.handleKeyDown);
+document.addEventListener("keyup", handlers.handleKeyUp);
 document.querySelectorAll(".repo-link").forEach((el) => {
-  el.addEventListener("click", (e) => {
-    e.stopPropagation();
-    const url = el.dataset.repo;
-    window.open(url, "_blank", "noopener");
-  });
+  el.addEventListener("click", handlers.handleRepoClick);
 });
 
 requestAnimationFrame(world.update);
