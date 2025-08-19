@@ -4,7 +4,7 @@ import { Tiles } from "./Tiles.js";
 import { createEventHandlers } from "./eventHandlers.js";
 import { Milestones } from "./Milestones.js";
 
-console.log("7");
+console.log("8");
 
 const numberOfTiles = 3;
 const tiles = new Tiles(numberOfTiles);

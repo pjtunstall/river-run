@@ -130,57 +130,25 @@ body {
   position: absolute;
   top: 1rem;
   right: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
   background: none;
   border: none;
   font-size: 1.5rem;
   cursor: pointer;
   color: #666;
-  padding: 0.5rem;
   border-radius: 50%;
   transition: background-color 0.2s;
-  z-index: 10;
-  min-width: 44px; /* Minimum touch target size. */
-  min-height: 44px; /* Minimum touch target size. */
-  display: flex;
-  align-items: center;
-  justify-content: center;
 }
 
 @media (max-width: 640px) {
-  .close-button {
-    top: 0.75rem;
-    right: 0.75rem;
-    font-size: 1.25rem;
-    padding: 0.75rem;
-    min-width: 48px;
-    min-height: 48px;
-    background: rgba(255, 255, 255, 0.1);
-    backdrop-filter: blur(5px);
-    -webkit-backdrop-filter: blur(5px);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-  }
-
-  .close-button:hover {
-    background: rgba(255, 255, 255, 0.2);
-  }
-
   #profile-modal .modal-content {
-    padding-top: 4rem;
+    padding-top: 3rem;
     padding-bottom: 2rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
     max-height: calc(100vh - 3rem);
-  }
-
-  #projects-modal .modal-content {
-    padding-top: 4rem;
-    padding-left: 1.5rem;
-    padding-right: 1.5rem;
-  }
-
-  #projects-modal .modal-header {
-    margin-top: 0.5rem;
-    margin-bottom: 2rem;
   }
 }
 
