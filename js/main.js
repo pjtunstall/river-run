@@ -42,7 +42,9 @@ document.querySelectorAll(".close-button").forEach((button) => {
 milestones.forEach((milestone) => {
   milestone.element.addEventListener("click", handlers.handleMilestoneClick);
 });
-riverRunLink.addEventListener("click", handlers.handleRiverRunLinkClick);
+["click", "touchend"].forEach((evt) => {
+  riverRunLink.addEventListener(evt, handlers.handleRiverRunLinkClick);
+});
 
 const leftArrow = document.getElementById("mobileNavLeft");
 const rightArrow = document.getElementById("mobileNavRight");
