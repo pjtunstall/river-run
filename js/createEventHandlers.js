@@ -123,7 +123,7 @@ export function createEventHandlers({
 
         setTimeout(() => {
           physics.setAcceleration(0);
-        }, 500);
+        }, 300);
       }
     },
 
@@ -148,7 +148,7 @@ export function createEventHandlers({
       physics.setAcceleration(direction);
       setTimeout(() => {
         physics.setAcceleration(0);
-      }, 100);
+      }, 500);
 
       touchStartY = null;
     },
