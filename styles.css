@@ -402,3 +402,58 @@ hr {
     padding: 0.5rem 0.7rem;
   }
 }
+
+.mobile-nav-arrow {
+  position: fixed;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 60px;
+  height: 60px;
+  background: rgba(107, 85, 55, 0.8);
+  border: 2px solid #d6c2a1;
+  border-radius: 50%;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  z-index: 1000;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(5px);
+  -webkit-backdrop-filter: blur(5px);
+}
+
+.mobile-nav-arrow:hover {
+  background: rgba(107, 85, 55, 1);
+  transform: translateY(-50%) scale(1.1);
+}
+
+.mobile-nav-arrow:active {
+  transform: translateY(-50%) scale(0.95);
+}
+
+.mobile-nav-arrow svg {
+  width: 24px;
+  height: 24px;
+  fill: #d6c2a1;
+}
+
+.mobile-nav-left {
+  left: 20px;
+}
+
+.mobile-nav-right {
+  right: 20px;
+}
+
+/* Show arrows only on mobile devices. */
+@media (max-width: 768px) {
+  .mobile-nav-arrow {
+    display: flex;
+  }
+}
+
+/* Hide arrows when modals are open. */
+.modal.show ~ .mobile-nav-arrow {
+  opacity: 0;
+  pointer-events: none;
+}
