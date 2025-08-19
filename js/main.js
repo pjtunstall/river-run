@@ -29,8 +29,8 @@ window.addEventListener("click", handlers.handleClick);
 window.addEventListener("touchstart", handlers.handleTouchStart, {
   passive: true,
 });
-window.addEventListener("touchend", handlers.handleTouchEnd, { passive: true });
-window.addEventListener("wheel", handlers.handleScroll, { passive: true });
+window.addEventListener("touchend", handlers.handleTouchEnd);
+window.addEventListener("wheel", handlers.handleScroll);
 document.addEventListener("keydown", handlers.handleKeyDown);
 document.addEventListener("keyup", handlers.handleKeyUp);
 document.querySelectorAll(".repo-link").forEach((link) => {
