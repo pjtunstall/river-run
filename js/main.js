@@ -1,7 +1,7 @@
 import { World } from "./World.js";
 import { Physics } from "./Physics.js";
 import { Tiles } from "./Tiles.js";
-import { createEventHandlers } from "./eventHandlers.js";
+import { createEventHandlers } from "./createEventHandlers.js";
 import { Milestones } from "./Milestones.js";
 
 const numberOfTiles = 3;
