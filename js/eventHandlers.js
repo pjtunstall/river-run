@@ -154,11 +154,7 @@ export function createEventHandlers({
       e.stopPropagation();
       const label = e.currentTarget.querySelector(".label");
       if (!label) return;
-
-      // Only toggle on mobile (no hover).
-      if (window.matchMedia("(hover: none)").matches) {
-        label.classList.toggle("visible");
-      }
+      label.classList.toggle("visible");
     },
   };
 }

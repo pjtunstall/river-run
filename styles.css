@@ -50,14 +50,30 @@ body {
   display: none;
 }
 
-/* Show on hover (desktop). */
-.milestone:hover .label {
-  display: block;
+/* Desktop: show labels on hover. */
+@media (hover: hover) and (pointer: fine) {
+  .milestone .label {
+    display: none;
+  }
+
+  .milestone:hover .label {
+    display: block;
+  }
+
+  .milestone .label.visible {
+    display: block !important; /* Persistent click on desktop. */
+  }
 }
 
-/* Show when toggled by click/tap (mobile). */
-.milestone .label.visible {
-  display: block;
+/* Mobile: no hover, only toggle labels. */
+@media (hover: none) {
+  .milestone .label {
+    display: none;
+  }
+
+  .milestone .label.visible {
+    display: block; /* Tap to toggle. */
+  }
 }
 
 .compass {
