@@ -203,11 +203,11 @@ hr {
   transition: background-color 0.2s;
 }
 
-@media (max-width: 640px) {
+/* @media (max-width: 640px) {
   .profile-modal .close-button {
     top: 2rem;
   }
-}
+} */
 
 .close-button:hover {
   background-color: #f0f0f0;
