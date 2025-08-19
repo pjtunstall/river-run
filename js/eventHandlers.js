@@ -88,9 +88,9 @@ export function createEventHandlers({
 
     handleClick() {
       const isMobile =
-        /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
-        (window.matchMedia("(max-width: 768px)").matches &&
-          "ontouchstart" in window);
+        window.innerWidth <= 768 &&
+        window.innerHeight <= 1024 &&
+        "ontouchstart" in window;
       if (isMobile) return;
 
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
