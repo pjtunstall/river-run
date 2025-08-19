@@ -167,9 +167,8 @@ body {
 }
 
 .modal-header {
-  margin-bottom: 1rem;
-  border-bottom: 2px solid #d6c2a1;
-  padding-bottom: 0.5rem;
+  margin: 0;
+  padding: 0;
   display: flex;
   justify-content: space-between;
   flex-shrink: 0;
