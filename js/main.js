@@ -36,7 +36,7 @@ document.querySelectorAll(".repo-link").forEach((link) => {
   link.addEventListener("click", handlers.handleRepoClick);
 });
 document.querySelectorAll(".close-button").forEach((button) => {
-  button.addEventListener("click", handlers.closeModals);
+  button.addEventListener("click", handlers.handleClickToClose);
 });
 milestones.forEach((milestone) => {
   milestone.element.addEventListener("click", handlers.handleMilestoneClick);

@@ -49,10 +49,11 @@ export function createEventHandlers({
   }
 
   return {
-    openHelpModal,
-    openLeftModal,
-    openRightModal,
-    closeModals,
+    handleClickToClose(e) {
+      e.preventDefault();
+      e.stopPropagation();
+      closeModals();
+    },
 
     handleKeyDown(e) {
       if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
