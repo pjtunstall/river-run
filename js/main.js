@@ -24,12 +24,15 @@ const handlers = createEventHandlers({
 
 window.addEventListener("resize", handlers.handleResize);
 window.addEventListener("click", handlers.handleClick);
-window.addEventListener("touchstart", handlers.handleScroll, { passive: true });
+window.addEventListener("touchstart", handlers.handleTouchStart, {
+  passive: true,
+});
+window.addEventListener("touchend", handlers.handleTouchEnd, { passive: true });
 window.addEventListener("wheel", handlers.handleScroll, { passive: true });
 document.addEventListener("keydown", handlers.handleKeyDown);
 document.addEventListener("keyup", handlers.handleKeyUp);
-document.querySelectorAll(".repo-link").forEach((el) => {
-  el.addEventListener("click", handlers.handleRepoClick);
+document.querySelectorAll(".repo-link").forEach((link) => {
+  link.addEventListener("click", handlers.handleRepoClick);
 });
 
 requestAnimationFrame(world.update);

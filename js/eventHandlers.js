@@ -7,9 +7,10 @@ export function createEventHandlers({
   let isHelpModalOpen = true;
   let isLeftModalOpen = false;
   let isRightModalOpen = false;
-  let resizeTimeout;
+  let resizeTimeout = null;
   let rightArrowHeld = false;
   let leftArrowHeld = false;
+  let touchStartY = null;
 
   const openHelpModal = () => {
     helpModal.classList.add("show");
@@ -50,9 +51,10 @@ export function createEventHandlers({
       if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
         // Allow user to go straight from help modal to one of the others.
         if (isHelpModalOpen) {
+          // Mustn't close the help modal before checking if it's open!
           closeModals();
         } else {
-          // Otherwise, only open a modal if no other modal is open.
+          // But if it's one of the other modals that's open, return early to prevent further modals from opening.
           closeModals();
           return;
         }
@@ -92,10 +94,47 @@ export function createEventHandlers({
       }
     },
 
-    handleScroll() {
-      if (!isHelpModalOpen && !isRightModalOpen && !isLeftModalOpen) {
-        openHelpModal();
+    handleScroll(e) {
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
+
+      let direction = 0;
+      direction = e.deltaY < 0 ? 1 : -1;
+
+      if (direction !== 0) {
+        physics.setAcceleration(direction);
+
+        setTimeout(() => {
+          physics.setAcceleration(0);
+        }, 500);
       }
+    },
+
+    handleTouchStart(e) {
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
+      touchStartY = e.touches[0].clientY;
+    },
+
+    handleTouchEnd(e) {
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
+      if (touchStartY === null) return;
+
+      const touchEndY = e.changedTouches[0].clientY;
+      const deltaY = touchEndY - touchStartY;
+
+      let direction = 0;
+      if (Math.abs(deltaY) > 30) {
+        // Small threshold so a tap isn’t treated as a flick.
+        direction = deltaY < 0 ? 1 : -1;
+      }
+
+      if (direction !== 0) {
+        physics.setAcceleration(direction);
+        setTimeout(() => {
+          physics.setAcceleration(0);
+        }, 500);
+      }
+
+      touchStartY = null;
     },
 
     handleResize() {
