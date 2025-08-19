@@ -204,8 +204,10 @@ hr {
 }
 
 @media (max-width: 640px) {
-  .profile-modal .close-button {
-    top: 2rem;
+  .modal .modal-content {
+    padding-top: 3rem;
+    padding-bottom: 2rem;
+    max-height: calc(100vh - 3rem);
   }
 }
 
