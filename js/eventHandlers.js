@@ -94,14 +94,16 @@ export function createEventHandlers({
     },
 
     handleClick() {
-      if (isMobileDevice()) {
+      if (
+        isMobileDevice() ||
+        isHelpModalOpen ||
+        isRightModalOpen ||
+        isLeftModalOpen
+      ) {
         return;
       }
-      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
-        closeModals();
-      } else {
-        openHelpModal();
-      }
+
+      openHelpModal();
     },
 
     handleScroll(e) {
