@@ -153,7 +153,12 @@ export function createEventHandlers({
     handleMilestoneClick(e) {
       e.stopPropagation();
       const label = e.currentTarget.querySelector(".label");
-      if (label) label.classList.toggle("visible");
+      if (!label) return;
+
+      // Only toggle on mobile (no hover).
+      if (window.matchMedia("(hover: none)").matches) {
+        label.classList.toggle("visible");
+      }
     },
   };
 }
