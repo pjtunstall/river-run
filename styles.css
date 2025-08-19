@@ -379,13 +379,13 @@ hr {
   .compass {
     width: 9rem;
     height: 9rem;
+    transform: translateX(50px);
   }
 
   .milestone {
     width: 28px;
     height: 28px;
     border-width: 3px;
-    transform: translateX(50px);
   }
 
   .milestone .label {
