@@ -34,5 +34,8 @@ document.addEventListener("keyup", handlers.handleKeyUp);
 document.querySelectorAll(".repo-link").forEach((link) => {
   link.addEventListener("click", handlers.handleRepoClick);
 });
+milestones.forEach((milestone) => {
+  milestone.element.addEventListener("click", handlers.handleMilestoneClick);
+});
 
 requestAnimationFrame(world.update);

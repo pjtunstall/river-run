@@ -124,7 +124,7 @@ export function createEventHandlers({
       let direction = 0;
       if (Math.abs(deltaY) > 30) {
         // Small threshold so a tap isn’t treated as a flick.
-        direction = deltaY < 0 ? 1 : -1;
+        direction = deltaY < 0 ? -1 : 1;
       }
 
       if (direction !== 0) {
@@ -148,6 +148,12 @@ export function createEventHandlers({
       e.stopPropagation();
       const url = e.currentTarget.dataset.repo;
       window.open(url, "_blank", "noopener");
+    },
+
+    handleMilestoneClick(e) {
+      e.stopPropagation();
+      const label = e.currentTarget.querySelector(".label");
+      if (label) label.classList.toggle("visible");
     },
   };
 }

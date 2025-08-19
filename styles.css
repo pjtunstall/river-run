@@ -3,6 +3,7 @@ body {
   margin: 0;
   height: 100%;
   overflow: hidden;
+  overscroll-behavior-y: contain; /* Prevent pull-to-refresh on mobile devices. It's generally good not to interfere with expected functionality, but, in this case, it would be hard to navigate upriver if the page was in danger of reloading with all but the most delicate of pulls. */
 }
 
 #world {
@@ -49,7 +50,13 @@ body {
   display: none;
 }
 
+/* Show on hover (desktop). */
 .milestone:hover .label {
+  display: block;
+}
+
+/* Show when toggled by click/tap (mobile). */
+.milestone .label.visible {
   display: block;
 }
 
@@ -365,4 +372,24 @@ hr {
 .repo-link:hover {
   color: #3c2915;
   text-decoration: underline !important;
+}
+
+/* Target mobile devices in portrait mode. */
+@media (max-width: 640px) and (orientation: portrait) {
+  .compass {
+    width: 9rem;
+    height: 9rem;
+  }
+
+  .milestone {
+    width: 28px;
+    height: 28px;
+    border-width: 3px;
+    transform: translateX(50px);
+  }
+
+  .milestone .label {
+    font-size: 14px;
+    padding: 6px 8px;
+  }
 }
