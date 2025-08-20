@@ -11,28 +11,27 @@ export function createEventHandlers({
   let rightArrowHeld = false;
   let leftArrowHeld = false;
   let touchStartY = null;
+  let touchLastY = null;
   let touchStartTime = null;
-
+  let velocity = 0;
+  let momentumId = null;
   const openHelpModal = () => {
     helpModal.classList.add("show");
     isHelpModalOpen = true;
     physics.setAcceleration(0);
   };
-
   const openLeftModal = () => {
     leftModal.classList.add("show");
     isLeftModalOpen = true;
     leftArrowHeld = true;
     physics.setAcceleration(0);
   };
-
   const openRightModal = () => {
     rightModal.classList.add("show");
     isRightModalOpen = true;
     rightArrowHeld = true;
     physics.setAcceleration(0);
   };
-
   const closeModals = () => {
     helpModal.classList.remove("show");
     leftModal.classList.remove("show");
@@ -41,33 +40,26 @@ export function createEventHandlers({
     isLeftModalOpen = false;
     isRightModalOpen = false;
   };
-
   return {
     handleClickToClose(e) {
       e.preventDefault();
       e.stopPropagation();
       closeModals();
     },
-
     handleRiverRunLinkClick(e) {
       e.preventDefault();
       e.stopPropagation();
       closeModals();
     },
-
     handleKeyDown(e) {
       if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
-        // Allow user to go straight from help modal to one of the others.
         if (isHelpModalOpen) {
-          // Mustn't close the help modal before checking if it's open!
           closeModals();
         } else {
-          // But if it's one of the other modals that's open, return early to prevent further modals from opening.
           closeModals();
           return;
         }
       }
-
       if (e.key === "ArrowRight" && !isRightModalOpen && !rightArrowHeld) {
         openRightModal();
         return;
@@ -77,149 +69,108 @@ export function createEventHandlers({
       } else {
         closeModals();
       }
-
       if (e.key === "ArrowUp") physics.setAcceleration(1);
       else if (e.key === "ArrowDown") physics.setAcceleration(-1);
       else openHelpModal();
     },
-
     handleKeyUp(e) {
       if (e.key === "ArrowUp" || e.key === "ArrowDown")
         physics.setAcceleration(0);
-
-      if (e.key === "ArrowRight") {
-        rightArrowHeld = false;
-      } else if (e.key === "ArrowLeft") {
-        leftArrowHeld = false;
-      }
+      if (e.key === "ArrowRight") rightArrowHeld = false;
+      else if (e.key === "ArrowLeft") leftArrowHeld = false;
     },
-
     handleCompassClick() {
       if (
         isMobileDevice() ||
         isHelpModalOpen ||
         isRightModalOpen ||
         isLeftModalOpen
-      ) {
+      )
         return;
-      }
-
       openHelpModal();
     },
-
-    // Trackpad and mouse wheel.
     handleScroll(e) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
-
-      let direction = 0;
-      direction = e.deltaY < 0 ? 1 : -1;
-
+      const direction = e.deltaY < 0 ? 1 : -1;
       if (direction !== 0) {
         physics.setAcceleration(direction);
-
-        setTimeout(() => {
-          physics.setAcceleration(0);
-        }, 300);
+        setTimeout(() => physics.setAcceleration(0), 300);
       }
     },
-
-    // Start swipe to scroll.
     handleTouchStart(e) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
+      if (momentumId) {
+        cancelAnimationFrame(momentumId);
+        momentumId = null;
+      }
       touchStartY = e.touches[0].clientY;
+      touchLastY = touchStartY;
       touchStartTime = Date.now();
     },
-
-    // End swipe to scroll.
+    handleTouchMove(e) {
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
+      if (touchLastY === null) return;
+      const currentY = e.touches[0].clientY;
+      const delta = currentY - touchLastY;
+      physics.setAcceleration(delta * 0.5);
+      touchLastY = currentY;
+    },
     handleTouchEnd(e) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       if (touchStartY === null) return;
-
       const touchEndY = e.changedTouches[0].clientY;
       const deltaY = touchEndY - touchStartY;
       const swipeTime = Date.now() - touchStartTime;
-
-      if (Math.abs(deltaY) > 30) {
-        const maxDistance = 300; // Reasonable full-swipe distance.
-        const clampedDelta = Math.max(
-          -maxDistance,
-          Math.min(maxDistance, deltaY)
-        );
-
-        // Small swipe = 0.5, big swipe = 3.0
-        const normalized = Math.abs(clampedDelta) / maxDistance; // 0 to 1.
-        const scaledPower = 0.5 + normalized * 2.5; // 0.5 to 3.0.
-        const direction = clampedDelta < 0 ? -scaledPower : scaledPower;
-
-        const swipeSpeed = Math.abs(deltaY) / Math.max(swipeTime, 50);
-        const speedBoost = Math.min(1.3, 0.8 + swipeSpeed / 5); // 0.8 to 1.3.
-
-        const finalAcceleration = direction * speedBoost;
-
-        console.log({
-          deltaY,
-          normalized,
-          scaledPower,
-          speedBoost,
-          finalAcceleration,
-        }); // Debug
-
-        physics.setAcceleration(finalAcceleration);
-        setTimeout(() => {
+      velocity = deltaY / Math.max(swipeTime, 1);
+      function momentumStep() {
+        if (Math.abs(velocity) < 0.01) {
           physics.setAcceleration(0);
-        }, 300);
+          return;
+        }
+        physics.setAcceleration(velocity * 15);
+        velocity *= 0.95;
+        momentumId = requestAnimationFrame(momentumStep);
       }
-
+      momentumStep();
       touchStartY = null;
+      touchLastY = null;
     },
-
     handleResize() {
       clearTimeout(resizeTimeout);
-      resizeTimeout = setTimeout(() => {
-        window.location.reload();
-      }, 200);
+      resizeTimeout = setTimeout(() => window.location.reload(), 200);
     },
-
     handleRepoClick(e) {
       e.preventDefault();
       e.stopPropagation();
       const url = e.currentTarget.dataset.repo;
       window.open(url, "_blank", "noopener");
     },
-
     handleMilestoneClick(e) {
       e.stopPropagation();
       const label = e.currentTarget.querySelector(".label");
       if (!label) return;
       label.classList.toggle("visible");
     },
-
     handleNavLeft(e) {
       e.preventDefault();
       e.stopPropagation();
-
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
         closeModals();
         return;
       }
-
       openLeftModal();
     },
-
     handleNavRight(e) {
       e.preventDefault();
       e.stopPropagation();
-
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
         closeModals();
         return;
       }
-
       openRightModal();
     },
   };
 }
-
 function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent

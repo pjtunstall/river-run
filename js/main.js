@@ -30,7 +30,11 @@ window.addEventListener("click", handlers.handleClick);
 window.addEventListener("touchstart", handlers.handleTouchStart, {
   passive: true,
 });
+window.addEventListener("touchmove", handlers.handleTouchMove, {
+  passive: true,
+});
 window.addEventListener("touchend", handlers.handleTouchEnd);
+
 window.addEventListener("wheel", handlers.handleScroll);
 document.addEventListener("keydown", handlers.handleKeyDown);
 document.addEventListener("keyup", handlers.handleKeyUp);
