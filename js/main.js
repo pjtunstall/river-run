@@ -28,10 +28,10 @@ const handlers = createEventHandlers({
 window.addEventListener("resize", handlers.handleResize);
 window.addEventListener("click", handlers.handleClick);
 window.addEventListener("touchstart", handlers.handleTouchStart, {
-  passive: false,
+  passive: true,
 });
 window.addEventListener("touchmove", handlers.handleTouchMove, {
-  passive: false,
+  passive: true,
 });
 window.addEventListener("touchend", handlers.handleTouchEnd);
 
