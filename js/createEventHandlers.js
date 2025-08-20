@@ -4,13 +4,14 @@ export function createEventHandlers({
   leftModal,
   rightModal,
 }) {
-  let isHelpModalOpen = isMobileDevice() ? false : true;
+  let isHelpModalOpen = false;
   let isLeftModalOpen = false;
   let isRightModalOpen = false;
   let resizeTimeout = null;
   let rightArrowHeld = false;
   let leftArrowHeld = false;
   let touchStartY = null;
+  let touchStartTime = null;
 
   const openHelpModal = () => {
     helpModal.classList.add("show");
@@ -40,12 +41,6 @@ export function createEventHandlers({
     isLeftModalOpen = false;
     isRightModalOpen = false;
   };
-
-  if (isMobileDevice()) {
-    closeModals();
-  } else {
-    openHelpModal();
-  }
 
   return {
     handleClickToClose(e) {
@@ -99,7 +94,7 @@ export function createEventHandlers({
       }
     },
 
-    handleClick() {
+    handleCompassClick() {
       if (
         isMobileDevice() ||
         isHelpModalOpen ||
@@ -112,6 +107,7 @@ export function createEventHandlers({
       openHelpModal();
     },
 
+    // Trackpad and mouse wheel.
     handleScroll(e) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
 
@@ -127,28 +123,41 @@ export function createEventHandlers({
       }
     },
 
+    // Start swipe to scroll.
     handleTouchStart(e) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       touchStartY = e.touches[0].clientY;
+      touchStartTime = Date.now();
     },
 
+    // End swipe to scroll.
     handleTouchEnd(e) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       if (touchStartY === null) return;
 
       const touchEndY = e.changedTouches[0].clientY;
       const deltaY = touchEndY - touchStartY;
+      const swipeTime = Date.now() - touchStartTime;
 
-      let direction = 0;
+      // Threshold so a tap isn't treated as a flick.
       if (Math.abs(deltaY) > 30) {
-        // Small threshold so a tap isn't treated as a flick.
-        direction = deltaY < 0 ? -1 : 1;
-      }
+        // Scale based on distance but cap it for control.
+        const maxDistance = 150;
+        const deltaBoundedAbove = Math.min(maxDistance, deltaY);
+        const clampedDelta = Math.max(-maxDistance, deltaBoundedAbove);
+        const baseAcceleration = (clampedDelta / maxDistance) * 0.4; // Gentler base than for trackpad and wheel.
 
-      physics.setAcceleration(direction);
-      setTimeout(() => {
-        physics.setAcceleration(0);
-      }, 500);
+        // Adjust for quick swipes vs slow drags.
+        const swipeSpeed = Math.abs(deltaY) / Math.max(swipeTime, 50);
+        const boost = Math.min(1.5, swipeSpeed / 2); // Cap the velocity boost.
+
+        const finalAcceleration = baseAcceleration * boost;
+
+        physics.setAcceleration(finalAcceleration);
+        setTimeout(() => {
+          physics.setAcceleration(0);
+        }, 300);
+      }
 
       touchStartY = null;
     },

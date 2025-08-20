@@ -15,6 +15,7 @@ const helpModal = document.getElementById("help-modal");
 const leftModal = document.getElementById("projects-modal");
 const rightModal = document.getElementById("profile-modal");
 const riverRunLink = document.getElementById("river-run-link");
+const compass = document.querySelector(".compass");
 
 const handlers = createEventHandlers({
   physics,
@@ -46,6 +47,7 @@ riverRunLink.addEventListener("click", handlers.handleRiverRunLinkClick);
 
 const leftArrow = document.getElementById("mobileNavLeft");
 const rightArrow = document.getElementById("mobileNavRight");
+compass.addEventListener("click", handlers.handleCompassClick);
 
 if (leftArrow) {
   leftArrow.addEventListener("click", handlers.handleMobileNavLeft);

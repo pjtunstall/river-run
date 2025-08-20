@@ -89,9 +89,19 @@ body {
   text-anchor: middle;
 }
 
-@media (max-width: 639px) {
+@media (max-width: 640px) {
   .compass {
     transform: translateX(100px);
+  }
+}
+
+@media (min-width: 641px) or (min-aspect-ratio: 3/4) {
+  .compass {
+    transition: transform 0.3s ease;
+  }
+
+  .compass:hover {
+    transform: translateX(200px) scale(1.1);
   }
 }
 
