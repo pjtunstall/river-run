@@ -154,7 +154,7 @@ export function createEventHandlers({
         const maxVelocity = 0.3;
         const cappedVelocity =
           Math.sign(velocity) * Math.min(Math.abs(velocity), maxVelocity);
-        physics.setAcceleration(cappedVelocity * 15);
+        physics.setAcceleration(cappedVelocity * 1);
         velocity *= 0.95;
         momentumId = requestAnimationFrame(momentumStep);
       }
