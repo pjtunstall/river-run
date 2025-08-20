@@ -139,10 +139,32 @@ export function createEventHandlers({
       const deltaY = touchEndY - touchStartY;
       const swipeTime = Date.now() - touchStartTime;
 
-      // Threshold so a tap isn't treated as a flick.
       if (Math.abs(deltaY) > 30) {
-        const direction = deltaY < 0 ? -2.5 : 2.5;
-        physics.setAcceleration(direction);
+        const maxDistance = 300; // Reasonable full-swipe distance.
+        const clampedDelta = Math.max(
+          -maxDistance,
+          Math.min(maxDistance, deltaY)
+        );
+
+        // Small swipe = 0.5, big swipe = 3.0
+        const normalized = Math.abs(clampedDelta) / maxDistance; // 0 to 1.
+        const scaledPower = 0.5 + normalized * 2.5; // 0.5 to 3.0.
+        const direction = clampedDelta < 0 ? -scaledPower : scaledPower;
+
+        const swipeSpeed = Math.abs(deltaY) / Math.max(swipeTime, 50);
+        const speedBoost = Math.min(1.3, 0.8 + swipeSpeed / 5); // 0.8 to 1.3.
+
+        const finalAcceleration = direction * speedBoost;
+
+        console.log({
+          deltaY,
+          normalized,
+          scaledPower,
+          speedBoost,
+          finalAcceleration,
+        }); // Debug
+
+        physics.setAcceleration(finalAcceleration);
         setTimeout(() => {
           physics.setAcceleration(0);
         }, 300);
