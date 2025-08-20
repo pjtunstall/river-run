@@ -109,6 +109,7 @@ export function createEventHandlers({
     },
 
     handleTouchStart(e) {
+      e.preventDefault();
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       if (momentumId) {
         cancelAnimationFrame(momentumId);
@@ -129,6 +130,7 @@ export function createEventHandlers({
     },
 
     handleTouchEnd(e) {
+      e.preventDefault();
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       if (touchStartY === null) return;
       const touchEndY = e.changedTouches[0].clientY;
