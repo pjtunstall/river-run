@@ -107,47 +107,6 @@ export function createEventHandlers({
       }
     },
 
-    handleTouchStart(e) {
-      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
-      if (momentumId) {
-        cancelAnimationFrame(momentumId);
-        momentumId = null;
-      }
-      touchStartY = e.touches[0].clientY;
-      touchLastY = touchStartY;
-      touchStartTime = Date.now();
-    },
-
-    handleTouchMove(e) {
-      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
-      if (touchLastY === null) return;
-      const currentY = e.touches[0].clientY;
-      const delta = currentY - touchLastY;
-      physics.setAcceleration(delta * 0.5);
-      touchLastY = currentY;
-    },
-
-    handleTouchEnd(e) {
-      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
-      if (touchStartY === null) return;
-      const touchEndY = e.changedTouches[0].clientY;
-      const deltaY = touchEndY - touchStartY;
-      const swipeTime = Date.now() - touchStartTime;
-      velocity = deltaY / Math.max(swipeTime, 1);
-      function momentumStep() {
-        if (Math.abs(velocity) < 0.01) {
-          physics.setAcceleration(0);
-          return;
-        }
-        physics.setAcceleration(velocity * 15);
-        velocity *= 0.95;
-        momentumId = requestAnimationFrame(momentumStep);
-      }
-      momentumStep();
-      touchStartY = null;
-      touchLastY = null;
-    },
-
     handleResize() {
       clearTimeout(resizeTimeout);
       resizeTimeout = setTimeout(() => window.location.reload(), 200);
