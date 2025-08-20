@@ -142,14 +142,14 @@ export function createEventHandlers({
       // Threshold so a tap isn't treated as a flick.
       if (Math.abs(deltaY) > 30) {
         // Scale based on distance but cap it for control.
-        const maxDistance = 150;
+        const maxDistance = 200;
         const deltaBoundedAbove = Math.min(maxDistance, deltaY);
         const clampedDelta = Math.max(-maxDistance, deltaBoundedAbove);
         const baseAcceleration = (clampedDelta / maxDistance) * 0.4; // Gentler base than for trackpad and wheel.
 
         // Adjust for quick swipes vs slow drags.
         const swipeSpeed = Math.abs(deltaY) / Math.max(swipeTime, 50);
-        const boost = Math.min(1.5, swipeSpeed / 2); // Cap the velocity boost.
+        const boost = Math.min(2, swipeSpeed / 2); // Cap the velocity boost.
 
         const finalAcceleration = baseAcceleration * boost;
 
