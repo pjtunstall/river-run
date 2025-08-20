@@ -135,7 +135,7 @@ export function createEventHandlers({
       if (touchLastY === null) return;
       const currentY = e.touches[0].clientY;
       const delta = currentY - touchLastY;
-      physics.setAcceleration(delta * 0.5);
+      physics.setAcceleration(delta * 0.1);
       touchLastY = currentY;
     },
 
