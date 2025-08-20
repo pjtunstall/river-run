@@ -45,7 +45,7 @@ export class Milestones {
     this.create(1, 0, -20, "Microtask Checkpoint #1", "yellow");
     this.create(1, 13, -33, "MutationObserver Callbacks", "green");
     this.create(1, 5, -45, "Microtask Checkpoint #2", "yellow");
-    this.create(0, -24, 0, "requestAnimationFrame Callbacks", "cyan");
+    this.create(0, -16, 12, "requestAnimationFrame Callbacks", "cyan");
     this.create(0, -22, -12, "Style", "orange");
     this.create(0, 34, -24, "Layout", "purple");
     this.create(0, 21, -49, "ResizeObserver Callbacks", "gold");

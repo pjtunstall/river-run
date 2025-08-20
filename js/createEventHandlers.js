@@ -78,7 +78,6 @@ export function createEventHandlers({
       }
       if (e.key === "ArrowUp") physics.setAcceleration(1);
       else if (e.key === "ArrowDown") physics.setAcceleration(-1);
-      else openHelpModal();
     },
 
     handleKeyUp(e) {
