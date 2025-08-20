@@ -45,15 +45,15 @@ milestones.forEach((milestone) => {
 });
 riverRunLink.addEventListener("click", handlers.handleRiverRunLinkClick);
 
-const leftArrow = document.getElementById("mobileNavLeft");
-const rightArrow = document.getElementById("mobileNavRight");
+const leftArrow = document.getElementById("nav-left");
+const rightArrow = document.getElementById("nav-right");
 compass.addEventListener("click", handlers.handleCompassClick);
 
 if (leftArrow) {
-  leftArrow.addEventListener("click", handlers.handleMobileNavLeft);
+  leftArrow.addEventListener("click", handlers.handleNavLeft);
 }
 if (rightArrow) {
-  rightArrow.addEventListener("click", handlers.handleMobileNavRight);
+  rightArrow.addEventListener("click", handlers.handleNavRight);
 }
 
 requestAnimationFrame(world.update);

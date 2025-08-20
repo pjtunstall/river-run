@@ -183,7 +183,7 @@ export function createEventHandlers({
       label.classList.toggle("visible");
     },
 
-    handleMobileNavLeft(e) {
+    handleNavLeft(e) {
       e.preventDefault();
       e.stopPropagation();
 
@@ -195,7 +195,7 @@ export function createEventHandlers({
       openLeftModal();
     },
 
-    handleMobileNavRight(e) {
+    handleNavRight(e) {
       e.preventDefault();
       e.stopPropagation();
 
