@@ -237,7 +237,6 @@ hr {
   display: flex; /* Make room for the inline repo icon. */
   align-items: baseline;
   gap: 0.35rem;
-  cursor: default;
 }
 
 .project-description {
@@ -326,4 +325,13 @@ hr {
 .modal-footer {
   text-align: center;
   padding-top: 1rem;
+}
+
+/* Necessary to make modals work as templates. */
+.modal-body-placeholder {
+  flex-grow: 1; /* Fill available vertical space. */
+  overflow-y: auto; /* Enable vertical scroll. */
+}
+.modal-footer-placeholder {
+  flex-shrink: 0; /* Keep footer at natural height. */
 }

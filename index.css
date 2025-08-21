@@ -80,6 +80,7 @@ body {
   width: 6rem;
   height: 6rem;
   filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
+  cursor: pointer;
 }
 
 .compass-text {
@@ -102,7 +103,6 @@ body {
 
   .compass:hover {
     transform: translateX(200px) scale(1.1);
-    cursor: pointer;
   }
 }
 
@@ -158,11 +158,11 @@ body {
   fill: #d6c2a1;
 }
 
-.mobile-nav-left {
+.nav-arrow-left {
   left: 20px;
 }
 
-.mobile-nav-right {
+.nav-arrow-right {
   right: 20px;
 }
 

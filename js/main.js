@@ -3,8 +3,10 @@ import { Physics } from "./Physics.js";
 import { Tiles } from "./Tiles.js";
 import { createEventHandlers } from "./createEventHandlers.js";
 import { Milestones } from "./Milestones.js";
-import { loadModalBodies } from "./modals.js";
+import { loadModalBodies, loadModalTemplate, AppModal } from "./modals.js";
 
+await loadModalTemplate();
+customElements.define("app-modal", AppModal);
 await loadModalBodies();
 
 const numberOfTiles = 3;

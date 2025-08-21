@@ -87,7 +87,7 @@
 
     <!-- Navigation Arrows -->
     <button
-      class="nav-arrow mobile-nav-left"
+      class="nav-arrow nav-arrow-left"
       id="nav-left"
       aria-label="Navigate to Work/Projects"
     >
@@ -97,7 +97,7 @@
     </button>
 
     <button
-      class="nav-arrow mobile-nav-right"
+      class="nav-arrow nav-arrow-right"
       id="nav-right"
       aria-label="Navigate to Self/About"
     >
@@ -108,8 +108,11 @@
 
     <!-- Modals -->
     <app-modal id="help-modal" title="Navigation Guide">
-      <div slot="body" data-body-src="modals/help-body.html"></div>
-      <div slot="footer">
+      <div
+        class="modal-body-content"
+        data-body-src="modals/help-body.html"
+      ></div>
+      <div class="modal-footer">
         <p>
           <em>
             Let your inner compass guide you. You may feel lost, but it knows
@@ -120,8 +123,11 @@
     </app-modal>
 
     <app-modal id="profile-modal" title="Where Does it Flow From?">
-      <div slot="body" data-body-src="modals/profile-body.html"></div>
-      <div slot="footer" style="text-align: center">
+      <div
+        class="modal-body-content"
+        data-body-src="modals/profile-body.html"
+      ></div>
+      <div class="modal-footer" style="text-align: center">
         <a
           href="https://www.linkedin.com/in/peter-tunstall/"
           class="footer-link"
@@ -134,15 +140,19 @@
     </app-modal>
 
     <app-modal id="projects-modal" title="Where Has it Flowed?">
-      <div slot="body" data-body-src="modals/projects-body.html"></div>
-      <div slot="footer" class="modal-footer">
+      <div
+        class="modal-body-content"
+        data-body-src="modals/projects-body.html"
+      ></div>
+      <div class="modal-footer">
         <a
           href="https://github.com/pjtunstall"
           class="footer-link"
           target="_blank"
           rel="noopener noreferrer"
-          >GitHub</a
         >
+          GitHub
+        </a>
       </div>
     </app-modal>
 
