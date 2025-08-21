@@ -81,6 +81,7 @@ body {
   height: 6rem;
   filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
   cursor: pointer;
+  transition: transform 0.3s ease;
 }
 
 .compass-text {
@@ -90,26 +91,24 @@ body {
   text-anchor: middle;
 }
 
-@media (max-width: 640px) {
+.compass:hover {
+  transform: translateX(200px) scale(1.1);
+}
+
+@media (max-width: 768px) {
   .compass {
     transform: translateX(100px);
   }
-}
-
-@media (min-width: 641px) or (min-aspect-ratio: 3/4) {
-  .compass {
-    transition: transform 0.3s ease;
-  }
 
   .compass:hover {
-    transform: translateX(200px) scale(1.1);
+    transform: translateX(100px) scale(1.1);
   }
 }
 
-@media (max-width: 640px) and (max-aspect-ratio: 3/4) {
+@media (max-width: 768px) and (max-aspect-ratio: 3/4) {
   .compass {
-    width: 20vw;
-    height: 20vw;
+    width: min(25vw, 8rem);
+    height: min(25vw, 8rem);
   }
 
   .milestone {

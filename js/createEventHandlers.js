@@ -1,10 +1,5 @@
-export function createEventHandlers({
-  physics,
-  world,
-  helpModal,
-  leftModal,
-  rightModal,
-}) {
+export function createEventHandlers({ physics, world, modals }) {
+  const { helpModal, leftModal, rightModal } = modals;
   let isHelpModalOpen = false;
   let isLeftModalOpen = false;
   let isRightModalOpen = false;
