@@ -37,7 +37,8 @@
       content="https://pjtunstall.github.io/river-run/images/thumbnails/thumb_river.jpg"
     />
 
-    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="index.css" />
+    <link rel="stylesheet" href="app-modal.css" />
   </head>
 
   <body>
@@ -84,49 +85,7 @@
       </g>
     </svg>
 
-    <div class="modal" id="help-modal">
-      <div class="modal-content">
-        <button class="close-button">&times;</button>
-        <div class="modal-header">
-          <h2 class="modal-title">Navigation Guide</h2>
-        </div>
-        <div class="modal-body">
-          <div class="row">
-            <div>
-              <strong>⬆️</strong> <strong>Never:</strong> The future's all
-              yours.
-            </div>
-            <div class="arrow-word"><strong>ARROW</strong></div>
-          </div>
-          <div class="row">
-            <div><strong>➡️</strong> <strong>Eat:</strong> About me.</div>
-            <div class="arrow-word"><strong>KEYS</strong></div>
-          </div>
-          <div class="row">
-            <div>
-              <strong>⬇️</strong> <strong>Soggy:</strong> The past is another
-              country.
-            </div>
-            <div class="arrow-word"><strong>TO</strong></div>
-          </div>
-          <div class="row">
-            <div>
-              <strong>⬅️</strong> <strong>Wheat:</strong> Some of my projects.
-            </div>
-            <div class="arrow-word"><strong>TRAVEL</strong></div>
-          </div>
-          <hr />
-          <p>
-            <em
-              >Let your inner compass guide you. You may feel lost, but it knows
-              the way.</em
-            >
-          </p>
-        </div>
-      </div>
-    </div>
-
-    <!-- Mobile Navigation Arrows -->
+    <!-- Navigation Arrows -->
     <button
       class="nav-arrow mobile-nav-left"
       id="nav-left"
@@ -148,296 +107,44 @@
     </button>
 
     <!-- Modals -->
-    <div class="modal" id="profile-modal">
-      <div class="modal-content">
-        <button class="close-button">&times;</button>
-        <div class="modal-header">
-          <h2 class="modal-title">Where Does it Flow From?</h2>
-        </div>
-        <div class="modal-body">
-          <p>
-            It's been a zigzag path to coding. I've sailed schooners on the
-            Great Lakes and tended sheep in snowy Cumbria. I've studied maths
-            and Old Norse. I wrote a book. Is there a pattern here?
-          </p>
-          <p>
-            <em>
-              riverrun, past Eve and Adams, from swerve of shore to bend of bay
-            </em>
-          </p>
-          <p>
-            In 2022, I joined 01Founders, a peer-led, project-based
-            bootcamp-style course. It quickly became my absolute consuming
-            passion. I now have three years' experience of Go, two and a half of
-            JavaScript, and one of Rust.
-          </p>
-          <p>
-            <em>It's an easy, gentle-flowing river.</em>
-          </p>
-          <p>
-            I've built what I hope is a solid foundation in software development
-            through complex solo and group projects. The course is highly
-            collaborative. I've revelled in the camaraderie.
-          </p>
-          <p>
-            <em>Away, you rolling river.</em>
-          </p>
-
-          <p>
-            I'm drawn to coding because I find it hard to resist a good puzzle.
-            I love how there's always more to learn, whichever way you look,
-            however deep you go. Web development is especially fun because you
-            get to affect a user's experience directly, and the results are
-            accessible to anyone with an internet connnection.
-          </p>
-          <p>
-            <em>Away, we're bound away, across the wide Missouri.</em>
-          </p>
-          <p>
-            I'm now seeking my first professional role as a developer. I feel
-            very ready for the next challenge. I can offer curiosity,
-            reliability, and a strong work ethic. I'm looking for a supportive
-            team, some mentorship, and a chance to show what I can do.
-          </p>
-          <p>Don't let the whimsy fool you. I'm quite set on this.</p>
-          <hr />
-          <p style="text-align: center">
-            <a
-              href="https://www.linkedin.com/in/peter-tunstall/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="footer-link"
-              >LinkedIn</a
-            >.
-          </p>
-        </div>
+    <app-modal id="help-modal" title="Navigation Guide">
+      <div slot="body" data-body-src="modals/help-body.html"></div>
+      <div slot="footer">
+        <p>
+          <em>
+            Let your inner compass guide you. You may feel lost, but it knows
+            the way.
+          </em>
+        </p>
       </div>
-    </div>
+    </app-modal>
 
-    <div class="modal" id="projects-modal">
-      <div class="modal-content">
-        <button class="close-button">&times;</button>
-        <div class="modal-header">
-          <h2 class="modal-title">Where Has it Flowed?</h2>
-        </div>
-        <div class="modal-body">
-          <div class="projects-grid">
-            <a
-              href="https://almondala.netlify.app/"
-              class="project-card-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="project-card">
-                <div class="project-thumbnail">
-                  <img
-                    src="images/thumbnails/thumb_mandelbrot.jpg"
-                    alt="The Mandelbrot set."
-                  />
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">
-                    Almondala
-                    <span
-                      class="repo-link"
-                      title="View code on GitHub"
-                      data-repo="https://github.com/pjtunstall/almondala"
-                      >&lt;/&gt;</span
-                    >
-                  </h3>
-                  <p class="project-description">
-                    Dive into the infinite complexity of the Mandelbrot set.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag primary">Rust</span>
-                    <span class="tech-tag">TypeScript</span>
-                  </div>
-                  <span class="project-year">2025</span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="https://thanatarchia.netlify.app/"
-              class="project-card-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="project-card">
-                <div class="project-thumbnail">
-                  <img
-                    src="images/thumbnails/thumb_thanatarchia.jpg"
-                    alt="Screenshot of a medieval strategy game: a map of Europe and chronicle entries like a social-media chat."
-                  />
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">
-                    Thanatarchia
-                    <span
-                      class="repo-link"
-                      title="View code on GitHub"
-                      data-repo="https://github.com/pjtunstall/thanatarchia"
-                      >&lt;/&gt;</span
-                    >
-                  </h3>
-                  <p class="project-description">
-                    A strategy game set in the demise of the Roman empire.
-                  </p>
-
-                  <div class="project-tech">
-                    <span class="tech-tag primary">TypeScript</span>
-                    <span class="tech-tag">React</span>
-                  </div>
-                  <span class="project-year">2025</span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="https://ziggurats.netlify.app/"
-              class="project-card-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="project-card">
-                <div class="project-thumbnail">
-                  <img src="images/thumbnails/thumb_ziggurats.jpg" alt="…" />
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">
-                    Ziggurats
-                    <span
-                      class="repo-link"
-                      title="View code on GitHub"
-                      data-repo="https://github.com/pjtunstall/ziggurats"
-                      >&lt;/&gt;</span
-                    >
-                  </h3>
-                  <p class="project-description">
-                    An interactive animation. Try arrow keys, AWSD, and space.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag primary">JavaScript</span>
-                  </div>
-                  <span class="project-year">2024</span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="https://react-tarot.netlify.app/"
-              class="project-card-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="project-card">
-                <div class="project-thumbnail">
-                  <img
-                    src="images/thumbnails/thumb_fool.jpg"
-                    alt="The Tarot fool, as a little boy in a mid 20th-century children's book illustration, as a peeling poster on a brick wall, steps out boldly on his way, accompanied by his pet black lamb. All around, swarms a menagerie of sinister clowns and parots."
-                  />
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">
-                    React Tarot
-                    <span
-                      class="repo-link"
-                      title="View code on GitHub"
-                      data-repo="https://github.com/pjtunstall/react-tarot"
-                      >&lt;/&gt;</span
-                    >
-                  </h3>
-                  <p class="project-description">
-                    A carousel of AI-generated tarot cards. (As with other early
-                    projects, not yet adapted for mobile.)
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag primary">JavaScript</span>
-                    <span class="tech-tag">React</span>
-                  </div>
-                  <span class="project-year">2024</span>
-                </div>
-              </div>
-            </a>
-
-            <a
-              href="https://retro-raiders.netlify.app/"
-              class="project-card-link"
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              <div class="project-card">
-                <div class="project-thumbnail">
-                  <img
-                    src="images/thumbnails/thumb_retro.jpg"
-                    alt="A baby alien is made emperor of the space invaders in an arcane ceremony."
-                  />
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">
-                    Retro Raiders
-                    <span
-                      class="repo-link"
-                      title="View code on GitHub"
-                      data-repo="https://github.com/pjtunstall/retro-raiders"
-                      >&lt;/&gt;</span
-                    >
-                  </h3>
-                  <p class="project-description">
-                    My first JavaScript project: a space invaders with a story.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag primary">JavaScript</span>
-                  </div>
-                  <span class="project-year">2023</span>
-                </div>
-              </div>
-            </a>
-
-            <div class="project-card-link" id="river-run-link">
-              <div class="project-card">
-                <div class="project-thumbnail">
-                  <img
-                    src="images/thumbnails/thumb_river.jpg"
-                    alt="A river, symbolizing the JavaScript event loop runs endless on, vertically, cleaving the screen."
-                  />
-                </div>
-                <div class="project-content">
-                  <h3 class="project-title">
-                    River Run
-                    <span
-                      class="repo-link"
-                      title="View code on GitHub"
-                      data-repo="https://github.com/pjtunstall/river-run"
-                      >&lt;/&gt;</span
-                    >
-                  </h3>
-                  <p class="project-description">
-                    Introducing the Wheel of Fortune, or JavaScript event loop
-                    as it's popularly known. And also, me.
-                  </p>
-                  <div class="project-tech">
-                    <span class="tech-tag primary">JavaScript</span>
-                  </div>
-                  <span class="project-year">2025</span>
-                </div>
-              </div>
-            </div>
-          </div>
-          <div style="height: 2rem"></div>
-          <hr />
-          <div class="modal-footer">
-            <a
-              href="https://github.com/pjtunstall"
-              class="footer-link"
-              target="_blank"
-              rel="noopener noreferrer"
-              >GitHub</a
-            >
-          </div>
-        </div>
+    <app-modal id="profile-modal" title="Where Does it Flow From?">
+      <div slot="body" data-body-src="modals/profile-body.html"></div>
+      <div slot="footer" style="text-align: center">
+        <a
+          href="https://www.linkedin.com/in/peter-tunstall/"
+          class="footer-link"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          LinkedIn
+        </a>
       </div>
-    </div>
+    </app-modal>
+
+    <app-modal id="projects-modal" title="Where Has it Flowed?">
+      <div slot="body" data-body-src="modals/projects-body.html"></div>
+      <div slot="footer" class="modal-footer">
+        <a
+          href="https://github.com/pjtunstall"
+          class="footer-link"
+          target="_blank"
+          rel="noopener noreferrer"
+          >GitHub</a
+        >
+      </div>
+    </app-modal>
 
     <script src="js/main.js" type="module"></script>
   </body>

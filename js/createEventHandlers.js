@@ -14,43 +14,41 @@ export function createEventHandlers({
   let touchStartY = null;
   let touchLastY = null;
   let touchStartTime = null;
-  let velocity = 0;
-  let momentumId = null;
 
   const openHelpModal = () => {
-    helpModal.classList.add("show");
+    helpModal.show();
     isHelpModalOpen = true;
     physics.setAcceleration(0);
   };
 
   const openLeftModal = () => {
-    leftModal.classList.add("show");
+    leftModal.show();
     isLeftModalOpen = true;
     leftArrowHeld = true;
     physics.setAcceleration(0);
   };
 
   const openRightModal = () => {
-    rightModal.classList.add("show");
+    rightModal.show();
     isRightModalOpen = true;
     rightArrowHeld = true;
     physics.setAcceleration(0);
   };
 
   const closeModals = () => {
-    helpModal.classList.remove("show");
-    leftModal.classList.remove("show");
-    rightModal.classList.remove("show");
+    [helpModal, leftModal, rightModal].forEach((modal, i) => {
+      modal.hide();
+    });
     isHelpModalOpen = false;
     isLeftModalOpen = false;
     isRightModalOpen = false;
   };
 
   return {
-    handleClickToClose(e) {
-      e.preventDefault();
-      e.stopPropagation();
-      closeModals();
+    handleUpdateCloseStateOfModal(modalId) {
+      if (modalId === "help-modal") isHelpModalOpen = false;
+      else if (modalId === "projects-modal") isLeftModalOpen = false;
+      else if (modalId === "profile-modal") isRightModalOpen = false;
     },
 
     handleRiverRunLinkClick(e) {
