@@ -19,6 +19,7 @@ const compass = document.querySelector(".compass");
 
 const handlers = createEventHandlers({
   physics,
+  world,
   helpModal,
   leftModal,
   rightModal,

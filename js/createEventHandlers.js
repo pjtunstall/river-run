@@ -1,5 +1,6 @@
 export function createEventHandlers({
   physics,
+  world,
   helpModal,
   leftModal,
   rightModal,
@@ -121,10 +122,9 @@ export function createEventHandlers({
 
     handleTouchStart(e) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
-      if (momentumId) {
-        cancelAnimationFrame(momentumId);
-        momentumId = null;
-      }
+      world.isDragging = true;
+      physics.velocity = 0;
+      physics.acceleration = 0;
       touchStartY = e.touches[0].clientY;
       touchLastY = touchStartY;
       touchStartTime = Date.now();
@@ -135,30 +135,18 @@ export function createEventHandlers({
       if (touchLastY === null) return;
       const currentY = e.touches[0].clientY;
       const delta = currentY - touchLastY;
-      physics.setAcceleration(delta * 0.1);
+      world.changePositionBy(delta);
       touchLastY = currentY;
     },
 
     handleTouchEnd(e) {
+      world.isDragging = false;
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       if (touchStartY === null) return;
       const touchEndY = e.changedTouches[0].clientY;
       const deltaY = touchEndY - touchStartY;
       const swipeTime = Date.now() - touchStartTime;
-      velocity = deltaY / Math.max(swipeTime, 1);
-      function momentumStep() {
-        if (Math.abs(velocity) < 0.01) {
-          physics.setAcceleration(0);
-          return;
-        }
-        const maxVelocity = 0.3;
-        const cappedVelocity =
-          Math.sign(velocity) * Math.min(Math.abs(velocity), maxVelocity);
-        physics.setAcceleration(cappedVelocity * 1);
-        velocity *= 0.95;
-        momentumId = requestAnimationFrame(momentumStep);
-      }
-      momentumStep();
+      physics.setVelocity((256 * deltaY) / Math.max(swipeTime, 1) / 16); // Pixels per frame.
       touchStartY = null;
       touchLastY = null;
     },

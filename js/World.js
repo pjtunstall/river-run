@@ -1,5 +1,6 @@
 export class World {
-  lastTimestamp;
+  isDragging = false;
+  lastTimestamp = 0;
   milestones;
   physics;
   tiles;
@@ -8,17 +9,23 @@ export class World {
     this.tiles = tiles;
     this.physics = physics;
     this.milestones = milestones;
-    this.lastTimestamp = 0;
   }
 
   update = (timestamp) => {
     requestAnimationFrame(this.update);
-
-    if (timestamp - this.lastTimestamp < 16) return;
+    if (this.isDragging || timestamp - this.lastTimestamp < 16) return;
     this.lastTimestamp = timestamp;
 
     const velocity = this.physics.updateVelocity();
     this.tiles.updatePosition(velocity);
     this.milestones.updatePosition(this.tiles);
+  };
+
+  // For scrolling while still touching screen.
+  changePositionBy = (delta) => {
+    requestAnimationFrame(() => {
+      this.tiles.updatePosition(delta);
+      this.milestones.updatePosition(this.tiles);
+    });
   };
 }
