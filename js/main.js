@@ -5,9 +5,9 @@ import { Milestones } from "./Milestones.js";
 import { createEventHandlers } from "./createEventHandlers.js";
 import { addEventListeners } from "./addEventListeners.js";
 import { loadModalTemplate, loadModalBodies } from "./modal-utils.js";
-import { ModalElement } from "./components/ModalElement.js";
-import { ModalLinkFooter } from "./components/ModalLinkFooter.js";
-import { ModalQuoteFooter } from "./components/ModalQuoteFooter.js";
+import { ModalElement } from "./components/ModalElement/ModalElement.js";
+import { ModalLinkFooter } from "./components/ModalElement/ModalLinkFooter.js";
+import { ModalQuoteFooter } from "./components/ModalElement/ModalQuoteFooter.js";
 import { CompassRose } from "./components/CompassRose/CompassRose.js";
 
 await loadModalTemplate();
