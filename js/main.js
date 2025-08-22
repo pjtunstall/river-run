@@ -8,7 +8,7 @@ import { loadModalTemplate, loadModalBodies } from "./modal-utils.js";
 import { ModalComponent } from "./components/ModalComponent.js";
 import { ModalLinkFooter } from "./components/ModalLinkFooter.js";
 import { ModalQuoteFooter } from "./components/ModalQuoteFooter.js";
-import { CompassRose } from "./components/CompassRose.js";
+import { CompassRose } from "./components/CompassRose/CompassRose.js";
 
 await loadModalTemplate();
 customElements.define("modal-component", ModalComponent);
