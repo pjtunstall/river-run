@@ -38,7 +38,7 @@
   transition: background-color 0.2s;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .modal-content {
     margin-top: 1rem; /* Adds space above on mobile. */
   }
@@ -268,7 +268,7 @@ hr {
   color: #d6c2a1;
 }
 
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .projects-grid {
     grid-template-columns: 1fr;
   }
@@ -311,11 +311,11 @@ hr {
 }
 
 .footer-link:hover {
-  color: #5a3e23;
+  color: #6b5537;
 }
 
 /* To put space under the GitHub link on mobile. */
-@media (max-width: 640px) {
+@media (max-width: 768px) {
   .modal-footer {
     padding-bottom: 1.5rem;
   }
@@ -332,6 +332,7 @@ hr {
   flex-grow: 1; /* Fill available vertical space. */
   overflow-y: auto; /* Enable vertical scroll. */
 }
+
 .modal-footer-placeholder {
   flex-shrink: 0; /* Keep footer at natural height. */
 }
