@@ -8,12 +8,15 @@ import { loadModalTemplate, loadModalBodies } from "./modal-utils.js";
 import { ModalComponent } from "./components/ModalComponent.js";
 import { ModalLinkFooter } from "./components/ModalLinkFooter.js";
 import { ModalQuoteFooter } from "./components/ModalQuoteFooter.js";
+import { CompassRose } from "./components/CompassRose.js";
 
 await loadModalTemplate();
 customElements.define("modal-component", ModalComponent);
 customElements.define("modal-quote-footer", ModalQuoteFooter);
 customElements.define("modal-link-footer", ModalLinkFooter);
 await loadModalBodies();
+
+customElements.define("compass-rose", CompassRose);
 
 const numberOfTiles = 3;
 const tiles = new Tiles(numberOfTiles);

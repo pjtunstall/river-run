@@ -71,46 +71,7 @@ body {
   }
 }
 
-.compass {
-  position: absolute;
-  z-index: 10;
-  left: 50%;
-  transform: translateX(200px);
-  top: 1rem;
-  width: 6rem;
-  height: 6rem;
-  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
-  cursor: pointer;
-  transition: transform 0.3s ease;
-}
-
-.compass-text {
-  font-size: 24px;
-  font-weight: bold;
-  fill: #3c2915;
-  text-anchor: middle;
-}
-
-.compass:hover {
-  transform: translateX(200px) scale(1.1);
-}
-
-@media (max-width: 768px) {
-  .compass {
-    transform: translateX(100px);
-  }
-
-  .compass:hover {
-    transform: translateX(100px) scale(1.1);
-  }
-}
-
 @media (max-width: 768px) and (max-aspect-ratio: 3/4) {
-  .compass {
-    width: min(25vw, 8rem);
-    height: min(25vw, 8rem);
-  }
-
   .milestone {
     width: min(8vw, 48px);
     height: min(8vw, 48px);
