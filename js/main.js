@@ -1,10 +1,10 @@
 import { World } from "./World.js";
 import { Physics } from "./Physics.js";
 import { Tiles } from "./Tiles.js";
-import { createEventHandlers } from "./createEventHandlers.js";
 import { Milestones } from "./Milestones.js";
-import { loadModalBodies, loadModalTemplate, AppModal } from "./AppModal.js";
+import { createEventHandlers } from "./createEventHandlers.js";
 import { addEventListeners } from "./addEventListeners.js";
+import { loadModalBodies, loadModalTemplate, AppModal } from "./AppModal.js";
 
 await loadModalTemplate();
 customElements.define("app-modal", AppModal);
