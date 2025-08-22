@@ -4,11 +4,13 @@ import { Tiles } from "./Tiles.js";
 import { Milestones } from "./Milestones.js";
 import { createEventHandlers } from "./createEventHandlers.js";
 import { addEventListeners } from "./addEventListeners.js";
-import { loadModalBodies, loadModalTemplate, AppModal } from "./AppModal.js";
-import { ModalQuoteFooter, ModalLinkFooter } from "./ModalFooters.js";
+import { loadModalTemplate, loadModalBodies } from "./modal-utils.js";
+import { ModalComponent } from "./components/ModalComponent.js";
+import { ModalLinkFooter } from "./components/ModalLinkFooter.js";
+import { ModalQuoteFooter } from "./components/ModalQuoteFooter.js";
 
 await loadModalTemplate();
-customElements.define("app-modal", AppModal);
+customElements.define("modal-component", ModalComponent);
 customElements.define("modal-quote-footer", ModalQuoteFooter);
 customElements.define("modal-link-footer", ModalLinkFooter);
 await loadModalBodies();

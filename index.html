@@ -38,7 +38,7 @@
     />
 
     <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="app-modal.css" />
+    <link rel="stylesheet" href="modal-component.css" />
   </head>
 
   <body>
@@ -107,38 +107,38 @@
     </button>
 
     <!-- Modals -->
-    <app-modal id="help-modal" title="Navigation Guide">
+    <modal-component id="help-modal" aria-label="Navigation Guide">
       <div
         class="modal-body-content"
-        data-body-src="modals/help-body.html"
+        data-body-src="modal-bodies/help-body.html"
       ></div>
       <modal-quote-footer>
         Let your inner compass guide you. You may feel lost, but it knows the
         way.
       </modal-quote-footer>
-    </app-modal>
+    </modal-component>
 
-    <app-modal id="profile-modal" title="Where Does it Flow From?">
+    <modal-component id="profile-modal" aria-label="Where Does it Flow From?">
       <div
         class="modal-body-content"
-        data-body-src="modals/profile-body.html"
+        data-body-src="modal-bodies/profile-body.html"
       ></div>
       <modal-link-footer
         href="https://www.linkedin.com/in/peter-tunstall/"
         text="LinkedIn"
       ></modal-link-footer>
-    </app-modal>
+    </modal-component>
 
-    <app-modal id="projects-modal" title="Where Has it Flowed?">
+    <modal-component id="projects-modal" aria-label="Where Has it Flowed?">
       <div
         class="modal-body-content"
-        data-body-src="modals/projects-body.html"
+        data-body-src="modal-bodies/projects-body.html"
       ></div>
       <modal-link-footer
         href="https://github.com/pjtunstall"
         text="GitHub"
       ></modal-link-footer>
-    </app-modal>
+    </modal-component>
 
     <script src="js/main.js" type="module"></script>
   </body>
