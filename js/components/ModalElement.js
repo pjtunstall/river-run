@@ -1,4 +1,4 @@
-export class ModalComponent extends HTMLElement {
+export class ModalElement extends HTMLElement {
   #modal;
 
   connectedCallback() {
@@ -34,12 +34,12 @@ export class ModalComponent extends HTMLElement {
   }
 
   show() {
-    const modalEl = this.querySelector(".modal");
-    if (modalEl) modalEl.classList.add("show");
+    const modall = this.querySelector(".modal");
+    if (modall) modall.classList.add("show");
   }
 
   hide() {
-    const modalEl = this.querySelector(".modal");
-    if (modalEl) modalEl.classList.remove("show");
+    const modall = this.querySelector(".modal");
+    if (modall) modall.classList.remove("show");
   }
 }
