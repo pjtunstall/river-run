@@ -35,7 +35,10 @@ export class AppModal extends HTMLElement {
       bodyPlaceholder.appendChild(bodyContent);
 
     const footerPlaceholder = this.querySelector(".modal-footer-placeholder");
-    const footer = this.querySelector(".modal-footer");
+    const footer =
+      this.querySelector(".modal-footer") ||
+      this.querySelector("modal-quote-footer") ||
+      this.querySelector("modal-link-footer");
     if (footerPlaceholder && footer) footerPlaceholder.appendChild(footer);
 
     const titleElem = this.querySelector(".modal-title");

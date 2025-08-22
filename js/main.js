@@ -5,9 +5,12 @@ import { Milestones } from "./Milestones.js";
 import { createEventHandlers } from "./createEventHandlers.js";
 import { addEventListeners } from "./addEventListeners.js";
 import { loadModalBodies, loadModalTemplate, AppModal } from "./AppModal.js";
+import { ModalQuoteFooter, ModalLinkFooter } from "./ModalFooters.js";
 
 await loadModalTemplate();
 customElements.define("app-modal", AppModal);
+customElements.define("modal-quote-footer", ModalQuoteFooter);
+customElements.define("modal-link-footer", ModalLinkFooter);
 await loadModalBodies();
 
 const numberOfTiles = 3;

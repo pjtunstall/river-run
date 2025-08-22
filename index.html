@@ -112,12 +112,10 @@
         class="modal-body-content"
         data-body-src="modals/help-body.html"
       ></div>
-      <p class="modal-footer">
-        <em>
-          Let your inner compass guide you. You may feel lost, but it knows the
-          way.
-        </em>
-      </p>
+      <modal-quote-footer>
+        Let your inner compass guide you. You may feel lost, but it knows the
+        way.
+      </modal-quote-footer>
     </app-modal>
 
     <app-modal id="profile-modal" title="Where Does it Flow From?">
@@ -125,16 +123,10 @@
         class="modal-body-content"
         data-body-src="modals/profile-body.html"
       ></div>
-      <div class="modal-footer" style="text-align: center">
-        <a
-          href="https://www.linkedin.com/in/peter-tunstall/"
-          class="footer-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          LinkedIn
-        </a>
-      </div>
+      <modal-link-footer
+        href="https://www.linkedin.com/in/peter-tunstall/"
+        text="LinkedIn"
+      ></modal-link-footer>
     </app-modal>
 
     <app-modal id="projects-modal" title="Where Has it Flowed?">
@@ -142,16 +134,10 @@
         class="modal-body-content"
         data-body-src="modals/projects-body.html"
       ></div>
-      <div class="modal-footer" style="text-align: center">
-        <a
-          href="https://github.com/pjtunstall"
-          class="footer-link"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          GitHub
-        </a>
-      </div>
+      <modal-link-footer
+        href="https://github.com/pjtunstall"
+        text="GitHub"
+      ></modal-link-footer>
     </app-modal>
 
     <script src="js/main.js" type="module"></script>

@@ -306,8 +306,12 @@ hr {
   color: #6b5537;
 }
 
-.modal-footer {
-  padding-top: 1.5rem;
+modal-link-footer {
+  margin-top: 0.5rem;
+}
+
+modal-quote-footer > p {
+  padding-top: 1rem;
 }
 
 .modal-body-placeholder {
