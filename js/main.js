@@ -4,7 +4,10 @@ import { Tiles } from "./Tiles.js";
 import { Milestones } from "./Milestones.js";
 import { createEventHandlers } from "./createEventHandlers.js";
 import { addEventListeners } from "./addEventListeners.js";
-import { loadModalTemplate, loadModalBodies } from "./modal-utils.js";
+import {
+  loadModalTemplate,
+  loadModalBodies,
+} from "./components/ModalElement/modal-utils.js";
 import { ModalElement } from "./components/ModalElement/ModalElement.js";
 import { ModalLinkFooter } from "./components/ModalElement/ModalLinkFooter.js";
 import { ModalQuoteFooter } from "./components/ModalElement/ModalQuoteFooter.js";
