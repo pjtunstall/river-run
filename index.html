@@ -38,7 +38,10 @@
     />
 
     <link rel="stylesheet" href="index.css" />
-    <link rel="stylesheet" href="modal-element.css" />
+    <link
+      rel="stylesheet"
+      href="js/components/ModalElement/modal-element.css"
+    />
   </head>
 
   <body>
@@ -47,18 +50,6 @@
 
     <!-- Click on this opens help modal. -->
     <compass-rose id="compass"></compass-rose>
-
-    <!-- Navigation Arrows: left and right. -->
-    <button class="nav-arrow nav-arrow-left" id="nav-left">
-      <svg viewBox="0 0 24 24">
-        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
-      </svg>
-    </button>
-    <button class="nav-arrow nav-arrow-right" id="nav-right">
-      <svg viewBox="0 0 24 24">
-        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
-      </svg>
-    </button>
 
     <!-- help-modal -->
     <modal-element id="help-modal" modal-title="Navigation Guide" role="">
@@ -72,17 +63,17 @@
       </modal-quote-footer>
     </modal-element>
 
-    <!-- profile-modal -->
-    <modal-element id="profile-modal" modal-title="Where Does it Flow From?">
-      <div
-        class="modal-body-content"
-        data-body-src="modal-bodies/profile-body.html"
-      ></div>
-      <modal-link-footer
-        href="https://www.linkedin.com/in/peter-tunstall/"
-        text="LinkedIn"
-      ></modal-link-footer>
-    </modal-element>
+    <!-- Navigation Arrows: left and right. Clicking on them opens the projects and profile modals respectively. -->
+    <button class="nav-arrow nav-arrow-left" id="nav-left">
+      <svg viewBox="0 0 24 24">
+        <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
+      </svg>
+    </button>
+    <button class="nav-arrow nav-arrow-right" id="nav-right">
+      <svg viewBox="0 0 24 24">
+        <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
+      </svg>
+    </button>
 
     <!-- projects-modal -->
     <modal-element id="projects-modal" modal-title="Where Has it Flowed?">
@@ -93,6 +84,18 @@
       <modal-link-footer
         href="https://github.com/pjtunstall"
         text="GitHub"
+      ></modal-link-footer>
+    </modal-element>
+
+    <!-- profile-modal -->
+    <modal-element id="profile-modal" modal-title="Where Does it Flow From?">
+      <div
+        class="modal-body-content"
+        data-body-src="modal-bodies/profile-body.html"
+      ></div>
+      <modal-link-footer
+        href="https://www.linkedin.com/in/peter-tunstall/"
+        text="LinkedIn"
       ></modal-link-footer>
     </modal-element>
 
