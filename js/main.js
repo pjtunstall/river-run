@@ -3,7 +3,7 @@ import { Physics } from "./Physics.js";
 import { Tiles } from "./Tiles.js";
 import { createEventHandlers } from "./createEventHandlers.js";
 import { Milestones } from "./Milestones.js";
-import { loadModalBodies, loadModalTemplate, AppModal } from "./modals.js";
+import { loadModalBodies, loadModalTemplate, AppModal } from "./AppModal.js";
 import { addEventListeners } from "./addEventListeners.js";
 
 await loadModalTemplate();
@@ -26,11 +26,16 @@ const modals = {
   rightModal,
 };
 
+const leftArrow = document.getElementById("nav-left");
+const rightArrow = document.getElementById("nav-right");
+const arrows = [leftArrow, rightArrow];
+
 const handlers = createEventHandlers({
   physics,
   world,
   modals,
+  arrows,
 });
-addEventListeners(handlers, milestones, modals);
+addEventListeners(handlers, milestones, modals, arrows);
 
 requestAnimationFrame(world.update);

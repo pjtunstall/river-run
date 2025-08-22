@@ -40,7 +40,7 @@
 
 @media (max-width: 768px) {
   .modal-content {
-    margin-top: 1rem; /* Adds space above on mobile. */
+    margin-top: 1rem; /* Add space above on mobile. */
   }
 
   .close-button {
@@ -335,4 +335,16 @@ hr {
 
 .modal-footer-placeholder {
   flex-shrink: 0; /* Keep footer at natural height. */
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+.arrow-word {
+  text-align: right;
+  white-space: nowrap;
 }

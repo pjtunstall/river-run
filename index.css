@@ -165,20 +165,12 @@ body {
   right: 20px;
 }
 
-/* Hide arrows when modals are open. */
-.modal.show ~ .nav-arrow {
+.nav-arrow.hide {
   opacity: 0;
   pointer-events: none;
 }
 
-.row {
-  display: grid;
-  grid-template-columns: 1fr auto;
-  gap: 1rem;
-  margin-bottom: 0.5rem;
-}
-
-.arrow-word {
-  text-align: right;
-  white-space: nowrap;
+.nav-arrow.show {
+  opacity: 1;
+  pointer-events: auto;
 }

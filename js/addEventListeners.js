@@ -1,8 +1,7 @@
-export function addEventListeners(handlers, milestones, modals) {
+export function addEventListeners(handlers, milestones, modals, arrows) {
   const { helpModal, leftModal, rightModal } = modals;
+  const [leftArrow, rightArrow] = arrows;
   const compass = document.querySelector(".compass");
-  const leftArrow = document.getElementById("nav-left");
-  const rightArrow = document.getElementById("nav-right");
 
   window.addEventListener("resize", handlers.handleResize);
   window.addEventListener("click", handlers.handleClick);
