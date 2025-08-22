@@ -120,14 +120,6 @@ hr {
   background: linear-gradient(to right, transparent, #3c2915, transparent);
 }
 
-#help-modal .modal-body p + hr {
-  margin-top: 2.5rem;
-}
-
-#profile-modal .modal-body p + hr {
-  margin-top: 2.5rem;
-}
-
 .close-button:hover {
   background-color: #f0f0f0;
   color: #333;
@@ -314,27 +306,16 @@ hr {
   color: #6b5537;
 }
 
-/* To put space under the GitHub link on mobile. */
-@media (max-width: 768px) {
-  .modal-footer {
-    padding-bottom: 1.5rem;
-  }
-}
-
 /* Only for projects-modal. */
 .modal-footer {
   text-align: center;
-  padding-top: 1rem;
+  padding-top: 1.5rem;
 }
 
 /* Necessary to make modals work as templates. */
 .modal-body-placeholder {
   flex-grow: 1; /* Fill available vertical space. */
   overflow-y: auto; /* Enable vertical scroll. */
-}
-
-.modal-footer-placeholder {
-  flex-shrink: 0; /* Keep footer at natural height. */
 }
 
 .row {
