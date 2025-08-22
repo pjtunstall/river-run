@@ -42,11 +42,13 @@
   </head>
 
   <body>
+    <!-- The milestones (markers on the map indicating stages in the JS event loop) will live in here. -->
     <div id="world"></div>
-    <!-- Compass Rose -->
+
+    <!-- Click on this opens help modal. -->
     <compass-rose id="compass"></compass-rose>
 
-    <!-- Navigation Arrows: left and right -->
+    <!-- Navigation Arrows: left and right. -->
     <button class="nav-arrow nav-arrow-left" id="nav-left">
       <svg viewBox="0 0 24 24">
         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
@@ -58,7 +60,6 @@
       </svg>
     </button>
 
-    <!-- Modals -->
     <!-- help-modal -->
     <modal-component id="help-modal" modal-title="Navigation Guide" role="">
       <div
