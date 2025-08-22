@@ -12,8 +12,7 @@ export class CompassRose extends HTMLElement {
     link.setAttribute("rel", "stylesheet");
     link.setAttribute("href", cssPath);
 
-    const [svgResponse] = await Promise.all([fetch(svgPath)]);
-
+    const svgResponse = await fetch(svgPath);
     const svgContent = await svgResponse.text();
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
