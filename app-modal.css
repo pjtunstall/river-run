@@ -306,9 +306,7 @@ hr {
   color: #6b5537;
 }
 
-/* Only for projects-modal. */
 .modal-footer {
-  text-align: center;
   padding-top: 1.5rem;
 }
 
