@@ -9,6 +9,11 @@ import { ModalElement } from "./components/ModalElement/ModalElement.js";
 import { ModalLinkFooter } from "./components/ModalElement/ModalLinkFooter.js";
 import { ModalQuoteFooter } from "./components/ModalElement/ModalQuoteFooter.js";
 import { CompassRose } from "./components/CompassRose/CompassRose.js";
+import { ProjectCard } from "./components/ModalElement/ProjectCard/ProjectCard.js";
+import { loadProjectTemplate } from "./components/ModalElement/ProjectCard/card-utils.js";
+
+await loadProjectTemplate();
+customElements.define("project-card", ProjectCard);
 
 await loadModalTemplate();
 customElements.define("modal-element", ModalElement);

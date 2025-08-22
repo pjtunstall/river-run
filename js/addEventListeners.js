@@ -38,10 +38,18 @@ export function addEventListeners(handlers, milestones, modals, arrows) {
     handlers.handleUpdateCloseStateOfModal(e.detail);
   });
 
-  leftModal.addEventListener("click", (e) => {
-    const card = e.target.closest("#river-run-link");
-    if (!card) return;
-    if (e.target.closest(".repo-link")) return;
+  document.addEventListener("card-click", (e) => {
+    const { href } = e.detail;
+    if (href) {
+      window.open(href, "_blank");
+    }
+  });
+
+  document.addEventListener("river-run-click", (e) => {
     handlers.handleRiverRunLinkClick(e);
+  });
+
+  document.addEventListener("repo-click", (e) => {
+    window.open(e.detail.repo, "_blank");
   });
 }

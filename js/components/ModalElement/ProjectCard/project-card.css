@@ -1,0 +1,124 @@
+.project-card-link,
+.project-card-link * {
+  text-decoration: none !important;
+  color: inherit;
+  cursor: pointer;
+}
+
+.project-card-link:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(60, 41, 21, 0.3);
+  border-color: #3c2915;
+}
+
+.project-card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  background: #c9b896;
+  border-radius: 8px;
+  overflow: hidden;
+  filter: drop-shadow(3px 3px 6px rgba(0, 0, 0, 0.8));
+  transition: all 0.3s ease;
+  border: 2px solid #8b7355;
+}
+
+.project-card:hover {
+  transform: scale(1.02);
+  box-shadow: 0 6px 20px rgba(60, 41, 21, 0.3);
+  border-color: #3c2915;
+}
+
+.project-thumbnail {
+  width: 100%;
+  height: 240px;
+  background: #8b7355;
+  position: relative;
+  overflow: hidden;
+  border-bottom: 2px solid #3c2915;
+}
+
+.project-thumbnail img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  background: #8b7355;
+}
+
+.project-content {
+  position: relative;
+  padding: 1.2rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+}
+
+.project-title {
+  color: #3c2915;
+  font-weight: bold;
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-decoration: none;
+  display: flex;
+  align-items: baseline;
+  gap: 0.35rem;
+}
+
+.project-description {
+  color: #333;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  margin-bottom: 1rem;
+  flex-grow: 1;
+}
+
+.project-tech {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.tech-tag {
+  background: #8b7355;
+  color: #d6c2a1;
+  padding: 0.3rem 0.7rem;
+  border-radius: 4px;
+  font-size: 0.8rem;
+  font-weight: bold;
+  border: 1px solid #3c2915;
+}
+
+.tech-tag.primary {
+  background: #3c2915;
+  color: #d6c2a1;
+}
+
+@media (max-width: 768px) {
+  .project-content {
+    padding: 1rem;
+  }
+}
+
+.project-year {
+  position: absolute;
+  bottom: 0.8rem;
+  right: 0.8rem;
+  font-size: 0.8rem;
+  color: #3c2915;
+  font-weight: bold;
+  opacity: 0.7;
+}
+
+.repo-link {
+  font-size: 0.9em;
+  margin-left: 4px;
+  cursor: pointer;
+  color: #6b5537;
+  text-decoration: none;
+  user-select: none;
+}
+
+.repo-link:hover {
+  color: #3c2915;
+  text-decoration: underline !important;
+}
