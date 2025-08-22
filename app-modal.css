@@ -310,10 +310,9 @@ hr {
   padding-top: 1.5rem;
 }
 
-/* Necessary to make modals work as templates. */
 .modal-body-placeholder {
-  flex-grow: 1; /* Fill available vertical space. */
-  overflow-y: auto; /* Enable vertical scroll. */
+  flex-grow: 1;
+  overflow-y: auto;
 }
 
 .row {
