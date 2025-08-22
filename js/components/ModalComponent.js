@@ -20,7 +20,7 @@ export class ModalComponent extends HTMLElement {
 
     const titleElem = this.querySelector(".modal-title");
     if (titleElem)
-      titleElem.textContent = this.getAttribute("aria-label") || "";
+      titleElem.textContent = this.getAttribute("modal-title") || "";
 
     const closeBtn = this.querySelector(".close-button");
     if (closeBtn) {

@@ -86,28 +86,20 @@
     </svg>
 
     <!-- Navigation Arrows -->
-    <button
-      class="nav-arrow nav-arrow-left"
-      id="nav-left"
-      aria-label="Navigate to Work/Projects"
-    >
+    <button class="nav-arrow nav-arrow-left" id="nav-left">
       <svg viewBox="0 0 24 24">
         <path d="M15.41 7.41L14 6l-6 6 6 6 1.41-1.41L10.83 12z" />
       </svg>
     </button>
 
-    <button
-      class="nav-arrow nav-arrow-right"
-      id="nav-right"
-      aria-label="Navigate to Self/About"
-    >
+    <button class="nav-arrow nav-arrow-right" id="nav-right">
       <svg viewBox="0 0 24 24">
         <path d="M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z" />
       </svg>
     </button>
 
     <!-- Modals -->
-    <modal-component id="help-modal" aria-label="Navigation Guide">
+    <modal-component id="help-modal" modal-title="Navigation Guide" role="">
       <div
         class="modal-body-content"
         data-body-src="modal-bodies/help-body.html"
@@ -118,7 +110,7 @@
       </modal-quote-footer>
     </modal-component>
 
-    <modal-component id="profile-modal" aria-label="Where Does it Flow From?">
+    <modal-component id="profile-modal" modal-title="Where Does it Flow From?">
       <div
         class="modal-body-content"
         data-body-src="modal-bodies/profile-body.html"
@@ -129,7 +121,7 @@
       ></modal-link-footer>
     </modal-component>
 
-    <modal-component id="projects-modal" aria-label="Where Has it Flowed?">
+    <modal-component id="projects-modal" modal-title="Where Has it Flowed?">
       <div
         class="modal-body-content"
         data-body-src="modal-bodies/projects-body.html"
