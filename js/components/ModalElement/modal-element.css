@@ -134,7 +134,7 @@ hr {
   scrollbar-color: #8b7355 #c9b896;
 }
 
-#projects-modal .modal-content {
+:host(#projects-modal) .modal-content {
   max-width: 900px;
   width: 95%;
 }
@@ -176,7 +176,7 @@ modal-quote-footer > p {
   white-space: nowrap;
 }
 
-.projects-grid {
+.modal-body-container .projects-grid {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
   gap: 2rem;
@@ -186,7 +186,7 @@ modal-quote-footer > p {
 }
 
 @media (max-width: 768px) {
-  .projects-grid {
+  .modal-body-container .projects-grid {
     grid-template-columns: 1fr;
   }
 }
