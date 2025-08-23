@@ -166,7 +166,7 @@ modal-quote-footer > p {
   padding-top: 1rem;
 }
 
-.modal-body-placeholder {
+.modal-body-container {
   flex-grow: 1;
   overflow-y: auto;
 }
