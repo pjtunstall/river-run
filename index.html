@@ -51,18 +51,6 @@
     <!-- Click on this opens help modal. -->
     <compass-rose id="compass"></compass-rose>
 
-    <!-- help-modal -->
-    <modal-element id="help-modal" modal-title="Navigation Guide" role="">
-      <div
-        class="modal-body-content"
-        data-body-src="js/components/ModalElement/modal-bodies/help-body.html"
-      ></div>
-      <modal-quote-footer>
-        Let your inner compass guide you. You may feel lost, but it knows the
-        way.
-      </modal-quote-footer>
-    </modal-element>
-
     <!-- Navigation Arrows: left and right. Clicking on them opens the projects and profile modals respectively. -->
     <button class="nav-arrow nav-arrow-left" id="nav-left">
       <svg viewBox="0 0 24 24">
@@ -75,15 +63,30 @@
       </svg>
     </button>
 
+    <!-- help-modal -->
+    <modal-element id="help-modal" modal-title="Navigation Guide" role="">
+      <div
+        class="modal-body-content"
+        data-body-src="js/components/ModalElement/modal-bodies/help-body.html"
+        slot="body"
+      ></div>
+      <modal-quote-footer slot="footer">
+        Let your inner compass guide you. You may feel lost, but it knows the
+        way.
+      </modal-quote-footer>
+    </modal-element>
+
     <!-- projects-modal -->
     <modal-element id="projects-modal" modal-title="Where Has it Flowed?">
       <div
         class="modal-body-content"
         data-body-src="js/components/ModalElement/modal-bodies/projects-body.html"
+        slot="body"
       ></div>
       <modal-link-footer
         href="https://github.com/pjtunstall"
         text="GitHub"
+        slot="footer"
       ></modal-link-footer>
     </modal-element>
 
@@ -92,10 +95,12 @@
       <div
         class="modal-body-content"
         data-body-src="js/components/ModalElement/modal-bodies/profile-body.html"
+        slot="body"
       ></div>
       <modal-link-footer
         href="https://www.linkedin.com/in/peter-tunstall/"
         text="LinkedIn"
+        slot="footer"
       ></modal-link-footer>
     </modal-element>
 

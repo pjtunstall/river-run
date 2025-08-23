@@ -5,8 +5,13 @@
       <div class="modal-header">
         <h2 class="modal-title"></h2>
       </div>
-      <div class="modal-body-placeholder"></div>
-      <div class="modal-footer-placeholder"><hr /></div>
+      <div class="modal-body-placeholder">
+        <slot name="body"></slot>
+      </div>
+      <div class="modal-footer-placeholder">
+        <hr />
+        <slot name="footer"></slot>
+      </div>
     </div>
   </div>
 </template>

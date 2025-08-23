@@ -1,28 +1,28 @@
 export class ModalElement extends HTMLElement {
-  #modal;
+  #shadow;
+
+  constructor() {
+    super();
+    this.#shadow = this.attachShadow({ mode: "open" });
+  }
 
   connectedCallback() {
     const template = document.getElementById("modal-template");
-    this.#modal = template.content.cloneNode(true);
-    this.appendChild(this.#modal);
+    if (!template) return;
 
-    const bodyPlaceholder = this.querySelector(".modal-body-placeholder");
-    const bodyContent = this.querySelector(".modal-body-content");
-    if (bodyPlaceholder && bodyContent)
-      bodyPlaceholder.appendChild(bodyContent);
+    this.#shadow.appendChild(template.content.cloneNode(true));
 
-    const footerPlaceholder = this.querySelector(".modal-footer-placeholder");
-    const footer =
-      this.querySelector(".modal-footer") ||
-      this.querySelector("modal-quote-footer") ||
-      this.querySelector("modal-link-footer");
-    if (footerPlaceholder && footer) footerPlaceholder.appendChild(footer);
+    const link = document.createElement("link");
+    link.rel = "stylesheet";
+    link.href = "js/components/ModalElement/modal-element.css";
+    this.#shadow.prepend(link);
 
-    const titleElem = this.querySelector(".modal-title");
-    if (titleElem)
+    const titleElem = this.#shadow.querySelector(".modal-title");
+    if (titleElem) {
       titleElem.textContent = this.getAttribute("modal-title") || "";
+    }
 
-    const closeBtn = this.querySelector(".close-button");
+    const closeBtn = this.#shadow.querySelector(".close-button");
     if (closeBtn) {
       closeBtn.addEventListener("click", () => {
         this.hide();
@@ -34,12 +34,12 @@ export class ModalElement extends HTMLElement {
   }
 
   show() {
-    const modall = this.querySelector(".modal");
+    const modall = this.#shadow.querySelector(".modal");
     if (modall) modall.classList.add("show");
   }
 
   hide() {
-    const modall = this.querySelector(".modal");
+    const modall = this.#shadow.querySelector(".modal");
     if (modall) modall.classList.remove("show");
   }
 }
