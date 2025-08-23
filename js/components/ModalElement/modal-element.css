@@ -97,13 +97,6 @@
   flex-grow: 1;
 }
 
-.modal-body .project-hard-link:hover {
-  color: #5a3e23;
-  text-decoration: underline;
-  transform: scale(1.05);
-  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.3);
-}
-
 hr {
   border: none;
   height: 2px;
