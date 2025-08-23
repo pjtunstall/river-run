@@ -15,6 +15,7 @@ import { CompassRose } from "./components/CompassRose/CompassRose.js";
 import { ProjectCard } from "./components/ModalElement/ProjectCard/ProjectCard.js";
 import { loadProjectTemplate } from "./components/ModalElement/ProjectCard/card-utils.js";
 import { NavArrow } from "./components/NavArrow/NavArrow.js";
+import { MilestoneElement } from "./components/MilestoneElement/MilestoneElement.js";
 
 await loadProjectTemplate();
 customElements.define("project-card", ProjectCard);
@@ -27,6 +28,7 @@ await loadModalBodies();
 
 customElements.define("compass-rose", CompassRose);
 customElements.define("nav-arrow", NavArrow);
+customElements.define("milestone-element", MilestoneElement);
 
 const numberOfTiles = 3;
 const tiles = new Tiles(numberOfTiles);

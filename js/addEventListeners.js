@@ -1,6 +1,5 @@
-export function addEventListeners(handlers, milestones, modals, arrows) {
+export function addEventListeners(handlers, milestones, modals) {
   const { helpModal, leftModal, rightModal } = modals;
-  const [leftArrow, rightArrow] = arrows;
   const compass = document.getElementById("compass");
 
   window.addEventListener("resize", handlers.handleResize);
@@ -21,9 +20,6 @@ export function addEventListeners(handlers, milestones, modals, arrows) {
   });
   document.querySelectorAll(".close-button").forEach((button) => {
     button.addEventListener("click", handlers.handleClickToClose);
-  });
-  milestones.forEach((milestone) => {
-    milestone.element.addEventListener("click", handlers.handleMilestoneClick);
   });
   compass.addEventListener("compass-click", handlers.handleCompassClick);
   helpModal.addEventListener("modal-closed", (e) => {

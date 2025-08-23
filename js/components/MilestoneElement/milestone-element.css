@@ -1,0 +1,45 @@
+:host {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border: 2px solid #000;
+  background: var(--milestone-color, #e53935);
+  border-radius: 50%;
+  cursor: pointer;
+  transform: translateY(0);
+}
+
+:host .label {
+  position: absolute;
+  left: 50%;
+  top: -8px;
+  transform: translate(-50%, -100%);
+  padding: 4px 6px;
+  border-radius: 6px;
+  background: rgba(0, 0, 0, 0.8);
+  color: #fff;
+  font: 12px/1.2 system-ui, sans-serif;
+  white-space: nowrap;
+  display: none;
+}
+
+:host(:hover) .label {
+  display: block;
+}
+
+:host .label.visible {
+  display: block !important;
+}
+
+@media (max-width: 768px) and (max-aspect-ratio: 3/4) {
+  :host {
+    width: min(8vw, 48px);
+    height: min(8vw, 48px);
+    border-width: 2px;
+  }
+
+  :host .label {
+    font-size: min(4vw, 16px);
+    padding: 0.5rem 0.7rem;
+  }
+}
