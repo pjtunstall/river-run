@@ -34,12 +34,12 @@ export class ModalElement extends HTMLElement {
   }
 
   show() {
-    const modall = this.#shadow.querySelector(".modal");
-    if (modall) modall.classList.add("show");
+    const modal = this.#shadow.querySelector(".modal");
+    if (modal) modal.classList.add("show");
   }
 
   hide() {
-    const modall = this.#shadow.querySelector(".modal");
-    if (modall) modall.classList.remove("show");
+    const modal = this.#shadow.querySelector(".modal");
+    if (modal) modal.classList.remove("show");
   }
 }
