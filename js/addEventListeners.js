@@ -26,8 +26,6 @@ export function addEventListeners(handlers, milestones, modals, arrows) {
     milestone.element.addEventListener("click", handlers.handleMilestoneClick);
   });
   compass.addEventListener("compass-click", handlers.handleCompassClick);
-  leftArrow.addEventListener("click", handlers.handleNavLeft);
-  rightArrow.addEventListener("click", handlers.handleNavRight);
   helpModal.addEventListener("modal-closed", (e) => {
     handlers.handleUpdateCloseStateOfModal(e.detail);
   });
@@ -51,5 +49,16 @@ export function addEventListeners(handlers, milestones, modals, arrows) {
 
   document.addEventListener("repo-click", (e) => {
     window.open(e.detail.repo, "_blank");
+  });
+
+  document.addEventListener("nav-arrow-click", (e) => {
+    switch (e.detail.direction) {
+      case "left":
+        handlers.handleNavLeft(e);
+        break;
+      case "right":
+        handlers.handleNavRight(e);
+        break;
+    }
   });
 }

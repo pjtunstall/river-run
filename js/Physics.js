@@ -20,7 +20,6 @@ export class Physics {
 
   // Applied at end of swipes on touch screens.
   setVelocity(value) {
-    console.log(value);
     if (value === 0) {
       this.velocity = 0;
       return;
@@ -30,6 +29,5 @@ export class Physics {
     } else {
       this.velocity = Math.max(value, -this.maxSpeed);
     }
-    console.log(this.velocity);
   }
 }

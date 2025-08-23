@@ -15,8 +15,8 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
     isHelpModalOpen = true;
     physics.setAcceleration(0);
     for (const arrow of arrows) {
-      arrow.classList.remove("show");
-      arrow.classList.add("hide");
+      arrow.show();
+      arrow.hide();
     }
   };
 
@@ -26,8 +26,8 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
     leftArrowHeld = true;
     physics.setAcceleration(0);
     for (const arrow of arrows) {
-      arrow.classList.remove("show");
-      arrow.classList.add("hide");
+      arrow.show();
+      arrow.hide();
     }
   };
 
@@ -37,8 +37,8 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
     rightArrowHeld = true;
     physics.setAcceleration(0);
     for (const arrow of arrows) {
-      arrow.classList.remove("show");
-      arrow.classList.add("hide");
+      arrow.show();
+      arrow.hide();
     }
   };
 
@@ -50,8 +50,8 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
     isLeftModalOpen = false;
     isRightModalOpen = false;
     for (const arrow of arrows) {
-      arrow.classList.remove("hide");
-      arrow.classList.add("show");
+      arrow.hide();
+      arrow.show();
     }
   };
 
@@ -61,8 +61,8 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
       else if (modalId === "projects-modal") isLeftModalOpen = false;
       else if (modalId === "profile-modal") isRightModalOpen = false;
       for (const arrow of arrows) {
-        arrow.classList.remove("hide");
-        arrow.classList.add("show");
+        arrow.hide();
+        arrow.show();
       }
     },
 

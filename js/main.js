@@ -14,6 +14,7 @@ import { ModalQuoteFooter } from "./components/ModalElement/ModalQuoteFooter.js"
 import { CompassRose } from "./components/CompassRose/CompassRose.js";
 import { ProjectCard } from "./components/ModalElement/ProjectCard/ProjectCard.js";
 import { loadProjectTemplate } from "./components/ModalElement/ProjectCard/card-utils.js";
+import { NavArrow } from "./components/NavArrow/NavArrow.js";
 
 await loadProjectTemplate();
 customElements.define("project-card", ProjectCard);
@@ -25,6 +26,7 @@ customElements.define("modal-link-footer", ModalLinkFooter);
 await loadModalBodies();
 
 customElements.define("compass-rose", CompassRose);
+customElements.define("nav-arrow", NavArrow);
 
 const numberOfTiles = 3;
 const tiles = new Tiles(numberOfTiles);
