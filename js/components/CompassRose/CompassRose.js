@@ -12,8 +12,18 @@ export class CompassRose extends HTMLElement {
     link.setAttribute("rel", "stylesheet");
     link.setAttribute("href", cssPath);
 
-    const svgResponse = await fetch(svgPath);
-    const svgContent = await svgResponse.text();
+    let svgContent = null;
+    try {
+      const svgResponse = await fetch(svgPath);
+      if (!svgResponse.ok) {
+        throw new Error(
+          `Failed to fetch SVG: ${svgResponse.status} ${svgResponse.statusText}`
+        );
+      }
+      svgContent = await svgResponse.text();
+    } catch (err) {
+      console.error("Error loading SVG:", err);
+    }
 
     const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
     svg.setAttribute("viewBox", "0 0 180 180");
