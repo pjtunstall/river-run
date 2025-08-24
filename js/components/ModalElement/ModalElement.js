@@ -9,17 +9,17 @@ export class ModalElement extends HTMLElement {
   connectedCallback() {
     const template = document.getElementById("modal-element");
     if (!template) return;
+    const html = template.content.cloneNode(true);
 
-    this.#shadow.appendChild(template.content.cloneNode(true));
+    const css = document.createElement("link");
+    css.rel = "stylesheet";
+    css.href = "js/components/ModalElement/modal-element.css";
 
-    const link = document.createElement("link");
-    link.rel = "stylesheet";
-    link.href = "js/components/ModalElement/modal-element.css";
-    this.#shadow.prepend(link);
+    this.#shadow.append(css, html);
 
-    const titleElem = this.#shadow.querySelector(".modal-title");
-    if (titleElem) {
-      titleElem.textContent = this.getAttribute("modal-title") || "";
+    const titleElement = this.#shadow.querySelector(".modal-title");
+    if (titleElement) {
+      titleElement.textContent = this.getAttribute("modal-title") || "";
     }
 
     const closeBtn = this.#shadow.querySelector(".close-button");
