@@ -1,6 +1,6 @@
 export async function loadProjectCardTemplate() {
   const response = await fetch(
-    "/js/components/ModalElement/ProjectCard/project-card-template.html"
+    "/js/components/ModalElement/ProjectsGrid/ProjectCard/project-card-template.html"
   );
   const htmlText = await response.text();
   const tempDiv = document.createElement("div");

@@ -14,8 +14,8 @@ import { ModalElement } from "./js/components/ModalElement/ModalElement.js";
 import { ModalLinkFooter } from "./js/components/ModalElement/ModalLinkFooter.js";
 import { ModalQuoteFooter } from "./js/components/ModalElement/ModalQuoteFooter.js";
 import { CompassRose } from "./js/components/CompassRose/CompassRose.js";
-import { ProjectCard } from "./js/components/ModalElement/ProjectCard/ProjectCard.js";
-import { loadProjectCardTemplate } from "./js/components/ModalElement/ProjectCard/project-card-utils.js";
+import { ProjectCard } from "./js/components/ModalElement/ProjectsGrid/ProjectCard/ProjectCard.js";
+import { loadProjectCardTemplate } from "./js/components/ModalElement/ProjectsGrid/ProjectCard/project-card-utils.js";
 import { NavArrow } from "./js/components/NavArrow/NavArrow.js";
 import { MilestoneElement } from "./js/components/MilestoneElement/MilestoneElement.js";
 
