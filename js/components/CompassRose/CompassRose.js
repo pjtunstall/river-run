@@ -8,9 +8,9 @@ export class CompassRose extends HTMLElement {
     const cssPath = "js/components/CompassRose/compass-rose.css";
     const svgPath = "js/components/CompassRose/compass-rose.svg";
 
-    const link = document.createElement("link");
-    link.setAttribute("rel", "stylesheet");
-    link.setAttribute("href", cssPath);
+    const css = document.createElement("link");
+    css.setAttribute("rel", "stylesheet");
+    css.setAttribute("href", cssPath);
 
     let svgContent = null;
     try {
@@ -41,6 +41,6 @@ export class CompassRose extends HTMLElement {
       );
     });
 
-    this.shadowRoot.append(link, svg);
+    this.shadowRoot.append(css, svg);
   }
 }
