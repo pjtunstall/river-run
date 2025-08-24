@@ -71,6 +71,7 @@ export class ProjectCard extends HTMLElement {
           new CustomEvent("repo-click", {
             detail: { repo: this.getAttribute("repo") },
             bubbles: true,
+            composed: true,
           })
         );
         return;
@@ -79,18 +80,9 @@ export class ProjectCard extends HTMLElement {
       if (this.id === "river-run-card") {
         e.preventDefault();
         this.dispatchEvent(
-          new CustomEvent("river-run-click", { bubbles: true })
+          new CustomEvent("river-run-click", { bubbles: true, composed: true })
         );
         return;
-      }
-
-      if (this.hasAttribute("href")) {
-        this.dispatchEvent(
-          new CustomEvent("card-click", {
-            detail: { href: this.getAttribute("href"), id: this.id },
-            bubbles: true,
-          })
-        );
       }
     });
   }

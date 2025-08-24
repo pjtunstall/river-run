@@ -1,4 +1,4 @@
-export class ProjectsBody extends HTMLElement {
+export class ProjectsGrid extends HTMLElement {
   #shadow;
 
   constructor() {
@@ -7,13 +7,13 @@ export class ProjectsBody extends HTMLElement {
   }
 
   connectedCallback() {
-    const template = document.getElementById("projects-body-template");
+    const template = document.getElementById("projects-grid-template");
     if (!template) return;
     const html = template.content.cloneNode(true);
 
     const css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "js/components/ModalElement/ProjectsBody/projects-body.css";
+    css.href = "js/components/ModalElement/ProjectsGrid/projects-grid.css";
 
     this.#shadow.append(css, html);
   }

@@ -8,8 +8,8 @@ import {
   loadModalElementTemplate,
   loadModalBodies,
 } from "./js/components/ModalElement/modal-element-utils.js";
-import { loadProjectsBodyTemplate } from "./js/components/ModalElement/ProjectsBody/projects-body-utils.js";
-import { ProjectsBody } from "./js/components/ModalElement/ProjectsBody/ProjectsBody.js";
+import { loadProjectsGridTemplate } from "./js/components/ModalElement/ProjectsGrid/projects-grid-utils.js";
+import { ProjectsGrid } from "./js/components/ModalElement/ProjectsGrid/ProjectsGrid.js";
 import { ModalElement } from "./js/components/ModalElement/ModalElement.js";
 import { ModalLinkFooter } from "./js/components/ModalElement/ModalLinkFooter.js";
 import { ModalQuoteFooter } from "./js/components/ModalElement/ModalQuoteFooter.js";
@@ -22,8 +22,8 @@ import { MilestoneElement } from "./js/components/MilestoneElement/MilestoneElem
 await loadProjectCardTemplate();
 customElements.define("project-card", ProjectCard);
 
-await loadProjectsBodyTemplate();
-customElements.define("projects-body", ProjectsBody);
+await loadProjectsGridTemplate();
+customElements.define("projects-grid", ProjectsGrid);
 
 await loadModalElementTemplate();
 customElements.define("modal-element", ModalElement);

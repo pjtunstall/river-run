@@ -32,13 +32,6 @@ export function addEventListeners(handlers, milestones, modals) {
     handlers.handleUpdateCloseStateOfModal(e.detail);
   });
 
-  document.addEventListener("card-click", (e) => {
-    const { href } = e.detail;
-    if (href) {
-      window.open(href, "_blank");
-    }
-  });
-
   document.addEventListener("river-run-click", (e) => {
     handlers.handleRiverRunLinkClick(e);
   });
