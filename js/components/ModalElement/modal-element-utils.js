@@ -1,5 +1,7 @@
-export async function loadModalTemplate() {
-  const res = await fetch("/js/components/ModalElement/modal-template.html");
+export async function loadModalElementTemplate() {
+  const res = await fetch(
+    "/js/components/ModalElement/modal-element-template.html"
+  );
   const text = await res.text();
   document.body.insertAdjacentHTML("beforeend", text);
 }

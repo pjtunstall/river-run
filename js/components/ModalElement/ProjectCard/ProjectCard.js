@@ -10,9 +10,9 @@ export class ProjectCard extends HTMLElement {
     link.href = new URL("project-card.css", import.meta.url).href;
     this.shadowRoot.appendChild(link);
 
-    const template = document.getElementById("project-template");
+    const template = document.getElementById("project-card-template");
     if (!template) {
-      console.error("Template #project-template not found");
+      console.error("Template #project-card-template not found");
       return;
     }
 

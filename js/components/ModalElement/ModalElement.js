@@ -7,7 +7,7 @@ export class ModalElement extends HTMLElement {
   }
 
   connectedCallback() {
-    const template = document.getElementById("modal-template");
+    const template = document.getElementById("modal-element-template");
     if (!template) return;
 
     this.#shadow.appendChild(template.content.cloneNode(true));
