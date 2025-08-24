@@ -1,0 +1,17 @@
+.modal-footer {
+  flex-shrink: 0;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+.footer-link {
+  color: #3c2915;
+  font-weight: bold;
+  font-size: 1.1rem;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-link:hover {
+  color: #6b5537;
+}

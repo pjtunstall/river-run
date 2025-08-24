@@ -9,6 +9,8 @@ import { loadProfileTextTemplate } from "./js/components/ModalElement/ProfileTex
 import { loadModalElementTemplate } from "./js/components/ModalElement/modal-element-utils.js";
 import { loadProjectCardTemplate } from "./js/components/ModalElement/ProjectsGrid/ProjectCard/project-card-utils.js";
 import { loadProjectsGridTemplate } from "./js/components/ModalElement/ProjectsGrid/projects-grid-utils.js";
+import { loadModalQuoteFooterTemplate } from "./js/components/ModalElement/ModalQuoteFooter/modal-quote-footer-utils.js";
+import { loadModalLinkFooterTemplate } from "./js/components/ModalElement/ModalLinkFooter/modal-link-footer-utils.js";
 
 import { ProjectCard } from "./js/components/ModalElement/ProjectsGrid/ProjectCard/ProjectCard.js";
 import { ProjectsGrid } from "./js/components/ModalElement/ProjectsGrid/ProjectsGrid.js";
@@ -16,8 +18,8 @@ import { loadDirectionListTemplate } from "./js/components/ModalElement/Directio
 import { DirectionList } from "./js/components/ModalElement/DirectionList/DirectionList.js";
 import { ProfileText } from "./js/components/ModalElement/ProfileText/ProfileText.js";
 import { ModalElement } from "./js/components/ModalElement/ModalElement.js";
-import { ModalLinkFooter } from "./js/components/ModalElement/ModalLinkFooter.js";
-import { ModalQuoteFooter } from "./js/components/ModalElement/ModalQuoteFooter.js";
+import { ModalLinkFooter } from "./js/components/ModalElement/ModalLinkFooter/ModalLinkFooter.js";
+import { ModalQuoteFooter } from "./js/components/ModalElement/ModalQuoteFooter/ModalQuoteFooter.js";
 import { CompassRose } from "./js/components/CompassRose/CompassRose.js";
 import { NavArrow } from "./js/components/NavArrow/NavArrow.js";
 import { MilestoneElement } from "./js/components/MilestoneElement/MilestoneElement.js";
@@ -33,6 +35,9 @@ customElements.define("project-card", ProjectCard);
 
 await loadProjectsGridTemplate();
 customElements.define("projects-grid", ProjectsGrid);
+
+await loadModalQuoteFooterTemplate();
+await loadModalLinkFooterTemplate();
 
 await loadModalElementTemplate();
 customElements.define("modal-element", ModalElement);

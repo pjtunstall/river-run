@@ -96,31 +96,6 @@
   background: #3c2915;
 }
 
-.modal-footer {
-  flex-shrink: 0;
-  margin-top: 1rem;
-}
-
-.footer-link {
-  color: #3c2915;
-  font-weight: bold;
-  font-size: 1.1rem;
-  text-decoration: none;
-  transition: color 0.2s;
-}
-
-.footer-link:hover {
-  color: #6b5537;
-}
-
-modal-link-footer {
-  margin-top: 0.5rem;
-}
-
-modal-quote-footer > p {
-  padding-top: 1rem;
-}
-
 hr {
   border: none;
   height: 2px;
@@ -148,4 +123,8 @@ hr {
   .close-button {
     top: 1.5rem;
   }
+}
+
+modal-link-footer {
+  margin-top: 0.5rem;
 }
