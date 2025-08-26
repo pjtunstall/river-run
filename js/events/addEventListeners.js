@@ -5,6 +5,7 @@ export function addEventListeners({ handlers, modals, worldElement }) {
   window.addEventListener("resize", handlers.handleResize);
   window.addEventListener("keydown", (e) => handlers.handleKeyDown(e));
   window.addEventListener("keyup", (e) => handlers.handleKeyUp(e));
+
   document.addEventListener(
     "river-run-click",
     handlers.handleRiverRunLinkClick

@@ -6,7 +6,22 @@
   background: var(--milestone-color, #e53935);
   border-radius: 50%;
   cursor: pointer;
-  transform: translateY(0);
+}
+
+:host(.glow) {
+  animation: glow-shadow-effect 360ms ease-out;
+}
+
+@keyframes glow-shadow-effect {
+  0% {
+    box-shadow: 0 0 0 0 rgba(229, 57, 53, 0);
+  }
+  30% {
+    box-shadow: 0 0 10px 5px var(--milestone-color, #e53935);
+  }
+  100% {
+    box-shadow: 0 0 200px 160px rgba(0, 255, 0, 0);
+  }
 }
 
 :host .label {

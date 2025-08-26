@@ -7,19 +7,33 @@ export class MilestoneElement extends HTMLElement {
   constructor() {
     super();
     this.attachShadow({ mode: "open" });
+
     const link = document.createElement("link");
     link.setAttribute("rel", "stylesheet");
     link.setAttribute(
       "href",
       "js/components/MilestoneElement/milestone-element.css"
     );
+
     const labelDiv = document.createElement("div");
     labelDiv.className = "label";
     this.labelElement = labelDiv;
     this.shadowRoot.append(link, labelDiv);
+
     this.addEventListener("click", (e) => {
       e.stopPropagation();
       this.labelElement.classList.toggle("visible");
+
+      this.classList.remove("glow");
+      this.classList.add("glow");
+
+      this.addEventListener(
+        "animationend",
+        () => {
+          this.classList.remove("glow");
+        },
+        { once: true }
+      );
     });
   }
 
