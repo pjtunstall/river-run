@@ -11,10 +11,10 @@ import { loadProjectCardTemplate } from "./js/components/ModalElement/ProjectsGr
 import { loadProjectsGridTemplate } from "./js/components/ModalElement/ProjectsGrid/projects-grid-utils.js";
 import { loadModalQuoteFooterTemplate } from "./js/components/ModalElement/ModalQuoteFooter/modal-quote-footer-utils.js";
 import { loadModalLinkFooterTemplate } from "./js/components/ModalElement/ModalLinkFooter/modal-link-footer-utils.js";
+import { loadDirectionListTemplate } from "./js/components/ModalElement/DirectionList/direction-list-utils.js";
 
 import { ProjectCard } from "./js/components/ModalElement/ProjectsGrid/ProjectCard/ProjectCard.js";
 import { ProjectsGrid } from "./js/components/ModalElement/ProjectsGrid/ProjectsGrid.js";
-import { loadDirectionListTemplate } from "./js/components/ModalElement/DirectionList/direction-list-utils.js";
 import { DirectionList } from "./js/components/ModalElement/DirectionList/DirectionList.js";
 import { ProfileText } from "./js/components/ModalElement/ProfileText/ProfileText.js";
 import { ModalElement } from "./js/components/ModalElement/ModalElement.js";
@@ -24,26 +24,23 @@ import { CompassRose } from "./js/components/CompassRose/CompassRose.js";
 import { NavArrow } from "./js/components/NavArrow/NavArrow.js";
 import { MilestoneElement } from "./js/components/MilestoneElement/MilestoneElement.js";
 
-await loadDirectionListTemplate();
+await Promise.all([
+  loadDirectionListTemplate(),
+  loadProfileTextTemplate(),
+  loadProjectCardTemplate(),
+  loadProjectsGridTemplate(),
+  loadModalQuoteFooterTemplate(),
+  loadModalLinkFooterTemplate(),
+  loadModalElementTemplate(),
+]);
+
 customElements.define("direction-list", DirectionList);
-
-await loadProfileTextTemplate();
 customElements.define("profile-text", ProfileText);
-
-await loadProjectCardTemplate();
 customElements.define("project-card", ProjectCard);
-
-await loadProjectsGridTemplate();
 customElements.define("projects-grid", ProjectsGrid);
-
-await loadModalQuoteFooterTemplate();
-await loadModalLinkFooterTemplate();
-
-await loadModalElementTemplate();
 customElements.define("modal-element", ModalElement);
 customElements.define("modal-quote-footer", ModalQuoteFooter);
 customElements.define("modal-link-footer", ModalLinkFooter);
-
 customElements.define("compass-rose", CompassRose);
 customElements.define("nav-arrow", NavArrow);
 customElements.define("milestone-element", MilestoneElement);
