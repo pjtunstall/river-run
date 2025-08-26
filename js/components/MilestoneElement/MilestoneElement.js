@@ -23,10 +23,8 @@ export class MilestoneElement extends HTMLElement {
     this.addEventListener("click", (e) => {
       e.stopPropagation();
       this.labelElement.classList.toggle("visible");
-
       this.classList.remove("glow");
       this.classList.add("glow");
-
       this.addEventListener(
         "animationend",
         () => {
