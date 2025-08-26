@@ -1,9 +1,9 @@
 import { World } from "./js/World.js";
-import { Physics } from "./js/Physics.js";
-import { Tiles } from "./js/Tiles.js";
-import { Milestones } from "./js/Milestones.js";
-import { createEventHandlers } from "./js/createEventHandlers.js";
-import { addEventListeners } from "./js/addEventListeners.js";
+import { Physics } from "./js/classes/Physics.js";
+import { Tiles } from "./js/classes/Tiles.js";
+import { Milestones } from "./js/classes/Milestones.js";
+import { createEventHandlers } from "./js/events/createEventHandlers.js";
+import { addEventListeners } from "./js/events/addEventListeners.js";
 
 import { loadProfileTextTemplate } from "./js/components/ModalElement/ProfileText/profile-text-utils.js";
 import { loadModalElementTemplate } from "./js/components/ModalElement/modal-element-utils.js";

@@ -1,4 +1,4 @@
-import { MilestoneElement } from "./components/MilestoneElement/MilestoneElement.js";
+import { MilestoneElement } from "../components/MilestoneElement/MilestoneElement.js";
 
 const viewPortHeight = window.innerHeight;
 
