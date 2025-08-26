@@ -1,4 +1,4 @@
-import { World } from "./js/World.js";
+import { World } from "./js//classes/World.js";
 import { Physics } from "./js/classes/Physics.js";
 import { Tiles } from "./js/classes/Tiles.js";
 import { Milestones } from "./js/classes/Milestones.js";
