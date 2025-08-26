@@ -1,4 +1,5 @@
-export function createEventHandlers({ physics, world, modals, arrows }) {
+export function createEventHandlers({ world, modals, arrows, worldElement }) {
+  const physics = world.physics;
   const { helpModal, leftModal, rightModal } = modals;
   let isHelpModalOpen = false;
   let isLeftModalOpen = false;
@@ -14,55 +15,45 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
     helpModal.show();
     isHelpModalOpen = true;
     physics.setAcceleration(0);
-    for (const arrow of arrows) {
-      arrow.show();
-      arrow.hide();
-    }
+    // Hide arrows when a modal opens.
+    arrows.forEach((arrow) => arrow.hide());
   };
 
   const openLeftModal = () => {
     leftModal.show();
     isLeftModalOpen = true;
-    leftArrowHeld = true;
+    leftArrowHeld = true; // Prevents re-opening immediately
     physics.setAcceleration(0);
-    for (const arrow of arrows) {
-      arrow.show();
-      arrow.hide();
-    }
+    arrows.forEach((arrow) => arrow.hide());
   };
 
   const openRightModal = () => {
     rightModal.show();
     isRightModalOpen = true;
-    rightArrowHeld = true;
+    rightArrowHeld = true; // Prevents re-opening immediately
     physics.setAcceleration(0);
-    for (const arrow of arrows) {
-      arrow.show();
-      arrow.hide();
-    }
+    arrows.forEach((arrow) => arrow.hide());
   };
 
   const closeModals = () => {
-    [helpModal, leftModal, rightModal].forEach((modal, i) => {
-      modal.hide();
-    });
+    [helpModal, leftModal, rightModal].forEach((modal) => modal.hide());
     isHelpModalOpen = false;
     isLeftModalOpen = false;
     isRightModalOpen = false;
-    for (const arrow of arrows) {
-      arrow.hide();
-      arrow.show();
-    }
+    // Show arrows when all modals are closed.
+    arrows.forEach((arrow) => arrow.show());
+    worldElement.focus();
   };
 
   return {
     handleUpdateCloseStateOfModal(modalId) {
       if (modalId === "help-modal") isHelpModalOpen = false;
-      else if (modalId === "projects-modal") isLeftModalOpen = false;
-      else if (modalId === "profile-modal") isRightModalOpen = false;
-      for (const arrow of arrows) {
-        arrow.hide();
-        arrow.show();
+      if (modalId === "projects-modal") isLeftModalOpen = false;
+      if (modalId === "profile-modal") isRightModalOpen = false;
+
+      // If all modals are closed, show the arrows.
+      if (!isHelpModalOpen && !isLeftModalOpen && !isRightModalOpen) {
+        arrows.forEach((arrow) => arrow.show());
       }
     },
 
@@ -72,33 +63,30 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
       closeModals();
     },
 
-    handleKeyDown(e) {
+    handleKeyDown(detail) {
+      // Simplified Logic: If any modal is open, any key press closes it and does nothing else.
       if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
-        if (isHelpModalOpen) {
-          closeModals();
-        } else {
-          closeModals();
-          return;
-        }
-      }
-      if (e.key === "ArrowRight" && !isRightModalOpen && !rightArrowHeld) {
-        openRightModal();
-        return;
-      } else if (e.key === "ArrowLeft" && !isLeftModalOpen && !leftArrowHeld) {
-        openLeftModal();
-        return;
-      } else {
         closeModals();
+        return;
       }
-      if (e.key === "ArrowUp") physics.setAcceleration(1);
-      else if (e.key === "ArrowDown") physics.setAcceleration(-1);
+
+      if (detail.key === "ArrowRight" && !rightArrowHeld) {
+        openRightModal();
+      } else if (detail.key === "ArrowLeft" && !leftArrowHeld) {
+        openLeftModal();
+      } else if (detail.key === "ArrowUp") {
+        physics.setAcceleration(1);
+      } else if (detail.key === "ArrowDown") {
+        physics.setAcceleration(-1);
+      }
     },
 
-    handleKeyUp(e) {
-      if (e.key === "ArrowUp" || e.key === "ArrowDown")
+    handleKeyUp(detail) {
+      if (detail.key === "ArrowUp" || detail.key === "ArrowDown") {
         physics.setAcceleration(0);
-      if (e.key === "ArrowRight") rightArrowHeld = false;
-      else if (e.key === "ArrowLeft") leftArrowHeld = false;
+      }
+      if (detail.key === "ArrowRight") rightArrowHeld = false;
+      if (detail.key === "ArrowLeft") leftArrowHeld = false;
     },
 
     handleCompassClick() {
@@ -112,13 +100,16 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
       openHelpModal();
     },
 
-    handleScroll(e) {
+    handleScroll(detail) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
-      const direction = e.deltaY < 0 ? 1 : -1;
-      if (direction !== 0) {
-        physics.setAcceleration(direction);
-        setTimeout(() => physics.setAcceleration(0), 300);
-      }
+
+      // Added damping to prevent overshooting. Adjust the 0.1 value to tune sensitivity.
+      const scrollDamping = 0.1;
+      const direction = detail.deltaY * scrollDamping < 0 ? 1 : -1;
+
+      physics.setAcceleration(direction);
+      // Use a shorter timeout for a more responsive feel.
+      setTimeout(() => physics.setAcceleration(0), 150);
     },
 
     handleResize() {
@@ -127,39 +118,42 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
     },
 
     handleRepoClick(e) {
-      e.preventDefault();
       e.stopPropagation();
-      const url = e.currentTarget.dataset.repo;
-      window.open(url, "_blank", "noopener");
+      // Correctly read the repo URL from the event detail passed by ProjectCard.
+      const url = e.detail.repo;
+      if (url) {
+        window.open(url, "_blank", "noopener");
+      }
     },
 
-    handleTouchStart(e) {
+    handleTouchStart(detail) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       world.isDragging = true;
       physics.velocity = 0;
       physics.acceleration = 0;
-      touchStartY = e.touches[0].clientY;
+      touchStartY = detail.clientY;
       touchLastY = touchStartY;
       touchStartTime = Date.now();
     },
 
-    handleTouchMove(e) {
+    handleTouchMove(detail) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       if (touchLastY === null) return;
-      const currentY = e.touches[0].clientY;
+      const currentY = detail.clientY;
       const delta = currentY - touchLastY;
       world.changePositionBy(delta);
       touchLastY = currentY;
     },
 
-    handleTouchEnd(e) {
+    handleTouchEnd(detail) {
       world.isDragging = false;
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       if (touchStartY === null) return;
-      const touchEndY = e.changedTouches[0].clientY;
+      const touchEndY = detail.clientY;
       const deltaY = touchEndY - touchStartY;
       const swipeTime = Date.now() - touchStartTime;
-      physics.setVelocity((256 * deltaY) / Math.max(swipeTime, 1) / 16); // Pixels per frame.
+      // Adjusted velocity calculation for better touch feel.
+      physics.setVelocity((150 * deltaY) / Math.max(swipeTime, 1) / 16);
       touchStartY = null;
       touchLastY = null;
     },
@@ -192,6 +186,7 @@ export function createEventHandlers({ physics, world, modals, arrows }) {
     },
   };
 }
+
 function isMobileDevice() {
   return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
     navigator.userAgent

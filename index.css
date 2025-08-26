@@ -5,22 +5,3 @@ body {
   overflow: hidden;
   overscroll-behavior-y: contain; /* Prevent pull-to-refresh on mobile devices. It's generally good not to interfere with expected functionality, but, in this case, it would be hard to navigate upriver if the page was in danger of reloading with all but the most delicate of pulls. */
 }
-
-#world {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  background: black;
-}
-
-.tile {
-  position: absolute;
-  width: 100%;
-  height: 101%;
-  background-size: auto 101%;
-  background-repeat: no-repeat;
-  background-position: top center;
-  background-color: #000;
-  will-change: transform;
-}

@@ -5,22 +5,20 @@ export class Tiles {
   #totalHeight;
   #yPositions = [];
 
-  constructor(numberOfTiles) {
-    // Create tile elements and add them to the DOM.
-    const worldContainer = document.getElementById("world");
-    let tiles = Array.from({ length: numberOfTiles }, (_, i) => {
+  constructor(numberOfTiles, container) {
+    const tiles = Array.from({ length: numberOfTiles }, (_, i) => {
       const tile = document.createElement("div");
       tile.className = "tile";
       tile.id = `tile-${i}`;
       tile.style.backgroundImage = `url(images/tiles/river-${i}.jpg)`;
-      worldContainer.appendChild(tile);
+      container.appendChild(tile);
       return tile;
     });
 
-    // Set initial vertical positions of tiles.
-    let yPositions = tiles.map(
+    const yPositions = tiles.map(
       (_, i) => (i - Math.floor(tiles.length / 2)) * viewPortHeight
     );
+
     tiles.forEach((tile, i) => {
       tile.style.transform = `translateY(${yPositions[i]}px)`;
     });
@@ -31,14 +29,12 @@ export class Tiles {
   }
 
   updatePosition(velocity) {
-    this.#yPositions.forEach((pos, i) => {
+    this.#yPositions.forEach((_, i) => {
       this.#yPositions[i] += velocity;
-
-      if (this.#yPositions[i] >= viewPortHeight)
+      while (this.#yPositions[i] >= viewPortHeight)
         this.#yPositions[i] -= this.#totalHeight;
-      if (this.#yPositions[i] <= -viewPortHeight)
+      while (this.#yPositions[i] <= -viewPortHeight)
         this.#yPositions[i] += this.#totalHeight;
-
       this.elements[i].style.transform = `translateY(${this.#yPositions[i]}px)`;
     });
   }

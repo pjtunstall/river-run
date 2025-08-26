@@ -1,9 +1,10 @@
-import { MilestoneElement } from "../components/MilestoneElement/MilestoneElement.js";
-
 const viewPortHeight = window.innerHeight;
 
 export class Milestones {
-  constructor(numberOfTiles) {
+  #container;
+
+  constructor(numberOfTiles, container) {
+    this.#container = container;
     this.numberOfTiles = numberOfTiles;
     this.totalHeight = viewPortHeight * numberOfTiles;
     this.milestones = [];
@@ -11,25 +12,26 @@ export class Milestones {
   }
 
   add(tileIndex, offsetXPercent, offsetYPercent, label = "", color = "red") {
-    const worldContainer = document.getElementById("world");
-    const milestone = new MilestoneElement(
+    const milestone = document.createElement("milestone-element");
+    milestone.initialize(
       tileIndex,
       offsetXPercent,
       offsetYPercent,
       label,
-      color
+      color,
+      this.#container
     );
-    worldContainer.appendChild(milestone);
+    this.#container.appendChild(milestone);
     this.milestones.push(milestone);
     return milestone;
   }
 
   initializeXPositions(tiles) {
-    this.milestones.forEach((milestone) => milestone.setXPosition(tiles));
+    this.milestones.forEach((m) => m.setXPosition(tiles));
   }
 
   updatePosition(tiles) {
-    this.milestones.forEach((milestone) => milestone.updatePosition(tiles));
+    this.milestones.forEach((m) => m.updatePosition(tiles));
   }
 
   forEach(callback) {
