@@ -1,9 +1,9 @@
-export function addEventListeners(handlers, milestones, modals) {
+export function addEventListeners(handlers, modals) {
   const { helpModal, leftModal, rightModal } = modals;
   const compass = document.getElementById("compass");
 
+  // Window events.
   window.addEventListener("resize", handlers.handleResize);
-  window.addEventListener("click", handlers.handleClick);
   window.addEventListener("touchstart", handlers.handleTouchStart, {
     passive: true,
   });
@@ -15,11 +15,23 @@ export function addEventListeners(handlers, milestones, modals) {
   window.addEventListener("wheel", handlers.handleScroll);
   document.addEventListener("keydown", handlers.handleKeyDown);
   document.addEventListener("keyup", handlers.handleKeyUp);
-  document.querySelectorAll(".repo-link").forEach((link) => {
-    link.addEventListener("click", handlers.handleRepoClick);
+
+  // Catch custom events originating in web components and relay them to their logical event handlers.
+  document.addEventListener("river-run-click", (e) => {
+    handlers.handleRiverRunLinkClick(e);
   });
-  document.querySelectorAll(".close-button").forEach((button) => {
-    button.addEventListener("click", handlers.handleClickToClose);
+  document.addEventListener("repo-click", (e) => {
+    window.open(e.detail.repo, "_blank");
+  });
+  document.addEventListener("nav-arrow-click", (e) => {
+    switch (e.detail.direction) {
+      case "left":
+        handlers.handleNavLeft(e);
+        break;
+      case "right":
+        handlers.handleNavRight(e);
+        break;
+    }
   });
   compass.addEventListener("compass-click", handlers.handleCompassClick);
   helpModal.addEventListener("modal-closed", (e) => {
@@ -30,24 +42,5 @@ export function addEventListeners(handlers, milestones, modals) {
   });
   rightModal.addEventListener("modal-closed", (e) => {
     handlers.handleUpdateCloseStateOfModal(e.detail);
-  });
-
-  document.addEventListener("river-run-click", (e) => {
-    handlers.handleRiverRunLinkClick(e);
-  });
-
-  document.addEventListener("repo-click", (e) => {
-    window.open(e.detail.repo, "_blank");
-  });
-
-  document.addEventListener("nav-arrow-click", (e) => {
-    switch (e.detail.direction) {
-      case "left":
-        handlers.handleNavLeft(e);
-        break;
-      case "right":
-        handlers.handleNavRight(e);
-        break;
-    }
   });
 }

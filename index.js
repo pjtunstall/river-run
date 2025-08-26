@@ -71,6 +71,6 @@ const handlers = createEventHandlers({
   modals,
   arrows,
 });
-addEventListeners(handlers, milestones, modals, arrows);
+addEventListeners(handlers, modals);
 
 requestAnimationFrame(world.update);
