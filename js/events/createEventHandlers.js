@@ -22,7 +22,7 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
   const openLeftModal = () => {
     leftModal.show();
     isLeftModalOpen = true;
-    leftArrowHeld = true; // Prevents re-opening immediately
+    leftArrowHeld = true; // Prevent re-opening immediately.
     physics.setAcceleration(0);
     arrows.forEach((arrow) => arrow.hide());
   };
@@ -30,7 +30,7 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
   const openRightModal = () => {
     rightModal.show();
     isRightModalOpen = true;
-    rightArrowHeld = true; // Prevents re-opening immediately
+    rightArrowHeld = true; // Prevent re-opening immediately.
     physics.setAcceleration(0);
     arrows.forEach((arrow) => arrow.hide());
   };
@@ -64,7 +64,7 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
     },
 
     handleKeyDown(detail) {
-      // Simplified Logic: If any modal is open, any key press closes it and does nothing else.
+      // If any modal is open, any key press closes it and does nothing else.
       if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
         closeModals();
         return;
@@ -90,13 +90,7 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
     },
 
     handleCompassClick() {
-      if (
-        isMobileDevice() ||
-        isHelpModalOpen ||
-        isRightModalOpen ||
-        isLeftModalOpen
-      )
-        return;
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
       openHelpModal();
     },
 
@@ -108,7 +102,7 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
       const direction = detail.deltaY * scrollDamping < 0 ? 1 : -1;
 
       physics.setAcceleration(direction);
-      // Use a shorter timeout for a more responsive feel.
+      // The shorter the timeout, the more responsive the controls.
       setTimeout(() => physics.setAcceleration(0), 150);
     },
 
@@ -119,7 +113,7 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
 
     handleRepoClick(e) {
       e.stopPropagation();
-      // Correctly read the repo URL from the event detail passed by ProjectCard.
+      // Read the repo URL from the event detail passed by ProjectCard.
       const url = e.detail.repo;
       if (url) {
         window.open(url, "_blank", "noopener");
@@ -152,7 +146,6 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
       const touchEndY = detail.clientY;
       const deltaY = touchEndY - touchStartY;
       const swipeTime = Date.now() - touchStartTime;
-      // Adjusted velocity calculation for better touch feel.
       physics.setVelocity((150 * deltaY) / Math.max(swipeTime, 1) / 16);
       touchStartY = null;
       touchLastY = null;
@@ -185,10 +178,4 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
       openRightModal();
     },
   };
-}
-
-function isMobileDevice() {
-  return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(
-    navigator.userAgent
-  );
 }

@@ -17,3 +17,9 @@
   text-align: right;
   white-space: nowrap;
 }
+
+@media (max-width: 768px) {
+  .arrow-word {
+    opacity: 0;
+  }
+}
