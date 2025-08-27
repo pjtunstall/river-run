@@ -5,7 +5,7 @@ export class CompassRose extends HTMLElement {
   }
 
   async connectedCallback() {
-    const cssPath = "./components/CompassRose//compass-rose.css";
+    const cssPath = "./components/CompassRose/compass-rose.css";
     const svgPath = "./components/CompassRose/compass-rose.svg";
 
     const css = document.createElement("link");
