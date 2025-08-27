@@ -116,7 +116,7 @@ hr {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .modal-dialog {
+  .modal-header-and-body {
     transform: translateY(1.5rem);
   }
 }
