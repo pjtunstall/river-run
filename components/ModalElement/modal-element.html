@@ -1,13 +1,13 @@
 <template id="modal-element">
   <div class="modal-backdrop">
     <div class="modal-dialog">
-      <!-- <div class="modal-header-and-body"> -->
-      <button class="close-button">&times;</button>
-      <h2 class="modal-title"></h2>
-      <div class="modal-body">
-        <slot name="body"></slot>
+      <div class="modal-header-and-body">
+        <button class="close-button">&times;</button>
+        <h2 class="modal-title"></h2>
+        <div class="modal-body">
+          <slot name="body"></slot>
+        </div>
       </div>
-      <!-- </div> -->
       <div class="modal-footer">
         <hr />
         <slot name="footer"></slot>
