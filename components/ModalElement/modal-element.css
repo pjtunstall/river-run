@@ -127,13 +127,15 @@ hr {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .modal-backdrop.show {
+  #projects-modal .modal-backdrop.show,
+  #profile-modal .modal-backdrop.show {
     align-items: flex-start;
     padding: 2rem 0;
     box-sizing: border-box;
   }
 
-  .modal-dialog {
+  #projects-modal .modal-dialog,
+  #profile-modal .modal-dialog {
     max-height: 100%;
     margin: 0;
   }
