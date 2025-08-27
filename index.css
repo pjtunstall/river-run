@@ -5,3 +5,9 @@ body {
   overflow: hidden;
   overscroll-behavior-y: contain; /* Prevent pull-to-refresh on mobile devices. It's generally good not to interfere with expected functionality, but, in this case, it would be hard to navigate upriver if the page was in danger of reloading with all but the most delicate of pulls. */
 }
+
+body {
+  background: black;
+  opacity: 0;
+  transition: opacity 0.2s ease-in-out;
+}
