@@ -127,13 +127,12 @@ hr {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .modal-backdrop.show {
+  modal-element[touch] .modal-backdrop.show {
     align-items: flex-start;
     padding: 2rem 0;
-    box-sizing: border-box;
   }
 
-  .modal-dialog {
+  modal-element[touch] .modal-dialog {
     max-height: 100%;
     margin: 0;
   }
