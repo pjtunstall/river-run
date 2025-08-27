@@ -116,6 +116,9 @@ hr {
 }
 
 @media (hover: none) and (pointer: coarse) {
+  .modal-dialog {
+    max-height: 70vh;
+  }
   .modal-header-and-body {
     transform: translateY(1.5rem);
   }
