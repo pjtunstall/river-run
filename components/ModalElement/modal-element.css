@@ -96,6 +96,17 @@
   background: #3c2915;
 }
 
+.modal-header-and-body {
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  min-height: 0; /* Important for proper flex behavior */
+}
+
+.modal-footer {
+  flex-shrink: 0;
+}
+
 hr {
   border: none;
   height: 2px;
@@ -119,5 +130,13 @@ hr {
   .modal-backdrop.show {
     align-items: flex-start;
     padding-top: 2rem;
+    padding-bottom: 2rem;
+    overflow-y: auto;
+  }
+
+  .modal-dialog {
+    max-height: none;
+    min-height: calc(100vh - 4rem);
+    margin-bottom: 0;
   }
 }
