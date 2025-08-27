@@ -118,20 +118,3 @@ hr {
 modal-link-footer {
   margin-top: 0.5rem;
 }
-
-/* @media (max-width: 768px) {
-  .modal-dialog {
-    margin-top: 1rem;
-    max-height: calc(100vh - 2rem);
-  }
-
-  .close-button {
-    top: 1.5rem;
-  }
-
-  .modal-body {
-    flex-grow: 0;
-    max-height: calc(100vh - 200px);
-    overflow-y: auto;
-  }
-} */
