@@ -1,4 +1,4 @@
-export class DirectionList extends HTMLElement {
+export class ProjectsGrid extends HTMLElement {
   #shadow;
 
   constructor() {
@@ -7,13 +7,14 @@ export class DirectionList extends HTMLElement {
   }
 
   connectedCallback() {
-    const template = document.getElementById("direction-list");
+    const template = document.getElementById("projects-grid-template");
     if (!template) return;
     const html = template.content.cloneNode(true);
 
     const css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "js/components/ModalElement/DirectionList/direction-list.css";
+    css.href =
+      "js/components/ModalElement/bodies/ProjectsGrid/projects-grid.css";
 
     this.#shadow.append(css, html);
   }

@@ -1,4 +1,4 @@
-export class ModalQuoteFooter extends HTMLElement {
+export class DirectionList extends HTMLElement {
   #shadow;
 
   constructor() {
@@ -7,18 +7,15 @@ export class ModalQuoteFooter extends HTMLElement {
   }
 
   connectedCallback() {
-    const template = document.getElementById("modal-quote-footer");
+    const template = document.getElementById("direction-list");
     if (!template) return;
     const html = template.content.cloneNode(true);
 
     const css = document.createElement("link");
     css.rel = "stylesheet";
     css.href =
-      "js/components/ModalElement/ModalQuoteFooter/modal-quote-footer.css";
+      "js/components/ModalElement/bodies/DirectionList/direction-list.css";
 
     this.#shadow.append(css, html);
-
-    const em = this.#shadow.querySelector("em");
-    if (em) em.textContent = this.textContent;
   }
 }

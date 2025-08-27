@@ -18,7 +18,7 @@ export class ModalLinkFooter extends HTMLElement {
     const css = document.createElement("link");
     css.rel = "stylesheet";
     css.href =
-      "js/components/ModalElement/ModalLinkFooter/modal-link-footer.css";
+      "js/components/ModalElement/footers/ModalLinkFooter/modal-link-footer.css";
 
     this.#shadow.append(css, html);
 
