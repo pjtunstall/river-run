@@ -13,7 +13,7 @@ export class ModalElement extends HTMLElement {
 
     const css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href = "js/components/ModalElement/modal-element.css";
+    css.href = "components/ModalElement/modal-element.css";
 
     this.#shadow.append(css, html);
 

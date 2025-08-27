@@ -14,7 +14,7 @@ export class DirectionList extends HTMLElement {
     const css = document.createElement("link");
     css.rel = "stylesheet";
     css.href =
-      "js/components/ModalElement/bodies/DirectionList/direction-list.css";
+      "components/ModalElement/bodies/DirectionList/direction-list.css";
 
     this.#shadow.append(css, html);
   }

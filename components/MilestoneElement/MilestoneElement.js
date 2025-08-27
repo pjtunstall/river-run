@@ -12,7 +12,7 @@ export class MilestoneElement extends HTMLElement {
     link.setAttribute("rel", "stylesheet");
     link.setAttribute(
       "href",
-      "js/components/MilestoneElement/milestone-element.css"
+      "components/MilestoneElement/milestone-element.css"
     );
 
     const labelDiv = document.createElement("div");

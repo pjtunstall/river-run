@@ -12,7 +12,7 @@ export class NavArrow extends HTMLElement {
       : "M10 6L8.59 7.41 13.17 12l-4.58 4.59L10 18l6-6z";
 
     this.shadowRoot.innerHTML = `
-    <link rel="stylesheet" href="js/components/NavArrow/nav-arrow.css">
+    <link rel="stylesheet" href="components/NavArrow/nav-arrow.css">
     <button class="nav-arrow nav-arrow-${direction}" id="nav-${direction}">
       <svg viewBox="0 0 24 24">
         <path d="${path}" />

@@ -1,25 +1,25 @@
 import { createEventHandlers } from "./js/events/createEventHandlers.js";
 import { addEventListeners } from "./js/events/addEventListeners.js";
 
-import { loadProfileTextTemplate } from "./js/components/ModalElement/bodies/ProfileText/profile-text-utils.js";
-import { loadModalElementTemplate } from "./js/components/ModalElement/modal-element-utils.js";
-import { loadProjectCardTemplate } from "./js/components/ModalElement/bodies/ProjectsGrid/ProjectCard/project-card-utils.js";
-import { loadProjectsGridTemplate } from "./js/components/ModalElement/bodies/ProjectsGrid/projects-grid-utils.js";
-import { loadModalQuoteFooterTemplate } from "./js/components/ModalElement/footers/ModalQuoteFooter/modal-quote-footer-utils.js";
-import { loadModalLinkFooterTemplate } from "./js/components/ModalElement/footers/ModalLinkFooter/modal-link-footer-utils.js";
-import { loadDirectionListTemplate } from "./js/components/ModalElement/bodies/DirectionList/direction-list-utils.js";
+import { loadProfileTextTemplate } from "./components/ModalElement/bodies/ProfileText/profile-text-utils.js";
+import { loadModalElementTemplate } from "./components/ModalElement/modal-element-utils.js";
+import { loadProjectCardTemplate } from "./components/ModalElement/bodies/ProjectsGrid/ProjectCard/project-card-utils.js";
+import { loadProjectsGridTemplate } from "./components/ModalElement/bodies/ProjectsGrid/projects-grid-utils.js";
+import { loadModalQuoteFooterTemplate } from "./components/ModalElement/footers/ModalQuoteFooter/modal-quote-footer-utils.js";
+import { loadModalLinkFooterTemplate } from "./components/ModalElement/footers/ModalLinkFooter/modal-link-footer-utils.js";
+import { loadDirectionListTemplate } from "./components/ModalElement/bodies/DirectionList/direction-list-utils.js";
 
-import { ProjectCard } from "./js/components/ModalElement/bodies/ProjectsGrid/ProjectCard/ProjectCard.js";
-import { ProjectsGrid } from "./js/components/ModalElement/bodies/ProjectsGrid/ProjectsGrid.js";
-import { DirectionList } from "./js/components/ModalElement/bodies/DirectionList/DirectionList.js";
-import { ProfileText } from "./js/components/ModalElement/bodies/ProfileText/ProfileText.js";
-import { ModalElement } from "./js/components/ModalElement/ModalElement.js";
-import { ModalLinkFooter } from "./js/components/ModalElement/footers/ModalLinkFooter/ModalLinkFooter.js";
-import { ModalQuoteFooter } from "./js/components/ModalElement/footers/ModalQuoteFooter/ModalQuoteFooter.js";
-import { CompassRose } from "./js/components/CompassRose/CompassRose.js";
-import { NavArrow } from "./js/components/NavArrow/NavArrow.js";
-import { MilestoneElement } from "./js/components/MilestoneElement/MilestoneElement.js";
-import { WorldElement } from "./js/components/WorldElement/WorldElement.js";
+import { ProjectCard } from "./components/ModalElement/bodies/ProjectsGrid/ProjectCard/ProjectCard.js";
+import { ProjectsGrid } from "./components/ModalElement/bodies/ProjectsGrid/ProjectsGrid.js";
+import { DirectionList } from "./components/ModalElement/bodies/DirectionList/DirectionList.js";
+import { ProfileText } from "./components/ModalElement/bodies/ProfileText/ProfileText.js";
+import { ModalElement } from "./components/ModalElement/ModalElement.js";
+import { ModalLinkFooter } from "./components/ModalElement/footers/ModalLinkFooter/ModalLinkFooter.js";
+import { ModalQuoteFooter } from "./components/ModalElement/footers/ModalQuoteFooter/ModalQuoteFooter.js";
+import { CompassRose } from "./components/CompassRose/CompassRose.js";
+import { NavArrow } from "./components/NavArrow/NavArrow.js";
+import { MilestoneElement } from "./components/MilestoneElement/MilestoneElement.js";
+import { WorldElement } from "./components/WorldElement/WorldElement.js";
 
 await Promise.all([
   loadDirectionListTemplate(),

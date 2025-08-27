@@ -1,4 +1,4 @@
-export class ModalQuoteFooter extends HTMLElement {
+export class ProjectsGrid extends HTMLElement {
   #shadow;
 
   constructor() {
@@ -7,18 +7,14 @@ export class ModalQuoteFooter extends HTMLElement {
   }
 
   connectedCallback() {
-    const template = document.getElementById("modal-quote-footer");
+    const template = document.getElementById("projects-grid-template");
     if (!template) return;
     const html = template.content.cloneNode(true);
 
     const css = document.createElement("link");
     css.rel = "stylesheet";
-    css.href =
-      "js/components/ModalElement/footers/ModalQuoteFooter/modal-quote-footer.css";
+    css.href = "components/ModalElement/bodies/ProjectsGrid/projects-grid.css";
 
     this.#shadow.append(css, html);
-
-    const em = this.#shadow.querySelector("em");
-    if (em) em.textContent = this.textContent;
   }
 }
