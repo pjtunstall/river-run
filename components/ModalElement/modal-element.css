@@ -116,7 +116,7 @@ hr {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .modal-backdrop {
+  .modal-backdrop.show {
     align-items: flex-start;
     padding-top: 2rem;
   }
