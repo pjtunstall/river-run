@@ -116,8 +116,7 @@ hr {
 }
 
 @media (hover: none) and (pointer: coarse) {
-  .modal-backdrop {
-    align-items: flex-start !important;
-    padding-top: 2rem;
+  .modal-dialog {
+    transform: translateY(1.5rem);
   }
 }
