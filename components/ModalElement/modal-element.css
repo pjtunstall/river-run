@@ -23,6 +23,7 @@
   max-height: 80vh;
   display: flex;
   flex-direction: column;
+  justify-content: space-between;
   position: relative;
   padding: 2rem;
   box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
@@ -72,7 +73,6 @@
   line-height: 1.6;
   flex-grow: 1;
   overflow-y: auto;
-
   scrollbar-width: thin;
   scrollbar-color: #8b7355 #c9b896;
 }
@@ -117,9 +117,7 @@ hr {
 
 @media (hover: none) and (pointer: coarse) {
   .modal-dialog {
-    max-height: 70vh;
-  }
-  .modal-header-and-body {
-    transform: translateY(1.5rem);
+    max-height: 75vh;
+    padding-top: 2rem;
   }
 }
