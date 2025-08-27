@@ -129,10 +129,12 @@ hr {
 @media (hover: none) and (pointer: coarse) {
   .modal-backdrop.show {
     align-items: flex-start;
-    padding-top: 2rem;
+    padding: 2rem 0;
+    box-sizing: border-box;
   }
 
   .modal-dialog {
-    max-height: calc(100vh - 4rem);
+    max-height: 100%;
+    margin: 0;
   }
 }
