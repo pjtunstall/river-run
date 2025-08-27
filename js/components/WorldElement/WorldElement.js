@@ -1,7 +1,7 @@
-import { Milestones } from "/js/classes/Milestones.js";
-import { Physics } from "/js/classes/Physics.js";
-import { Tiles } from "/js/classes/Tiles.js";
-import { World } from "/js/classes/World.js";
+import { Milestones } from "../../classes/Milestones.js";
+import { Physics } from "../../classes/Physics.js";
+import { Tiles } from "../../classes/Tiles.js";
+import { World } from "../../classes/World.js";
 
 export class WorldElement extends HTMLElement {
   #shadow;
@@ -17,7 +17,7 @@ export class WorldElement extends HTMLElement {
   connectedCallback() {
     const link = document.createElement("link");
     link.setAttribute("rel", "stylesheet");
-    link.setAttribute("href", "/js/components/WorldElement/world-element.css");
+    link.setAttribute("href", "./js/components/WorldElement/world-element.css");
     this.#shadow.appendChild(link);
 
     const container = document.createElement("div");
