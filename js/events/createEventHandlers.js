@@ -45,6 +45,8 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
     worldElement.focus();
   };
 
+  openHelpModal();
+
   return {
     handleUpdateCloseStateOfModal(modalId) {
       if (modalId === "help-modal") isHelpModalOpen = false;
