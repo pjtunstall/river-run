@@ -117,6 +117,6 @@ hr {
 
 @media (hover: none) and (pointer: coarse) {
   .modal-dialog {
-    padding-top: 2.5rem;
+    margin-top: 1rem;
   }
 }
