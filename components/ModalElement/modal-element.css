@@ -114,3 +114,9 @@ hr {
     transform: translateY(0) scale(1);
   }
 }
+
+@media (hover: none) and (pointer: coarse) {
+  .modal-dialog {
+    padding-top: 2.5rem;
+  }
+}
