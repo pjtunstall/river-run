@@ -93,12 +93,6 @@
   color: #d6c2a1;
 }
 
-@media (max-width: 768px) {
-  .project-content {
-    padding: 1rem;
-  }
-}
-
 .project-year {
   position: absolute;
   bottom: 0.8rem;
@@ -121,4 +115,28 @@
 .repo-link:hover {
   color: #3c2915;
   text-decoration: underline !important;
+}
+
+@media (max-width: 768px) {
+  .modal-dialog {
+    margin-top: 1rem;
+    max-height: calc(100vh - 2rem);
+    padding: 1.5rem;
+  }
+
+  .close-button {
+    top: 1rem;
+  }
+
+  .modal-body {
+    padding-bottom: 2rem;
+  }
+
+  .project-thumbnail {
+    height: 200px;
+  }
+
+  .project-content {
+    padding: 0.8rem;
+  }
 }

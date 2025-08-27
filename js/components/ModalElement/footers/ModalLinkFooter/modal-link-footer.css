@@ -15,3 +15,9 @@
 .footer-link:hover {
   color: #6b5537;
 }
+
+@media (max-width: 768px) {
+  .modal-footer {
+    margin-bottom: 1rem;
+  }
+}
