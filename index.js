@@ -21,21 +21,6 @@ import { NavArrow } from "./components/NavArrow/NavArrow.js";
 import { MilestoneElement } from "./components/MilestoneElement/MilestoneElement.js";
 import { WorldElement } from "./components/WorldElement/WorldElement.js";
 
-// Prevent flash of unstyled content.
-window.addEventListener("DOMContentLoaded", async () => {
-  const customElementsList = Array.from(document.querySelectorAll("*")).filter(
-    (el) => el.tagName.includes("-")
-  );
-
-  await Promise.all(
-    customElementsList.map((el) =>
-      customElements.whenDefined(el.tagName.toLowerCase())
-    )
-  );
-
-  document.body.style.opacity = "1";
-});
-
 await Promise.all([
   loadDirectionListTemplate(),
   loadProfileTextTemplate(),

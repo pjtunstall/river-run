@@ -38,6 +38,37 @@
     />
 
     <link rel="stylesheet" href="index.css" />
+
+    <style>
+      body {
+        opacity: 0;
+        background-color: black;
+        transition: opacity 0.4s ease-in-out;
+      }
+    </style>
+    <script>
+      (function () {
+        async function init() {
+          const customElementsList = Array.from(
+            document.querySelectorAll("*")
+          ).filter((el) => el.tagName.includes("-"));
+
+          await Promise.all(
+            customElementsList.map((el) =>
+              customElements.whenDefined(el.tagName.toLowerCase())
+            )
+          );
+
+          document.body.style.opacity = "1";
+        }
+
+        if (document.readyState === "loading") {
+          window.addEventListener("DOMContentLoaded", init, { once: true });
+        } else {
+          init();
+        }
+      })();
+    </script>
   </head>
 
   <body>
