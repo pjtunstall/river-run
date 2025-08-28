@@ -8,6 +8,10 @@
   cursor: pointer;
 }
 
+:host:focus {
+  outline: none;
+}
+
 :host(.glow) {
   animation: glow-shadow-effect 180ms ease-out;
 }
