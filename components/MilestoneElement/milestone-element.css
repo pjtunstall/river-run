@@ -8,8 +8,9 @@
   cursor: pointer;
 }
 
-:host(:focus) {
+:host {
   outline: none;
+  -webkit-tap-highlight-color: transparent;
 }
 
 :host(.glow) {
