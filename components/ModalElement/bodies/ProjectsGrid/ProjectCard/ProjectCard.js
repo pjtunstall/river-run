@@ -25,9 +25,9 @@ export class ProjectCard extends HTMLElement {
     if (this.hasAttribute("img-src")) img.src = this.getAttribute("img-src");
     if (this.hasAttribute("img-alt")) img.alt = this.getAttribute("img-alt");
 
-    const title = content.querySelector(".project-title");
-    if (this.hasAttribute("title"))
-      title.firstChild.textContent = this.getAttribute("title");
+    const title = content.querySelector(".project-title span:first-child");
+    if (this.hasAttribute("project-title"))
+      title.textContent = this.getAttribute("project-title");
 
     const description = content.querySelector(".project-description");
     if (this.hasAttribute("description"))
