@@ -8,7 +8,7 @@
   cursor: pointer;
 }
 
-:host:focus {
+:host(:focus) {
   outline: none;
 }
 
