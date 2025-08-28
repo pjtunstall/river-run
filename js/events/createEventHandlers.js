@@ -10,6 +10,7 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
   let touchStartY = null;
   let touchLastY = null;
   let touchStartTime = null;
+  let scrollResetTimeout;
 
   const openHelpModal = () => {
     helpModal.show();
@@ -105,7 +106,8 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
 
       physics.setAcceleration(direction);
       // The shorter the timeout, the more responsive the controls.
-      setTimeout(() => physics.setAcceleration(0), 150);
+      clearTimeout(scrollResetTimeout);
+      scrollResetTimeout = setTimeout(() => physics.setAcceleration(0), 150);
     },
 
     handleResize() {
@@ -143,12 +145,20 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
 
     handleTouchEnd(detail) {
       world.isDragging = false;
-      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
+
+      if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) {
+        touchStartY = null;
+        touchLastY = null;
+        return;
+      }
+
       if (touchStartY === null) return;
+
       const touchEndY = detail.clientY;
       const deltaY = touchEndY - touchStartY;
       const swipeTime = Date.now() - touchStartTime;
       physics.setVelocity((150 * deltaY) / Math.max(swipeTime, 1) / 16);
+
       touchStartY = null;
       touchLastY = null;
     },
