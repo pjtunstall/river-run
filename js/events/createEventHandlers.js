@@ -16,7 +16,6 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
     helpModal.show();
     isHelpModalOpen = true;
     physics.setAcceleration(0);
-    // Hide arrows when a modal opens.
     arrows.forEach((arrow) => arrow.hide());
   };
 
@@ -41,7 +40,6 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
     isHelpModalOpen = false;
     isLeftModalOpen = false;
     isRightModalOpen = false;
-    // Show arrows when all modals are closed.
     arrows.forEach((arrow) => arrow.show());
     worldElement.focus();
   };
@@ -53,8 +51,6 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
       if (modalId === "help-modal") isHelpModalOpen = false;
       if (modalId === "projects-modal") isLeftModalOpen = false;
       if (modalId === "profile-modal") isRightModalOpen = false;
-
-      // If all modals are closed, show the arrows.
       if (!isHelpModalOpen && !isLeftModalOpen && !isRightModalOpen) {
         arrows.forEach((arrow) => arrow.show());
       }
@@ -67,7 +63,6 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
     },
 
     handleKeyDown(detail) {
-      // If any modal is open, any key press closes it and does nothing else.
       if (isHelpModalOpen || isLeftModalOpen || isRightModalOpen) {
         closeModals();
         return;
@@ -100,12 +95,10 @@ export function createEventHandlers({ world, modals, arrows, worldElement }) {
     handleScroll(detail) {
       if (isHelpModalOpen || isRightModalOpen || isLeftModalOpen) return;
 
-      // Added damping to prevent overshooting. Adjust the 0.1 value to tune sensitivity.
-      const scrollDamping = 0.1;
+      const scrollDamping = 0.2;
       const direction = detail.deltaY * scrollDamping < 0 ? 1 : -1;
 
       physics.setAcceleration(direction);
-      // The shorter the timeout, the more responsive the controls.
       clearTimeout(scrollResetTimeout);
       scrollResetTimeout = setTimeout(() => physics.setAcceleration(0), 150);
     },

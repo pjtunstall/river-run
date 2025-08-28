@@ -79,12 +79,7 @@ export class WorldElement extends HTMLElement {
       );
     });
 
-    const loop = () => {
-      this.world.update();
-      this.#animationFrameId = requestAnimationFrame(loop);
-    };
-    this.#animationFrameId = requestAnimationFrame(loop);
-
+    this.world.update();
     this.focus();
   }
 
