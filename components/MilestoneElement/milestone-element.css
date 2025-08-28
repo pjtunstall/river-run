@@ -38,12 +38,8 @@
   display: none;
 }
 
-:host(:hover) .label {
-  display: block;
-}
-
 :host .label.visible {
-  display: block !important;
+  display: block;
 }
 
 @media (max-width: 768px) and (max-aspect-ratio: 3/4) {
