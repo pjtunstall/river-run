@@ -103,7 +103,7 @@
   min-height: 0; /* Important for proper flex behavior */
 }
 
-.modal-footer {
+.outer-footer {
   flex-shrink: 0;
 }
 
