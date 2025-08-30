@@ -19,7 +19,15 @@ export class ProjectCard extends HTMLElement {
     const content = template.content.cloneNode(true);
 
     const linkEl = content.querySelector("a");
-    if (this.hasAttribute("href")) linkEl.href = this.getAttribute("href");
+    const isMobile =
+      /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent) ||
+      (navigator.maxTouchPoints && navigator.maxTouchPoints > 1);
+
+    if (isMobile && this.hasAttribute("mobile-href")) {
+      linkEl.href = this.getAttribute("mobile-href");
+    } else if (this.hasAttribute("href")) {
+      linkEl.href = this.getAttribute("href");
+    }
 
     const img = content.querySelector("img");
     if (this.hasAttribute("img-src")) img.src = this.getAttribute("img-src");
